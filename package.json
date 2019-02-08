@@ -1,0 +1,23 @@
+{
+  "name": "cs340",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryoungblom/cs340.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryoungblom/cs340/issues"
+  },
+  "homepage": "https://github.com/ryoungblom/cs340#readme",
+  "dependencies": {
+    "express-handlebars": "^3.0.0",
+    "node-static": "^0.7.11"
+  }
+}
