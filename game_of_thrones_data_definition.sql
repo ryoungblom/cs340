@@ -64,19 +64,22 @@ CREATE TABLE `got_skills` (
 
 -- Create Many-to-Many relationship table between Characters and Skills
 CREATE TABLE `got_character_skills` (
- `skill_id` int(11) NOT NULL,
- `character_id` int(11) NOT NULL,
- CONSTRAINT `got_character_skills_ibfk_1` FOREIGN KEY (`skill_id`) REFERENCES `got_skills`(`id`) ON DELETE SET NULL,
- CONSTRAINT `got_character_skills_ibfk_2` FOREIGN KEY (`character_id`) REFERENCES `got_characters`(`id`) ON DELETE SET NULL
+ `skill_id` int(11) NOT NULL DEFAULT '0',
+ `character_id` int(11) NOT NULL DEFAULT '0',
+ PRIMARY KEY (`skill_id`, `character_id`),
+ KEY `character_id`(`character_id`),
+ CONSTRAINT `got_character_skills_ibfk_1` FOREIGN KEY (`skill_id`) REFERENCES `got_skills`(`id`),
+ CONSTRAINT `got_character_skills_ibfk_2` FOREIGN KEY (`character_id`) REFERENCES `got_characters`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Create Many-to-Many relationship table for House loyalties to other Houses
 CREATE TABLE `got_house_loyalties` (
  `house_receiving` int(11) NOT NULL,
  `house_offering` int(11) NOT NULL,
- PRIMARY KEY (`id`)
- CONSTRAINT `got_house_loyalties_ibfk_1` FOREIGN KEY (`house_receiving`) REFERENCES `got_houses`(`id`) ON DELETE SET NULL,
- CONSTRAINT `got_house_loyalties_ibfk_2` FOREIGN KEY (`house_offering`) REFERENCES `got_houses`(`id`) ON DELETE SET NULL
+ PRIMARY KEY (`house_receiving`, `house_offering`),
+ KEY `house_offering`(`house_offering`),
+ CONSTRAINT `got_house_loyalties_ibfk_1` FOREIGN KEY (`house_receiving`) REFERENCES `got_houses`(`id`),
+ CONSTRAINT `got_house_loyalties_ibfk_2` FOREIGN KEY (`house_offering`) REFERENCES `got_houses`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Populate Characters table with sample data
