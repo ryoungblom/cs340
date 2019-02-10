@@ -28,7 +28,7 @@ CREATE TABLE `got_houses` (
  `motto` varchar(255) DEFAULT NULL,
  `sigil` varchar(255) DEFAULT NULL,
  `leader` int(11) DEFAULT NULL,
- PRIMARY KEY (`id`),
+ PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Add foreign keys to Characters table
