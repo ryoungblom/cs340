@@ -33,12 +33,12 @@ CREATE TABLE `got_houses` (
 
 -- Add foreign keys to Characters table
 ALTER TABLE `got_characters`
- ADD CONSTRAINT `got_characters_ibfk_1` FOREIGN KEY (`house`) REFERENCES `got_houses`(`id`) ON DELETE SET NULL ON UPDATE CASCADE,
- ADD CONSTRAINT `got_characters_ibfk_2` FOREIGN KEY (`religion`) REFERENCES `got_religions`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ ADD CONSTRAINT `got_characters_ibfk_1` FOREIGN KEY (`house`) REFERENCES `got_houses`(`id`) ON DELETE SET NULL,
+ ADD CONSTRAINT `got_characters_ibfk_2` FOREIGN KEY (`religion`) REFERENCES `got_religions`(`id`) ON DELETE SET NULL;
 
 -- Add foreign key to Houses table
 ALTER TABLE `got_houses` 
- ADD CONSTRAINT `got_houses_ibfk_1` FOREIGN KEY (`leader`) REFERENCES `got_characters`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ ADD CONSTRAINT `got_houses_ibfk_1` FOREIGN KEY (`leader`) REFERENCES `got_characters`(`id`) ON DELETE SET NULL;
 
 -- Create Religions table
 CREATE TABLE `got_religions` (
@@ -66,8 +66,8 @@ CREATE TABLE `got_skills` (
 CREATE TABLE `got_character_skills` (
  `skill_id` int(11) NOT NULL,
  `character_id` int(11) NOT NULL,
- CONSTRAINT `got_character_skills_ibfk_1` FOREIGN KEY (`skill_id`) REFERENCES `got_skills`(`id`) ON DELETE SET NULL ON UPDATE CASCADE,
- CONSTRAINT `got_character_skills_ibfk_2` FOREIGN KEY (`character_id`) REFERENCES `got_characters`(`id`) ON DELETE SET NULL ON UPDATE CASCADE
+ CONSTRAINT `got_character_skills_ibfk_1` FOREIGN KEY (`skill_id`) REFERENCES `got_skills`(`id`) ON DELETE SET NULL,
+ CONSTRAINT `got_character_skills_ibfk_2` FOREIGN KEY (`character_id`) REFERENCES `got_characters`(`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Create Many-to-Many relationship table for House loyalties to other Houses
@@ -75,8 +75,8 @@ CREATE TABLE `got_house_loyalties` (
  `house_receiving` int(11) NOT NULL,
  `house_offering` int(11) NOT NULL,
  PRIMARY KEY (`id`)
- CONSTRAINT `got_house_loyalties_ibfk_1` FOREIGN KEY (`house_receiving`) REFERENCES `got_houses`(`id`) ON DELETE SET NULL ON UPDATE CASCADE,
- CONSTRAINT `got_house_loyalties_ibfk_2` FOREIGN KEY (`house_offering`) REFERENCES `got_houses`(`id`) ON DELETE SET NULL ON UPDATE CASCADE
+ CONSTRAINT `got_house_loyalties_ibfk_1` FOREIGN KEY (`house_receiving`) REFERENCES `got_houses`(`id`) ON DELETE SET NULL,
+ CONSTRAINT `got_house_loyalties_ibfk_2` FOREIGN KEY (`house_offering`) REFERENCES `got_houses`(`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Populate Characters table with sample data
@@ -88,7 +88,7 @@ INSERT INTO `got_characters` (`id`, `fname`, `lname`, `nobility`, `gender`, `age
 (5, 'Bran', 'Stark', 'Highborn', 'Male', 12, 1, 1),
 (6, 'Daenerys', 'Targaryen', 'Highborn', 'Female', 19, 3, 4),
 (7, 'Stannis', 'Baratheon', 'Highborn', 'Male', 48, 5, 2),
-(8, 'Viserys', 'Targaryen', 'Highborn', 'Male', 22, 3, 4)
+(8, 'Viserys', 'Targaryen', 'Highborn', 'Male', 22, 3, 4),
 (9, 'Olenna', 'Tyrell', 'Highborn', 'Female', 76, 4, 5);
 
 -- Populate Houses table with sample data
