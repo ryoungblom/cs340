@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:200');
 
 html, body {
-    overflow-x: hidden;
-    font-family: 'Raleway', sans-serif !important;
-    scroll-behavior: smooth;
+  height: 100%;
+  font-family: 'Raleway', sans-serif !important;
+  margin: 0;
 }
 
 p {
@@ -20,6 +20,19 @@ h1,h2,h3,h4,h5,h6 {
 a {
     text-decoration: none !important;
     color:inherit;
+}
+
+.hero {
+  /* The image used */
+  background-image: url("/assets/main/images/got.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .primary {
