@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CS 340 Project</title>
+    <link href="./style.css" rel="stylesheet" type="text/css">
+  </head>
+
+
+  <body>
+
+    <div class="primary">
+
+      <h2>Game of Thrones Database</h2>
+      <p>Character Skills Database</p>
+
+      <br>
+
+      <h1> [view skills table] </h1>
+
+      <br>
+      <br>
+
+      <div class="buttons">
+
+        <a href="./characters.html">
+          <button type="button">Modify Characters</button>
+        </a>
+
+        <br>
+        <a href="./houses.html">
+          <button type="button">Modify Houses</button>
+        </a>
+
+        <br>
+        <a href="./skills.html">
+          <button type="button">Modify Skills</button>
+        </a>
+
+        <br>
+        <a href="./religions.html">
+          <button type="button">Modify Religions</button>
+        </a>
+
+      </div>
+    <br>
+    </div>
+
+      <div class="leftMargin">
+
+        <h2>Add Skill</h2>
+        <br>
+          <form>
+            Name:  <input type="text" name="skill" value="Skill Name">
+            <br>
+            Utility in Battle:  <input type="text" name="utility" value="Battle Utility">
+            <br>
+            Acquisition Cost:  <input type="text" name="cost" value="Acquisition Cost">
+            <br>
+            Rarity:  <input type="text" name="rarity" value="Rarity">
+            <br>
+            Value:  <input type="text" name="value" value="Value">
+            <br>
+            <input type="submit" value="Submit">
+          </form>
+
+          <br>
+          <br>
+
+        <h2>Modify Skills</h2>
+        <br>
+          <form>
+            Skill:<br>
+            <input type="text" name="skill" value="Skill Name">
+            <br>
+            <br>
+            I'd like to change...<br>
+            <input type="radio" name="name" value="name"> Name<br>
+            <input type="radio" name="utility" value="utility"> Battle Utility<br>
+            <input type="radio" name="cost" value="cost"> Acquisition Cost<br>
+            <input type="radio" name="rarity" value="rarity"> Rarity<br>
+            <input type="radio" name="value" value="value"> Value<br>
+            <br>
+            ...to <br>
+            <input type="text" name="newValue" value="New Value">
+            <br>
+            <input type="submit" value="Submit">
+          </form>
+
+          <br>
+          <br>
+
+          <h2> Delete Skill </h2>
+          <br>
+          <br>
+          Skill: <br>
+          <input type="text" name="skill" value="Skill Name">
+          <br>
+          <input type="submit" value="Submit">
+          <br>
+          <br>
+      </div>
+
+
+  <div class="primary">
+    <a href="./index.html">
+      <h3> Home </h3>
+    </a>
+  </div>
+
+
+</body>
+</html>
