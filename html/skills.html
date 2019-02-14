@@ -53,13 +53,29 @@
           <form>
             Name:  <input type="text" name="skill" value="Skill Name">
             <br>
-            Utility in Battle:  <input type="text" name="utility" value="Battle Utility">
+            Utility in Battle:  <br>
+            <input type="radio" name="addUtility" value="high"> High<br>
+            <input type="radio" name="addUtility" value="medium"> Medium<br>
+            <input type="radio" name="addUtility" value="low"> Low<br>
+            <input type="radio" name="addUtility" value="na"> N/A<br>
             <br>
-            Acquisition Cost:  <input type="text" name="cost" value="Acquisition Cost">
+            Acquisition Cost:  <br>
+            <input type="radio" name="addCost" value="high"> High<br>
+            <input type="radio" name="addCost" value="medium"> Medium<br>
+            <input type="radio" name="addCost" value="low"> Low<br>
+            <input type="radio" name="addCost" value="na"> N/A<br>
             <br>
-            Rarity:  <input type="text" name="rarity" value="Rarity">
+            Rarity:  <br>
+            <input type="radio" name="addRarity" value="high"> High<br>
+            <input type="radio" name="addRarity" value="medium"> Medium<br>
+            <input type="radio" name="addRarity" value="low"> Low<br>
+            <input type="radio" name="addRarity" value="na"> N/A<br>
             <br>
-            Value:  <input type="text" name="value" value="Value">
+            Value:  <<br>
+            <input type="radio" name="addValue" value="high"> High<br>
+            <input type="radio" name="addValue" value="medium"> Medium<br>
+            <input type="radio" name="addValue" value="low"> Low<br>
+            <input type="radio" name="addValue" value="na"> N/A<br>
             <br>
             <input type="submit" value="Submit">
           </form>
@@ -75,11 +91,11 @@
             <br>
             <br>
             I'd like to change...<br>
-            <input type="radio" name="name" value="name"> Name<br>
-            <input type="radio" name="utility" value="utility"> Battle Utility<br>
-            <input type="radio" name="cost" value="cost"> Acquisition Cost<br>
-            <input type="radio" name="rarity" value="rarity"> Rarity<br>
-            <input type="radio" name="value" value="value"> Value<br>
+            <input type="radio" name="change" value="name"> Name<br>
+            <input type="radio" name="change" value="utility"> Battle Utility<br>
+            <input type="radio" name="change" value="cost"> Acquisition Cost<br>
+            <input type="radio" name="change" value="rarity"> Rarity<br>
+            <input type="radio" name="change" value="value"> Value<br>
             <br>
             ...to <br>
             <input type="text" name="newValue" value="New Value">

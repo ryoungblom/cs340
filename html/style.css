@@ -1,9 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:200');
 
+:root {
+  --background-color: black;
+  --font-color: white;
+}
+
 html, body {
   height: 100%;
   font-family: 'Raleway', sans-serif !important;
   margin: 0;
+  background-color: var(--background-color);
+  color: var(--font-color);
 }
 
 p {
@@ -22,25 +29,32 @@ a {
     color:inherit;
 }
 
-.hero {
-  /* The image used */
-  background-image: url("/assets/main/images/got.jpg");
-
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.fa-icons {
+  font-size: 50px;
+  margin-bottom: 10px;
 }
+
+.bg-img {
+  width: 100%;
+  height: 100%;
+  background: url('../public/assets/main/images/got.jpg') center center no-repeat, linear-gradient(to bottom, rgba(0,0,0,0) 10%,rgba(0,0,0,1) 90%);
+  background-size: cover;
+  background-blend-mode: multiply;
+  margin-bottom: 50px;
+}
+
 
 .primary {
   text-align: center;
+  background: var(--background-color);
+  color: white;
 }
 
 
 .buttons {
+
+  margin-top: 100px;;
+  margin-bottom: 100px;
 
   display: flex;
   align-items: center;
@@ -52,4 +66,13 @@ a {
 
 .leftMargin {
   margin-left: 30px;
+}
+
+
+
+/*********footer********/
+
+.footer {
+  background-color: var(--background-color);
+  height:100px;
 }
