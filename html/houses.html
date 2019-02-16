@@ -14,83 +14,112 @@
       <p>Houses Database</p>
 
       <br>
-      <br>
       <div class="buttons">
 
         <a href="./characters.html">
-          <button type="button">Modify Characters</button>
+          <i class="fas fa-users fa-icons"></i>
+          <br>
+          Characters
         </a>
 
         <br>
         <a href="./houses.html">
-          <button type="button">Modify Houses</button>
+          <i class="fab fa-fort-awesome fa-icons"></i>
+          <br>
+          Houses
         </a>
 
         <br>
         <a href="./skills.html">
-          <button type="button">Modify Skills</button>
+          <i class="fas fa-hat-wizard fa-icons"></i>
+          <br>
+          Skills
         </a>
 
         <br>
         <a href="./religions.html">
-          <button type="button">Modify Religions</button>
+          <i class="fas fa-church fa-icons"></i>
+          <br>
+          Religions
         </a>
 
       </div>
+
+      <br>
+
+      <h1> [view houses table] </h1>
+
+      <br>
+
       <br>
     </div>
 
-    <div class="leftMargin">
+    <div class="leftMargin CRUD">
 
-      <h2>Add House</h2>
-      <br>
-        <form>
-          Name:  <input type="text" name="house" value="House Name">
+
+      <div>
+        <h2>Add House</h2>
+        <br>
+          <form>
+            Name: <br> <input type="text" name="house" value="House Name"><br>
+            <br>
+            Number of Members: <br>  <input type="text" name="members" value="Members"><br>
+            <br>
+            House Motto: <br> <input type="text" name="motto" value="Motto"><br>
+            <br>
+            House Sigel: <br> <input type="text" name="sigel" value="Sigel"><br>
+            <br>
+            House Leader: <br> <input type="text" name="leader" value="Leader"><br>
+            <br>
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+        <br>
+        <br>
+      <div>
+        <h2>Edit Houses</h2>
+        <br>
+          <form>
+            House:<br>
+            <select name="houses" form="houseMod">
+              <option value="Tyrell">Tyrell</option>
+              <option value="Stark">Stark</option>
+              <option value="Lannister">Lannister</option>
+              <option value="Greyjoy">Greyjoy</option>
+            </select>
+            <br>
+            <br>
+            I'd like to change...<br>
+            <input type="radio" name="modHouse" value="name"> Name<br>
+            <input type="radio" name="modHouse" value="members"> Members<br>
+            <input type="radio" name="modHouse" value="motto"> Motto<br>
+            <input type="radio" name="modHouse" value="sigel"> Sigel<br>
+            <input type="radio" name="modHouse" value="leader"> Leader<br>
+            <br>
+            ...to <br>
+            <input type="text" name="newValue" value="New Value">
+            <br>
+            <br>
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+        <br>
+        <br>
+
+        <div>
+          <h2> Delete House </h2>
           <br>
-          Number of Members:  <input type="text" name="members" value="Members">
+          House: <br>
+          <select name="houses" form="houseDelete">
+            <option value="Tyrell">Tyrell</option>
+            <option value="Stark">Stark</option>
+            <option value="Lannister">Lannister</option>
+            <option value="Greyjoy">Greyjoy</option>
+          </select>
           <br>
-          House Motto:  <input type="text" name="motto" value="Motto">
-          <br>
-          House Sigel:  <input type="text" name="sigel" value="Sigel">
-          <br>
-          House Leader:  <input type="text" name="leader" value="Leader">
           <br>
           <input type="submit" value="Submit">
-        </form>
-
-        <br>
-        <br>
-
-      <h2>Modify Houses</h2>
-      <br>
-        <form>
-          House:<br>
-          <input type="text" name="house" value="House Name">
-          <br>
-          <br>
-          I'd like to change...<br>
-          <input type="radio" name="name" value="name"> Name<br>
-          <input type="radio" name="members" value="members"> Members<br>
-          <input type="radio" name="motto" value="motto"> Motto<br>
-          <input type="radio" name="sigel" value="sigel"> Sigel<br>
-          <input type="radio" name="leader" value="leader"> Leader<br>
-          <br>
-          ...to <br>
-          <input type="text" name="newValue" value="New Value">
-          <br>
-          <input type="submit" value="Submit">
-        </form>
-
-        <br>
-        <br>
-
-        <h2> Delete House </h2>
-        <br>
-        <br>
-        House: <br>
-        <input type="text" name="house" value="House Name">
-        <br>
-        <input type="submit" value="Submit">
+        </div>
         <br>
         <br>
     </div>
@@ -103,6 +132,15 @@
       </a>
     </div>
 
+    <br>
+    <br>
+
+    <div class="footer primary">
+
+      <h2>Game of Thrones Database</h2>
+      <p>CS340 at Oregon State University</p>
+
+    </div>
 
 
 

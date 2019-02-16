@@ -13,106 +13,122 @@
 
       <h2>Game of Thrones Database</h2>
       <p>Character Skills Database</p>
-
-      <br>
-
-      <h1> [view skills table] </h1>
-
-      <br>
       <br>
 
       <div class="buttons">
 
         <a href="./characters.html">
-          <button type="button">Modify Characters</button>
+          <i class="fas fa-users fa-icons"></i>
+          <br>
+          Characters
         </a>
 
         <br>
         <a href="./houses.html">
-          <button type="button">Modify Houses</button>
+          <i class="fab fa-fort-awesome fa-icons"></i>
+          <br>
+          Houses
         </a>
 
         <br>
         <a href="./skills.html">
-          <button type="button">Modify Skills</button>
+          <i class="fas fa-hat-wizard fa-icons"></i>
+          <br>
+          Skills
         </a>
 
         <br>
         <a href="./religions.html">
-          <button type="button">Modify Religions</button>
+          <i class="fas fa-church fa-icons"></i>
+          <br>
+          Religions
         </a>
 
       </div>
+
+
+      <br>
+      <h1> [view skills table] </h1>
+      <br>
+
+
     <br>
     </div>
 
-      <div class="leftMargin">
+      <div class="leftMargin CRUD">
 
-        <h2>Add Skill</h2>
-        <br>
-          <form>
-            Name:  <input type="text" name="skill" value="Skill Name">
+        <div>
+          <h2>Add Skill</h2>
+          <br>
+            <form>
+              Name:  <br>
+              <input type="text" name="skill" value="Skill Name">
+              <br>
+              <br>
+              Utility in Battle:  <br>
+              <input type="radio" name="addUtility" value="high"> High<br>
+              <input type="radio" name="addUtility" value="medium"> Medium<br>
+              <input type="radio" name="addUtility" value="low"> Low<br>
+              <input type="radio" name="addUtility" value="na"> N/A<br>
+              <br>
+              Acquisition Cost:  <br>
+              <input type="radio" name="addCost" value="high"> High<br>
+              <input type="radio" name="addCost" value="medium"> Medium<br>
+              <input type="radio" name="addCost" value="low"> Low<br>
+              <input type="radio" name="addCost" value="na"> N/A<br>
+              <br>
+              Rarity:  <br>
+              <input type="radio" name="addRarity" value="high"> High<br>
+              <input type="radio" name="addRarity" value="medium"> Medium<br>
+              <input type="radio" name="addRarity" value="low"> Low<br>
+              <input type="radio" name="addRarity" value="na"> N/A<br>
+              <br>
+              Value:  <br>
+              <input type="radio" name="addValue" value="high"> High<br>
+              <input type="radio" name="addValue" value="medium"> Medium<br>
+              <input type="radio" name="addValue" value="low"> Low<br>
+              <input type="radio" name="addValue" value="na"> N/A<br>
+              <br>
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+          <br>
+          <br>
+          <div>
+            <h2>Edit Skills</h2>
             <br>
-            Utility in Battle:  <br>
-            <input type="radio" name="addUtility" value="high"> High<br>
-            <input type="radio" name="addUtility" value="medium"> Medium<br>
-            <input type="radio" name="addUtility" value="low"> Low<br>
-            <input type="radio" name="addUtility" value="na"> N/A<br>
-            <br>
-            Acquisition Cost:  <br>
-            <input type="radio" name="addCost" value="high"> High<br>
-            <input type="radio" name="addCost" value="medium"> Medium<br>
-            <input type="radio" name="addCost" value="low"> Low<br>
-            <input type="radio" name="addCost" value="na"> N/A<br>
-            <br>
-            Rarity:  <br>
-            <input type="radio" name="addRarity" value="high"> High<br>
-            <input type="radio" name="addRarity" value="medium"> Medium<br>
-            <input type="radio" name="addRarity" value="low"> Low<br>
-            <input type="radio" name="addRarity" value="na"> N/A<br>
-            <br>
-            Value:  <<br>
-            <input type="radio" name="addValue" value="high"> High<br>
-            <input type="radio" name="addValue" value="medium"> Medium<br>
-            <input type="radio" name="addValue" value="low"> Low<br>
-            <input type="radio" name="addValue" value="na"> N/A<br>
-            <br>
-            <input type="submit" value="Submit">
-          </form>
-
+              <form>
+                Skill:<br>
+                <input type="text" name="skill" value="Skill Name">
+                <br>
+                <br>
+                I'd like to change...<br>
+                <input type="radio" name="change" value="name">Name<br>
+                <input type="radio" name="change" value="utility">Battle Utility<br>
+                <input type="radio" name="change" value="cost">Acquisition Cost<br>
+                <input type="radio" name="change" value="rarity">Rarity<br>
+                <input type="radio" name="change" value="value">Value<br>
+                <br>
+                ...to <br>
+                <input type="text" name="newValue" value="New Value">
+                <br>
+                <br>
+                <input type="submit" value="Submit">
+              </form>
+            </div>
           <br>
           <br>
 
-        <h2>Modify Skills</h2>
-        <br>
-          <form>
-            Skill:<br>
+          <div>
+            <h2> Delete Skill </h2>
+            <br>
+            <br>
+            Skill: <br>
             <input type="text" name="skill" value="Skill Name">
             <br>
             <br>
-            I'd like to change...<br>
-            <input type="radio" name="change" value="name"> Name<br>
-            <input type="radio" name="change" value="utility"> Battle Utility<br>
-            <input type="radio" name="change" value="cost"> Acquisition Cost<br>
-            <input type="radio" name="change" value="rarity"> Rarity<br>
-            <input type="radio" name="change" value="value"> Value<br>
-            <br>
-            ...to <br>
-            <input type="text" name="newValue" value="New Value">
-            <br>
             <input type="submit" value="Submit">
-          </form>
-
-          <br>
-          <br>
-
-          <h2> Delete Skill </h2>
-          <br>
-          <br>
-          Skill: <br>
-          <input type="text" name="skill" value="Skill Name">
-          <br>
-          <input type="submit" value="Submit">
+          </div>
           <br>
           <br>
       </div>
@@ -122,6 +138,16 @@
     <a href="./index.html">
       <h3> Home </h3>
     </a>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="footer primary">
+
+    <h2>Game of Thrones Database</h2>
+    <p>CS340 at Oregon State University</p>
+
   </div>
 
 

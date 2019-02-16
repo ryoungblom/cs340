@@ -88,7 +88,7 @@
   UPDATE 'got_characters'
   SET 'religion' = NULL
   WHERE 'religion' = :religionIn;
-  DELETE FROM 'got_religions' WHERE 'name' = :nameIn;
+  DELETE FROM 'got_religions' WHERE 'name' = :religionIn;
 
 --Delete a House & cascade to allied Characters and other loyal Houses
   UPDATE 'got_characters'
@@ -96,7 +96,7 @@
   WHERE 'house' = :houseIn;
   DELETE 'house_offering' AND 'house_receiving' FROM 'got_house_loyalties'
   WHERE 'house_receiving' OR 'house_offering' = :houseIn;
-  DELETE FROM 'got_houses' WHERE 'name' = :nameIn;
+  DELETE FROM 'got_houses' WHERE 'name' = :houseIn;
 
 --Delete a Skill & cascade to Characters possessing that Skill
   DELETE 'skill_id' AND 'character_id' FROM 'got_character_skills'

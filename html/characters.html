@@ -13,109 +13,127 @@
 
     <br>
 
-    <h1> [view characters table] </h1>
-
-    <br>
-    <br>
-
     <div class="buttons">
 
       <a href="./characters.html">
-        <button type="button">Modify Characters</button>
+        <i class="fas fa-users fa-icons"></i>
+        <br>
+        Characters
       </a>
 
       <br>
       <a href="./houses.html">
-        <button type="button">Modify Houses</button>
+        <i class="fab fa-fort-awesome fa-icons"></i>
+        <br>
+        Houses
       </a>
 
       <br>
       <a href="./skills.html">
-        <button type="button">Modify Skills</button>
+        <i class="fas fa-hat-wizard fa-icons"></i>
+        <br>
+        Skills
       </a>
 
       <br>
       <a href="./religions.html">
-        <button type="button">Modify Religions</button>
+        <i class="fas fa-church fa-icons"></i>
+        <br>
+        Religions
       </a>
 
     </div>
   <br>
+
+    <h1> [view characters table] </h1>
+    <br>
   </div>
 
   <br>
 
-  <div class="leftMargin">
+  <div class="leftMargin CRUD">
 
-    <h2>Add Character</h2>
-    <br>
-      <form>
-        First Name:  <input type="text" name="fname" value="First Name">
+    <div>
+      <h2>Add Character</h2>
+      <br>
+        <form>
+          First Name:  <br>
+          <input type="text" name="fname" value="First Name">
+          <br>
+          Last Name:  <br>
+          <input type="text" name="lname" value="Last Name">
+          <br>
+          <br>
+          Nobility: <br>
+          <input type="radio" name="addNobility" value="highborn"> Highborn <br>
+          <input type="radio" name="addNobility" value="lowborn"> Lowborn <br>
+          <input type="radio" name="addNobility" value="other"> Other <br>
+          <br>
+          Gender:  <br>
+          <input type="radio" name="addGender" value="fname"> Male <br>
+          <input type="radio" name="addGender" value="lname"> Female <br>
+          <input type="radio" name="addGender" value="lname"> Other <br>
+          <br>
+          <br>
+          Age:  <br>
+          <input type="text" name="age" value="Age">
+          <br>
+          House:  <br>
+          <input type="text" name="house" value="House">
+          <br>
+          Religion:  <br>
+          <input type="text" name="religion" value="Religion">
+          <br>
+          <br>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+      <br>
+      <br>
+      <div>
+        <h2>Edit Character</h2>
         <br>
-        Last Name:  <input type="text" name="lname" value="Last Name">
-        <br>
-        Nobility: <br>
-        <input type="radio" name="addNobility" value="highborn"> Highborn <br>
-        <input type="radio" name="addNobility" value="lowborn"> Lowborn <br>
-        <input type="radio" name="addNobility" value="other"> Other <br>
-        <br>
-        Gender:  <br>
-        <input type="radio" name="addGender" value="fname"> Male <br>
-        <input type="radio" name="addGender" value="lname"> Female <br>
-        <input type="radio" name="addGender" value="lname"> Other <br>
-        <br>
-        <br>
-        Age:  <input type="text" name="age" value="Age">
-        <br>
-        House:  <input type="text" name="house" value="House">
-        <br>
-        Religion:  <input type="text" name="religion" value="Religion">
-        <br>
-        <input type="submit" value="Submit">
-      </form>
-
+          <form>
+            Character:<br>
+            <input type="text" name="fname" value="First Name">
+            <br>
+            <input type="text" name="lname" value="Last Name">
+            <br>
+            <br>
+            <br>
+            I'd like to change...<br>
+            <input type="radio" name="change" value="fname"> First Name<br>
+            <input type="radio" name="change" value="lname"> Last Name<br>
+            <input type="radio" name="change" value="nobility"> Nobility<br>
+            <input type="radio" name="change" value="gender"> Gender<br>
+            <input type="radio" name="change" value="age"> Age<br>
+            <input type="radio" name="change" value="house"> House<br>
+            <input type="radio" name="change" value="religion"> Religion<br>
+            <br>
+            ...to <br>
+            <input type="text" name="newValue" value="New Value">
+            <br>
+            <br>
+            <input type="submit" value="Submit">
+          </form>
+        </div>
       <br>
       <br>
 
-    <h2>Modify Character</h2>
-    <br>
-      <form>
-        Character:<br>
+      <div>
+        <h2> Delete Character </h2>
+        <br>
+        <br>
+        Character: <br>
         <input type="text" name="fname" value="First Name">
         <br>
         <input type="text" name="lname" value="Last Name">
         <br>
         <br>
-        <br>
-        I'd like to change...<br>
-        <input type="radio" name="change" value="fname"> First Name<br>
-        <input type="radio" name="change" value="lname"> Last Name<br>
-        <input type="radio" name="change" value="nobility"> Nobility<br>
-        <input type="radio" name="change" value="gender"> Gender<br>
-        <input type="radio" name="change" value="age"> Age<br>
-        <input type="radio" name="change" value="house"> House<br>
-        <input type="radio" name="change" value="religion"> Religion<br>
-        <br>
-        ...to <br>
-        <input type="text" name="newValue" value="New Value">
-        <br>
         <input type="submit" value="Submit">
-      </form>
-
-      <br>
-      <br>
-
-      <h2> Delete Character </h2>
-      <br>
-      <br>
-      Character: <br>
-      <input type="text" name="fname" value="First Name">
-      <br>
-      <input type="text" name="lname" value="Last Name">
-      <br>
-      <input type="submit" value="Submit">
-      <br>
-      <br>
+        <br>
+        <br>
+      </div>
   </div>
 
 
@@ -124,6 +142,16 @@
     <a href="./index.html">
       <h3> Home </h3>
     </a>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="footer primary">
+
+    <h2>Game of Thrones Database</h2>
+    <p>CS340 at Oregon State University</p>
+
   </div>
 
 
