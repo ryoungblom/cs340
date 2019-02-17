@@ -45,14 +45,128 @@
 
       </div>
 
-      <br>
-
-      <h1> [view houses table] </h1>
-
+      <div class="TABLE">
+        <h1>HOUSES TABLE</h2>
+        <table>
+          <tr>
+            <th>Column One</th>
+            <th>Column Two</th>
+            <th>Column Three</th>
+          </tr>
+          <tr>
+            <td>Sample Data</td>
+            <td>Sample Data</td>
+            <td>Sample Data</td>
+          </tr>
+          <tr>
+            <td>Sample Data2</td>
+            <td>Sample Data2</td>
+            <td>Sample Data2</td>
+          </tr>
+          <tr>
+            <td>Sample Data3</td>
+            <td>Sample Data3</td>
+            <td>Sample Data3</td>
+          </tr>
+          <tr>
+            <td>Sample Data4</td>
+            <td>Sample Data4</td>
+            <td>Sample Data4</td>
+          </tr>
+          <tr>
+            <td>Sample Data5</td>
+            <td>Sample Data5</td>
+            <td>Sample Data5</td>
+          </tr>
+          <tr>
+            <td>Sample Data6</td>
+            <td>Sample Data6</td>
+            <td>Sample Data6</td>
+          </tr>
+        </table>
+      </div>
       <br>
 
       <br>
     </div>
+
+
+    <div class="explore">
+      <span><h2>Explore Houses</h2></span>
+
+      <div class="wrap">
+         <div class="search">
+            <input type="text" class="searchTerm" placeholder="What are you looking for?">
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+           </button>
+         </div>
+      </div>
+
+      <div class="elements">
+
+        <div class="explore">
+          <span>Show members from house
+          <select name="houses" form="houseMod">
+            <option value="Tyrell">Tyrell</option>
+            <option value="Stark">Stark</option>
+            <option value="Lannister">Lannister</option>
+            <option value="Greyjoy">Greyjoy</option>
+          </select>
+          ! </span>
+
+          <span>
+            <input type="submit" value="Show me!">
+          </span>
+        </div>
+
+        <div class="explore">
+          <span>What houses are loyal to house
+          <select name="houses" form="houseMod">
+            <option value="Tyrell">Tyrell</option>
+            <option value="Stark">Stark</option>
+            <option value="Lannister">Lannister</option>
+            <option value="Greyjoy">Greyjoy</option>
+          </select>
+          ? </span>
+
+          <span>
+            <input type="submit" value="Show me!">
+          </span>
+        </div>
+
+        <div class="explore">
+        <span>
+          Did we miss something? Update house loyalties!
+        </span>
+        <span>
+        House:
+        <select name="houses" form="houseMod">
+          <option value="Tyrell">Tyrell</option>
+          <option value="Stark">Stark</option>
+          <option value="Lannister">Lannister</option>
+          <option value="Greyjoy">Greyjoy</option>
+        </select>
+
+        Is loyal to house:
+        <select name="houses" form="houseMod">
+          <option value="Tyrell">Tyrell</option>
+          <option value="Stark">Stark</option>
+          <option value="Lannister">Lannister</option>
+          <option value="Greyjoy">Greyjoy</option>
+        </select>
+
+          <input type="submit" value="Submit">
+        </span>
+      </div>
+
+
+      </div>
+
+    </div>
+
+<hr>
+
 
     <div class="leftMargin CRUD">
 
@@ -61,7 +175,7 @@
         <h2>Add House</h2>
         <br>
           <form>
-            Name: <br> <input type="text" name="house" value="House Name"><br>
+            Name*: <br> <input type="text" name="house" value="House Name"><br>
             <br>
             Number of Members: <br>  <input type="text" name="members" value="Members"><br>
             <br>
@@ -99,9 +213,14 @@
             ...to <br>
             <input type="text" name="newValue" value="New Value">
             <br>
+            or
+            <br>
+
+            <input type="radio" name="nullHouse" value="NULL">Delete Existing Data<br>
+
             <br>
             <input type="submit" value="Submit">
-          </form>
+              </form>
         </div>
         <br>
         <br>

@@ -47,13 +47,148 @@
       </div>
 
 
-      <br>
-      <h1> [view skills table] </h1>
+      <div class="TABLE">
+        <h1>SKILLS TABLE</h2>
+        <table>
+          <tr>
+            <th>Column One</th>
+            <th>Column Two</th>
+            <th>Column Three</th>
+          </tr>
+          <tr>
+            <td>Sample Data</td>
+            <td>Sample Data</td>
+            <td>Sample Data</td>
+          </tr>
+          <tr>
+            <td>Sample Data2</td>
+            <td>Sample Data2</td>
+            <td>Sample Data2</td>
+          </tr>
+          <tr>
+            <td>Sample Data3</td>
+            <td>Sample Data3</td>
+            <td>Sample Data3</td>
+          </tr>
+          <tr>
+            <td>Sample Data4</td>
+            <td>Sample Data4</td>
+            <td>Sample Data4</td>
+          </tr>
+          <tr>
+            <td>Sample Data5</td>
+            <td>Sample Data5</td>
+            <td>Sample Data5</td>
+          </tr>
+          <tr>
+            <td>Sample Data6</td>
+            <td>Sample Data6</td>
+            <td>Sample Data6</td>
+          </tr>
+        </table>
+      </div>
       <br>
 
 
     <br>
     </div>
+
+
+    <div class="explore">
+      <span><h2>Explore Skills</h2></span>
+
+      <div class="wrap">
+         <div class="search">
+            <input type="text" class="searchTerm" placeholder="What are you looking for?">
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+           </button>
+         </div>
+      </div>
+
+      <div class="elements">
+
+        <div class="explore">
+          <span>Who's got skills? Select up to 3: </span>
+          <span>
+          <select name="showSkillsOne" form="showSkills" class="skillsMenu">
+            <option value="skill1">Skill1</option>
+            <option value="skill2">Skill2</option>
+            <option value="skill3">Skill3</option>
+            <option value="skill4">Skill4</option>
+          </select>
+
+          <select name="showSkillsTwo" form="showSkills" class="skillsMenu">
+            <option value="skill1">Skill1</option>
+            <option value="skill2">Skill2</option>
+            <option value="skill3">Skill3</option>
+            <option value="skill4">Skill4</option>
+          </select>
+
+          <select name="showSkillsThree" form="showSkills" class="skillsMenu">
+            <option value="skill1">Skill1</option>
+            <option value="skill2">Skill2</option>
+            <option value="skill3">Skill3</option>
+            <option value="skill4">Skill4</option>
+          </select>
+
+            <input type="submit" value="Show me!">
+          </span>
+        </div>
+
+        <div class="explore">
+        <span>
+          Which skills does
+
+        <select name="skillChar" form="skillChar" class="addSkillsMenu">
+          <option value="Char1">Eddard Stark</option>
+          <option value="Char2">Theon Greyjoy</option>
+          <option value="Char3">John Snow</option>
+          <option value="Char4">The Hound</option>
+        </select>
+
+        possess?
+      </span>
+
+
+          <input type="submit" value="Show me!">
+      </div>
+
+
+
+        <div class="explore">
+        <span>
+          Did we miss something? Assign a skill to a character!
+        </span>
+        <span>
+        Character:
+        <select name="skillChar" form="skillChar" class="addSkillsMenu">
+          <option value="Char1">Eddard Stark</option>
+          <option value="Char2">Theon Greyjoy</option>
+          <option value="Char3">John Snow</option>
+          <option value="Char4">The Hound</option>
+        </select>
+
+        Skill:
+        <select name="showSkillsThree" form="showSkills" class="addSkillsMenu">
+          <option value="skill1">Skill1</option>
+          <option value="skill2">Skill2</option>
+          <option value="skill3">Skill3</option>
+          <option value="skill4">Skill4</option>
+        </select>
+
+          <input type="submit" value="Submit">
+        </span>
+      </div>
+      </div>
+      </div>
+
+
+      </div>
+
+    </div>
+
+<hr>
 
       <div class="leftMargin CRUD">
 
@@ -61,7 +196,7 @@
           <h2>Add Skill</h2>
           <br>
             <form>
-              Name:  <br>
+              Name*:  <br>
               <input type="text" name="skill" value="Skill Name">
               <br>
               <br>
@@ -112,9 +247,14 @@
                 ...to <br>
                 <input type="text" name="newValue" value="New Value">
                 <br>
+                or
+                <br>
+
+                <input type="radio" name="nullSkills" value="NULL">Delete Existing Data<br>
+
                 <br>
                 <input type="submit" value="Submit">
-              </form>
+                  </form>
             </div>
           <br>
           <br>

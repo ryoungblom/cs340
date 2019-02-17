@@ -43,20 +43,118 @@
         Religions
       </a>
     </div>
-  <br>
-  <h1> [view religion table] </h1>
+    <div class="TABLE">
+      <h1>RELIGIONS TABLE</h2>
+      <table>
+        <tr>
+          <th>Column One</th>
+          <th>Column Two</th>
+          <th>Column Three</th>
+        </tr>
+        <tr>
+          <td>Sample Data</td>
+          <td>Sample Data</td>
+          <td>Sample Data</td>
+        </tr>
+        <tr>
+          <td>Sample Data2</td>
+          <td>Sample Data2</td>
+          <td>Sample Data2</td>
+        </tr>
+        <tr>
+          <td>Sample Data3</td>
+          <td>Sample Data3</td>
+          <td>Sample Data3</td>
+        </tr>
+        <tr>
+          <td>Sample Data4</td>
+          <td>Sample Data4</td>
+          <td>Sample Data4</td>
+        </tr>
+        <tr>
+          <td>Sample Data5</td>
+          <td>Sample Data5</td>
+          <td>Sample Data5</td>
+        </tr>
+        <tr>
+          <td>Sample Data6</td>
+          <td>Sample Data6</td>
+          <td>Sample Data6</td>
+        </tr>
+      </table>
+    </div>
 
   <br>
 
 </div>
 
+
+
+<div class="explore">
+  <span><h2>Explore Religions</h2></span>
+
+  <div class="wrap">
+     <div class="search">
+        <input type="text" class="searchTerm" placeholder="What are you looking for?">
+        <button type="submit" class="searchButton">
+          <i class="fa fa-search"></i>
+       </button>
+     </div>
+  </div>
+
+  <div class="elements">
+
+    <div class="explore">
+      <span>Show character affiliations for:
+      <select name="showReligion" form="showReligion" class="skillsMenu">
+        <option value="Religion1">Religion1</option>
+        <option value="Religion2">Religion2</option>
+        <option value="Religion3">Religion3</option>
+        <option value="Religion4">Religion4</option>
+      </select>
+      </span>
+
+
+        <input type="submit" value="Show me!">
+    </div>
+
+
+    <div class="explore">
+    <span>
+      Did we miss something? Assign a religion to a character!
+    </span>
+    <span>
+    Character:
+    <select name="skillChar" form="skillChar" class="addSkillsMenu">
+      <option value="Char1">Eddard Stark</option>
+      <option value="Char2">Theon Greyjoy</option>
+      <option value="Char3">John Snow</option>
+      <option value="Char4">The Hound</option>
+    </select>
+
+    Religion:
+    <select name="addReligion" form="addReligion" class="skillsMenu">
+      <option value="Religion1">Religion1</option>
+      <option value="Religion2">Religion2</option>
+      <option value="Religion3">Religion3</option>
+      <option value="Religion4">Religion4</option>
+    </select>
+
+      <input type="submit" value="Submit">
+    </span>
+  </div>
+  </div>
+  </div>
+
+
+<hr>
   <div class="leftMargin CRUD">
 
     <div>
       <h2>Add Religion</h2>
       <br>
         <form>
-          Name: <br> <input type="text" name="addReligion" value="Religion Name"><br>
+          Name*: <br> <input type="text" name="addReligion" value="Religion Name"><br>
           <br>
           Number of Worshippers: <br>  <input type="text" name="addReligion" value="Worshippers"><br>
           <br>
@@ -96,6 +194,11 @@
         ...to <br>
         <input type="text" name="newValue" value="New Value">
         <br>
+        or
+        <br>
+
+        <input type="radio" name="nullReligion" value="NULL">Delete Existing Data<br>
+
         <br>
         <input type="submit" value="Submit">
           </form>

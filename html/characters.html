@@ -43,13 +43,120 @@
       </a>
 
     </div>
-  <br>
 
-    <h1> [view characters table] </h1>
+  <div class="TABLE">
+    <h1>CHARACTERS TABLE</h2>
+    <table>
+      <tr>
+        <th>Column One</th>
+        <th>Column Two</th>
+        <th>Column Three</th>
+      </tr>
+      <tr>
+        <td>Sample Data</td>
+        <td>Sample Data</td>
+        <td>Sample Data</td>
+      </tr>
+      <tr>
+        <td>Sample Data2</td>
+        <td>Sample Data2</td>
+        <td>Sample Data2</td>
+      </tr>
+      <tr>
+        <td>Sample Data3</td>
+        <td>Sample Data3</td>
+        <td>Sample Data3</td>
+      </tr>
+      <tr>
+        <td>Sample Data4</td>
+        <td>Sample Data4</td>
+        <td>Sample Data4</td>
+      </tr>
+      <tr>
+        <td>Sample Data5</td>
+        <td>Sample Data5</td>
+        <td>Sample Data5</td>
+      </tr>
+      <tr>
+        <td>Sample Data6</td>
+        <td>Sample Data6</td>
+        <td>Sample Data6</td>
+      </tr>
+    </table>
+  </div>
     <br>
   </div>
 
   <br>
+
+
+  <div class="explore">
+    <span><h2>Explore Characters</h2></span>
+
+    <div class="wrap">
+       <div class="search">
+          <input type="text" class="searchTerm" placeholder="Who are you looking for?">
+          <button type="submit" class="searchButton">
+            <i class="fa fa-search"></i>
+         </button>
+       </div>
+    </div>
+
+
+
+    <div class="elements">
+
+      <div class="explore">
+        <span>Show all:
+          <select name="exploreChar" form="exploreChar" class="addSkillsMenu">
+            <option value="Highborn">Highborns</option>
+            <option value="Lowborn">Lowborns</option>
+            <option value="Other">Other</option>
+          </select>
+
+        </span>
+        <span>
+          <input type="submit" value="Show me!">
+        </span>
+      </div>
+
+      <div class="explore">
+        <span>Who is the leader of house
+        <select name="houses" form="houseMod">
+          <option value="Tyrell">Tyrell</option>
+          <option value="Stark">Stark</option>
+          <option value="Lannister">Lannister</option>
+          <option value="Greyjoy">Greyjoy</option>
+        </select>
+        ? </span>
+
+        <span>
+          <input type="submit" value="Show me!">
+        </span>
+      </div>
+
+
+
+      <div class="explore">
+        <span>Show all:
+          <select name="exploreChar" form="exploreChar" class="addSkillsMenu">
+            <option value="Male">Males</option>
+            <option value="Female">Females</option>
+            <option value="Other">Other</option>
+          </select>
+
+        </span>
+        <span>
+          <input type="submit" value="Show me!">
+        </span>
+      </div>
+    </div>
+    </div>
+
+
+<hr>
+
+
 
   <div class="leftMargin CRUD">
 
@@ -60,7 +167,8 @@
           First Name:  <br>
           <input type="text" name="fname" value="First Name">
           <br>
-          Last Name:  <br>
+          <br>
+          Last Name*:  <br>
           <input type="text" name="lname" value="Last Name">
           <br>
           <br>
@@ -78,8 +186,10 @@
           Age:  <br>
           <input type="text" name="age" value="Age">
           <br>
+          <br>
           House:  <br>
           <input type="text" name="house" value="House">
+          <br>
           <br>
           Religion:  <br>
           <input type="text" name="religion" value="Religion">
@@ -113,9 +223,14 @@
             ...to <br>
             <input type="text" name="newValue" value="New Value">
             <br>
+            or
+            <br>
+
+            <input type="radio" name="nullChar" value="NULL">Delete Existing Data<br>
+
             <br>
             <input type="submit" value="Submit">
-          </form>
+              </form>
         </div>
       <br>
       <br>
