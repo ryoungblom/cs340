@@ -31,15 +31,6 @@ CREATE TABLE `got_houses` (
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Add foreign keys to Characters table
-ALTER TABLE `got_characters`
- ADD CONSTRAINT `got_characters_ibfk_1` FOREIGN KEY (`house`) REFERENCES `got_houses`(`id`) ON DELETE SET NULL,
- ADD CONSTRAINT `got_characters_ibfk_2` FOREIGN KEY (`religion`) REFERENCES `got_religions`(`id`) ON DELETE SET NULL;
-
--- Add foreign key to Houses table
-ALTER TABLE `got_houses` 
- ADD CONSTRAINT `got_houses_ibfk_1` FOREIGN KEY (`leader`) REFERENCES `got_characters`(`id`) ON DELETE SET NULL;
-
 -- Create Religions table
 CREATE TABLE `got_religions` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -48,7 +39,8 @@ CREATE TABLE `got_religions` (
  `theism` varchar(255) DEFAULT NULL,
  `age` bigint(20) DEFAULT NULL,
  `symbol` varchar(255) DEFAULT NULL,
- PRIMARY KEY (`id`)
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Create Skills table
@@ -59,7 +51,8 @@ CREATE TABLE `got_skills` (
  `acquisition_cost` varchar(255) DEFAULT NULL,
  `rarity` varchar(255) DEFAULT NULL,
  `value` varchar(255) DEFAULT NULL,
- PRIMARY KEY (`id`)
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Create Many-to-Many relationship table between Characters and Skills
@@ -67,9 +60,7 @@ CREATE TABLE `got_character_skills` (
  `skill_id` int(11) NOT NULL DEFAULT '0',
  `character_id` int(11) NOT NULL DEFAULT '0',
  PRIMARY KEY (`skill_id`, `character_id`),
- KEY `character_id`(`character_id`),
- CONSTRAINT `got_character_skills_ibfk_1` FOREIGN KEY (`skill_id`) REFERENCES `got_skills`(`id`),
- CONSTRAINT `got_character_skills_ibfk_2` FOREIGN KEY (`character_id`) REFERENCES `got_characters`(`id`)
+ KEY `character_id`(`character_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Create Many-to-Many relationship table for House loyalties to other Houses
@@ -77,9 +68,7 @@ CREATE TABLE `got_house_loyalties` (
  `house_receiving` int(11) NOT NULL,
  `house_offering` int(11) NOT NULL,
  PRIMARY KEY (`house_receiving`, `house_offering`),
- KEY `house_offering`(`house_offering`),
- CONSTRAINT `got_house_loyalties_ibfk_1` FOREIGN KEY (`house_receiving`) REFERENCES `got_houses`(`id`),
- CONSTRAINT `got_house_loyalties_ibfk_2` FOREIGN KEY (`house_offering`) REFERENCES `got_houses`(`id`)
+ KEY `house_offering`(`house_offering`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Populate Characters table with sample data
@@ -143,4 +132,23 @@ INSERT INTO `got_house_loyalties` (`house_receiving`, `house_offering`) VALUES
 (2, 4),
 (5, 4),
 (5, 2);
+
+-- Add foreign keys to Characters table
+ALTER TABLE `got_characters`
+ ADD CONSTRAINT `got_characters_ibfk_1` FOREIGN KEY (`house`) REFERENCES `got_houses`(`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+ ADD CONSTRAINT `got_characters_ibfk_2` FOREIGN KEY (`religion`) REFERENCES `got_religions`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- Add foreign key to Houses table
+ALTER TABLE `got_houses` 
+ ADD CONSTRAINT `got_houses_ibfk_1` FOREIGN KEY (`leader`) REFERENCES `got_characters`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- Add foreign keys to Character Skills table
+ALTER TABLE `got_character_skills`
+ ADD CONSTRAINT `got_character_skills_ibfk_1` FOREIGN KEY (`skill_id`) REFERENCES `got_skills`(`id`),
+ ADD CONSTRAINT `got_character_skills_ibfk_2` FOREIGN KEY (`character_id`) REFERENCES `got_characters`(`id`);
+
+-- Add foreign keys to House Loyalties table
+ALTER TABLE `got_house_loyalties`
+ ADD CONSTRAINT `got_house_loyalties_ibfk_1` FOREIGN KEY (`house_receiving`) REFERENCES `got_houses`(`id`),
+ ADD CONSTRAINT `got_house_loyalties_ibfk_2` FOREIGN KEY (`house_offering`) REFERENCES `got_houses`(`id`);
 

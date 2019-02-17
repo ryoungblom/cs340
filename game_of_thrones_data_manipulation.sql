@@ -71,9 +71,9 @@
   WHERE H.id = :houseInput;
 
 --Show a list of Skills possessed by a given Character
-  SELECT  S.name FROM 'got_characters' C
-  INNER JOIN 'got_character_skills' CS ON CS.character_id = C.id
-  INNER JOIN 'got_skills' S ON S.id = CS.skill_id
+  SELECT  S.name FROM 'got_skills' S
+  INNER JOIN 'got_character_skills' CS ON CS.skill_id = S.id
+  INNER JOIN 'got_characters' C ON C.id = CS.character_id
   WHERE C.id = :characterInput;
 
 --Show all Characters belonging to a given Religion
@@ -88,7 +88,7 @@
   UPDATE 'got_characters'
   SET 'religion' = NULL
   WHERE 'religion' = :religionIn;
-  DELETE FROM 'got_religions' WHERE 'name' = :religionIn;
+  DELETE FROM 'got_religions' WHERE 'name' = :nameIn;
 
 --Delete a House & cascade to allied Characters and other loyal Houses
   UPDATE 'got_characters'
@@ -96,7 +96,7 @@
   WHERE 'house' = :houseIn;
   DELETE 'house_offering' AND 'house_receiving' FROM 'got_house_loyalties'
   WHERE 'house_receiving' OR 'house_offering' = :houseIn;
-  DELETE FROM 'got_houses' WHERE 'name' = :houseIn;
+  DELETE FROM 'got_houses' WHERE 'name' = :nameIn;
 
 --Delete a Skill & cascade to Characters possessing that Skill
   DELETE 'skill_id' AND 'character_id' FROM 'got_character_skills'
@@ -107,3 +107,40 @@
   SELECT  C.fname, C.lname FROM 'got_skills' S
   INNER JOIN 'got_character_skills' CS ON CS.skill_id = S.id
   INNER JOIN 'got_characters' C ON C.id = CS.character_id;
+
+--Add new loyalty relationship
+  INSERT INTO `got_house_loyalties` (`house_offering`, `house_receiving`)
+  VALUES (:houseIn1, :houseIn2);
+
+--Add new skill relationship
+  INSERT INTO `got_character_skills` (`skill_id`, `character_id`)
+  VALUES ((SELECT `id` FROM `got_skills` WHERE `name` = :skillIn),
+  (SELECT `id` FROM `got_characters` WHERE `fname` = :characterFnameIn AND `lname` = :characterLnameIn));
+
+--Remove loyalty relationship
+  DELETE FROM `got_house_loyalties` WHERE (`house_offering` = :houseIn1 AND `house_receiving` = :houseIn2)
+  OR (`house_offering` = :houseIn2 AND `house_receiving` = :houseIn1);
+
+--Remove skill relationship
+  DELETE FROM `got_character_skills` WHERE (`skill_id` = (SELECT `id` FROM `got_skills` WHERE `name` = :skillIn) AND
+  `character_id` = (SELECT `id` FROM `got_characters` WHERE `fname` = :characterFnameIn AND `lname` = :characterLnameIn));
+
+--Update or create allegiance relationship
+  UPDATE `got_characters`
+  SET `house` = (SELECT `id` FROM `got_houses` WHERE `name` = :houseIn)
+  WHERE `fname` = :characterFnameIn AND `lname` = :characterLnameIn;
+
+--Update or create religion relationship
+  UPDATE `got_characters`
+  SET `religion` = (SELECT `id` FROM `got_religions` WHERE `name` = :religionIn)
+  WHERE `fname` = :characterFnameIn AND `lname` = :characterLnameIn;
+
+--Remove allegiance relationship by nullifying
+  UPDATE `got_characters`
+  SET `house` = NULL
+  WHERE `fname` = :characterFnameIn AND `lname` = :characterLnameIn;
+
+--Remove religion relationship by nullifying
+  UPDATE `got_characters`
+  SET `religion` = NULL
+  WHERE `fname` = :characterFnameIn AND `lname` = :characterLnameIn;
