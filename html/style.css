@@ -110,6 +110,14 @@ hr {
   flex-direction: column;
 }
 
+.verticalAlignFlex {
+
+  display: flex;
+  align-items: left;
+  justify-content:space-between;
+  flex-direction: column;
+}
+
 .elements {
 
   width: 100%;
