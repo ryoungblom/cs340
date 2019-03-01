@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CS 340 Project</title>
+    <link href="./style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+
+
+    <div class="primary">
+
+      <h2>Game of Thrones Database</h2>
+      <p>Houses Database</p>
+
+      <br>
+      <div class="buttons">
+
+        <a href="./characters.html">
+          <i class="fas fa-users fa-icons"></i>
+          <br>
+          Characters
+        </a>
+
+        <br>
+        <a href="./houses.html">
+          <i class="fab fa-fort-awesome fa-icons"></i>
+          <br>
+          Houses
+        </a>
+
+        <br>
+        <a href="./skills.html">
+          <i class="fas fa-hat-wizard fa-icons"></i>
+          <br>
+          Skills
+        </a>
+
+        <br>
+        <a href="./religions.html">
+          <i class="fas fa-church fa-icons"></i>
+          <br>
+          Religions
+        </a>
+
+      </div>
+
+      <div class="tableCenter">
+        <h1>HOUSES TABLE</h1>
+        <table border='1'>
+          <thead>
+            <th>Name</th>
+            <th>Members</th>
+            <th>Motto</th>
+            <th>Sigil</th>
+          </thead>
+          <tbody>
+            {% for r in rows %}
+            <tr>
+              <td> {{ r.0 }}</td>
+              <td> {{ r[1] }}</td>
+              <td> {{ r[2] }}</td>
+              <td> {{ r[3] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <br>
+
+      <br>
+    </div>
+
+
+    <div class="explore">
+      <span><h2>Explore Houses</h2></span>
+
+      <div class="wrap">
+         <div class="search">
+            <input type="text" class="searchTerm" placeholder="What are you looking for?">
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+           </button>
+         </div>
+      </div>
+
+      <div class="elements">
+
+        <div class="explore">
+          <span>Show members from house
+          <select name="houses" form="houseMod">
+            <option value="Tyrell">Tyrell</option>
+            <option value="Stark">Stark</option>
+            <option value="Lannister">Lannister</option>
+            <option value="Greyjoy">Greyjoy</option>
+          </select>
+          ! </span>
+
+          <span>
+            <input type="submit" value="Show me!">
+          </span>
+        </div>
+
+        <div class="explore">
+          <span>What houses are loyal to house
+          <select name="houses" form="houseMod">
+            <option value="Tyrell">Tyrell</option>
+            <option value="Stark">Stark</option>
+            <option value="Lannister">Lannister</option>
+            <option value="Greyjoy">Greyjoy</option>
+          </select>
+          ? </span>
+
+          <span>
+            <input type="submit" value="Show me!">
+          </span>
+        </div>
+
+        <div class="explore">
+        <span>
+          Did we miss something? Update house loyalties!
+        </span>
+        <span>
+        House:
+        <select name="houses" form="houseMod">
+          <option value="Tyrell">Tyrell</option>
+          <option value="Stark">Stark</option>
+          <option value="Lannister">Lannister</option>
+          <option value="Greyjoy">Greyjoy</option>
+        </select>
+
+        Is loyal to house:
+        <select name="houses" form="houseMod">
+          <option value="Tyrell">Tyrell</option>
+          <option value="Stark">Stark</option>
+          <option value="Lannister">Lannister</option>
+          <option value="Greyjoy">Greyjoy</option>
+        </select>
+
+          <input type="submit" value="Submit">
+        </span>
+      </div>
+
+
+      </div>
+
+    </div>
+
+<hr>
+
+
+    <div class="leftMargin CRUD">
+
+
+      <div>
+        <h2>Add House</h2>
+        <br>
+          <form>
+            Name*: <br> <input type="text" name="house" value="House Name"><br>
+            <br>
+            Number of Members: <br>  <input type="text" name="members" value="Members"><br>
+            <br>
+            House Motto: <br> <input type="text" name="motto" value="Motto"><br>
+            <br>
+            House Sigel: <br> <input type="text" name="sigel" value="Sigel"><br>
+            <br>
+            House Leader: <br> <input type="text" name="leader" value="Leader"><br>
+            <br>
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+        <br>
+        <br>
+      <div>
+        <h2>Edit Houses</h2>
+        <br>
+          <form>
+            House:<br>
+            <select name="houses" form="houseMod">
+              <option value="Tyrell">Tyrell</option>
+              <option value="Stark">Stark</option>
+              <option value="Lannister">Lannister</option>
+              <option value="Greyjoy">Greyjoy</option>
+            </select>
+            <br>
+            <br>
+            I'd like to change...<br>
+            <input type="radio" name="modHouse" value="name"> Name<br>
+            <input type="radio" name="modHouse" value="members"> Members<br>
+            <input type="radio" name="modHouse" value="motto"> Motto<br>
+            <input type="radio" name="modHouse" value="sigel"> Sigel<br>
+            <input type="radio" name="modHouse" value="leader"> Leader<br>
+            <input type="radio" name="modHouse" value="loyalty"> Loyalty<br>
+            <br>
+            ...to <br>
+            <input type="text" name="newValue" value="New Value">
+            <br>
+            or
+            <br>
+
+            <input type="radio" name="nullHouse" value="NULL">Delete Existing Data<br>
+
+            <br>
+            <input type="submit" value="Submit">
+              </form>
+        </div>
+        <br>
+        <br>
+
+        <div class="verticalAlignFlex">
+          <div>
+            <h2> Remove Loyalty Between: </h2>
+            <br>
+            House: <br>
+            <select name="deleteLoyalty" form="houseDelete">
+              <option value="Tyrell">Tyrell</option>
+              <option value="Stark">Stark</option>
+              <option value="Lannister">Lannister</option>
+              <option value="Greyjoy">Greyjoy</option>
+            </select>
+            <br>
+            <br>
+            ...And House: <br>
+            <select name="deleteLoyalty" form="houseDelete">
+              <option value="Tyrell">Tyrell</option>
+              <option value="Stark">Stark</option>
+              <option value="Lannister">Lannister</option>
+              <option value="Greyjoy">Greyjoy</option>
+            </select>
+            <br>
+            <br>
+            <input type="submit" value="Submit">
+          </div>
+
+          <br>
+          <br>
+
+          <div>
+            <h2> Delete House </h2>
+            <br>
+            House: <br>
+            <select name="houses" form="houseDelete">
+              <option value="Tyrell">Tyrell</option>
+              <option value="Stark">Stark</option>
+              <option value="Lannister">Lannister</option>
+              <option value="Greyjoy">Greyjoy</option>
+            </select>
+            <br>
+            <br>
+            <input type="submit" value="Submit">
+          </div>
+
+          <div>
+          </div>
+
+        </div>
+        <br>
+        <br>
+    </div>
+
+
+
+    <div class="primary">
+      <a href="./index.html">
+        <h3> Home </h3>
+      </a>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="footer primary">
+
+      <h2>Game of Thrones Database</h2>
+      <p>CS340 at Oregon State University</p>
+
+    </div>
+
+
+
+  </body>
+</html>
