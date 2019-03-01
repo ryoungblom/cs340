@@ -20,6 +20,26 @@ def browse_people():
     print(result)
     return render_template('characters.html', rows=result)
 
+@webapp.route('/skills')
+#the name of this function is just a cosmetic thing
+def browse_people():
+    print("Fetching and rendering skills web page")
+    db_connection = connect_to_database()
+    query = "SELECT name, battle_utility, acquisition_cost, rarity, value from got_skills;"
+    result = execute_query(db_connection, query).fetchall();
+    print(result)
+    return render_template('skills.html', rows=result)
+
+@webapp.route('/religions')
+#the name of this function is just a cosmetic thing
+def browse_people():
+    print("Fetching and rendering religions web page")
+    db_connection = connect_to_database()
+    query = "SELECT name, worshippers, theism, age, symbol from got_religions;"
+    result = execute_query(db_connection, query).fetchall();
+    print(result)
+    return render_template('religions.html', rows=result)
+
 @webapp.route('/')
 def home():
     return render_template('index.html')

@@ -1,13 +1,13 @@
-
+<!DOCTYPE html>
 <html>
   <head>
-
-    <title>Skills</title>
-    <link rel="stylesheet" href="../static/styles/style.css">
+    <meta charset="UTF-8">
+    <title>CS 340 Project</title>
+    <link href="./style.css" rel="stylesheet" type="text/css">
   </head>
 
 
-
+  <body>
 
     <div class="primary">
 
@@ -47,28 +47,45 @@
       </div>
 
 
-      <div class="tableCenter">
-        <h1>Skills TABLE</h2>
-          <table border='1'>
-          <thead>
-              <th>Name</th>
-              <th>Battle Utility</th>
-              <th>Acquisition Cost</th>
-              <th>Rarity</th>
-              <th>Value</th>
-          </thead>
-          <tbody>
-            {% for r in rows %}
-            <tr>
-              <td> {{ r.0 }}</td>
-              <td> {{ r[1] }}</td>
-              <td> {{ r[2] }}</td>
-              <td> {{ r[3] }}</td>
-              <td> {{ r[4] }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-      </table>
+      <div class="TABLE">
+        <h1>SKILLS TABLE</h2>
+        <table>
+          <tr>
+            <th>Column One</th>
+            <th>Column Two</th>
+            <th>Column Three</th>
+          </tr>
+          <tr>
+            <td>Sample Data</td>
+            <td>Sample Data</td>
+            <td>Sample Data</td>
+          </tr>
+          <tr>
+            <td>Sample Data2</td>
+            <td>Sample Data2</td>
+            <td>Sample Data2</td>
+          </tr>
+          <tr>
+            <td>Sample Data3</td>
+            <td>Sample Data3</td>
+            <td>Sample Data3</td>
+          </tr>
+          <tr>
+            <td>Sample Data4</td>
+            <td>Sample Data4</td>
+            <td>Sample Data4</td>
+          </tr>
+          <tr>
+            <td>Sample Data5</td>
+            <td>Sample Data5</td>
+            <td>Sample Data5</td>
+          </tr>
+          <tr>
+            <td>Sample Data6</td>
+            <td>Sample Data6</td>
+            <td>Sample Data6</td>
+          </tr>
+        </table>
       </div>
       <br>
 
@@ -274,5 +291,5 @@
   </div>
 
 
-
+</body>
 </html>
