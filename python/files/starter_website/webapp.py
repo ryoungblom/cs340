@@ -12,7 +12,7 @@ def hello():
 
 @webapp.route('/characters')
 #the name of this function is just a cosmetic thing
-def browse_people():
+def browse_char():
     print("Fetching and rendering people web page")
     db_connection = connect_to_database()
     query = "SELECT fname, lname, nobility, gender, age, house, religion from got_characters;"
@@ -22,7 +22,7 @@ def browse_people():
 
 @webapp.route('/skills')
 #the name of this function is just a cosmetic thing
-def browse_people():
+def browse_skills():
     print("Fetching and rendering skills web page")
     db_connection = connect_to_database()
     query = "SELECT name, battle_utility, acquisition_cost, rarity, value from got_skills;"
@@ -30,12 +30,22 @@ def browse_people():
     print(result)
     return render_template('skills.html', rows=result)
 
+@webapp.route('/houses')
+#the name of this function is just a cosmetic thing
+def browse_houses():
+    print("Fetching and rendering houses web page")
+    db_connection = connect_to_database()
+    query = "SELECT name, members, motto, sigil, leader from got_houses;"
+    result = execute_query(db_connection, query).fetchall();
+    print(result)
+    return render_template('houses.html', rows=result)
+
 @webapp.route('/religions')
 #the name of this function is just a cosmetic thing
-def browse_people():
+def browse_religions():
     print("Fetching and rendering religions web page")
     db_connection = connect_to_database()
-    query = "SELECT name, worshippers, theism, age, symbol from got_religions;"
+    query = "SELECT name, worshipers, theism, age, symbol from got_religions;"
     result = execute_query(db_connection, query).fetchall();
     print(result)
     return render_template('religions.html', rows=result)
