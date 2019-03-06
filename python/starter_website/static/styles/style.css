@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:200');
+@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
+
+:root {
+  --background-color: black;
+  --font-color: white;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Raleway', sans-serif !important;
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--font-color);
+}
+
+p {
+    font-size: 15px;
+    line-height: 26px;
+    margin-bottom: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+a {
+    text-decoration: none !important;
+    color:inherit;
+}
+
+table {
+  font-family: inherit;
+  border-collapse: collapse;
+  width: 90%;
+}
+
+td, th {
+  border: 1px solid var(--font-color);
+  text-align: center;
+  padding: 10px;
+}
+
+hr {
+  margin: 40px
+}
+
+
+.fa-icons {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.bg-img {
+  width: 100%;
+  height: 100%;
+
+  background: url('../assets/game.jpg')  center center no-repeat, linear-gradient(to bottom, rgba(0,0,0,0) 10%,rgba(0,0,0,1) 90%);
+  background-size: cover;
+  background-blend-mode: multiply;
+  margin-bottom: 50px;
+}
+
+
+.primary {
+  text-align: center;
+  background: var(--background-color);
+  color: white;
+}
+
+
+.buttons {
+
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+
+}
+
+
+.CRUD {
+
+  margin-top: 60px;
+  margin-bottom: 100px;
+
+  display: flex;
+  align-items: top;
+  justify-content:space-around;
+
+}
+
+.tableCenter {
+
+  margin-top: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  flex-direction: row;
+}
+
+.explore {
+
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  flex-direction: column;
+}
+
+.verticalAlignFlex {
+
+  display: flex;
+  align-items: left;
+  justify-content:space-between;
+  flex-direction: column;
+}
+
+.elements {
+
+  width: 100%;
+
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+}
+
+.skillsMenu {
+  margin-left: 10px;
+}
+
+.addSkillsMenu {
+  margin-left: 5px;
+  margin-right: 15px
+}
+
+/******Pages******/
+
+.leftMargin {
+  margin-left: 30px;
+}
+
+.buffer {
+  margin-left:10px;
+}
+
+/*********footer********/
+
+.footer {
+  background-color: var(--background-color);
+  height:100px;
+}
+
+
+
+/*********search bar********/
+
+.search {
+  width: 100%;
+  position: relative;
+}
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid var(--font-color);
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: var(--background-color);
+}
+
+.searchTerm:focus{
+  color: var(--background-color);
+}
+
+.searchButton {
+  position: absolute;
+  right: -50px;
+  width: 40px;
+  height: 36px;
+  border: 1px solid var(--font-color);
+  background: var(--background-color);
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  margin: 20px;
+}
