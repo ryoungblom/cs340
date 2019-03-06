@@ -1,0 +1,280 @@
+
+<html>
+  <head>
+
+    <title>Skills</title>
+    <link rel="stylesheet" href="../static/styles/style.css">
+  </head>
+
+
+
+
+    <div class="primary">
+
+      <h2>Game of Thrones Database</h2>
+      <p>Skills Database</p>
+      <br>
+
+      <div class="buttons">
+
+        <a href="./characters">
+          <i class="fas fa-users fa-icons"></i>
+          <br>
+          Characters
+        </a>
+
+        <br>
+        <a href="./houses">
+          <i class="fab fa-fort-awesome fa-icons"></i>
+          <br>
+          Houses
+        </a>
+
+        <br>
+        <a href="./skills">
+          <i class="fas fa-hat-wizard fa-icons"></i>
+          <br>
+          Skills
+        </a>
+
+        <br>
+        <a href="./religions">
+          <i class="fas fa-church fa-icons"></i>
+          <br>
+          Religions
+        </a>
+
+      </div>
+
+	
+	<h1 class="tableCenter"> Skills Table </h1>
+
+      <div class="tableCenter">
+       
+          <table border='1'>
+          <thead>
+              <th>Name</th>
+              <th>Battle Utility</th>
+              <th>Acquisition Cost</th>
+              <th>Rarity</th>
+              <th>Value</th>
+          </thead>
+          <tbody>
+            {% for r in rows %}
+            <tr>
+              <td> {{ r.0 }}</td>
+              <td> {{ r[1] }}</td>
+              <td> {{ r[2] }}</td>
+              <td> {{ r[3] }}</td>
+              <td> {{ r[4] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+      </div>
+      <br>
+
+
+    <br>
+    </div>
+
+
+    <div class="explore">
+      <span><h2>Explore Skills</h2></span>
+
+      <div class="wrap">
+         <div class="search">
+            <input type="text" class="searchTerm" placeholder="What are you looking for?">
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+           </button>
+         </div>
+      </div>
+
+      <div class="elements">
+
+        <div class="explore">
+          <span>Who's got skills? Select up to 3: </span>
+          <span>
+          <select name="showSkillsOne" form="showSkills" class="skillsMenu">
+            <option value="skill1">Skill1</option>
+            <option value="skill2">Skill2</option>
+            <option value="skill3">Skill3</option>
+            <option value="skill4">Skill4</option>
+          </select>
+
+          <select name="showSkillsTwo" form="showSkills" class="skillsMenu">
+            <option value="skill1">Skill1</option>
+            <option value="skill2">Skill2</option>
+            <option value="skill3">Skill3</option>
+            <option value="skill4">Skill4</option>
+          </select>
+
+          <select name="showSkillsThree" form="showSkills" class="skillsMenu">
+            <option value="skill1">Skill1</option>
+            <option value="skill2">Skill2</option>
+            <option value="skill3">Skill3</option>
+            <option value="skill4">Skill4</option>
+          </select>
+
+            <input type="submit" value="Show me!">
+          </span>
+        </div>
+
+        <div class="explore">
+        <span>
+          Which skills does
+
+        <select name="skillChar" form="skillChar" class="addSkillsMenu">
+          <option value="Char1">Eddard Stark</option>
+          <option value="Char2">Theon Greyjoy</option>
+          <option value="Char3">John Snow</option>
+          <option value="Char4">The Hound</option>
+        </select>
+
+        possess?
+      </span>
+
+
+          <input type="submit" value="Show me!">
+      </div>
+
+
+
+        <div class="explore">
+        <span>
+          Did we miss something? Assign a skill to a character!
+        </span>
+        <span>
+        Character:
+        <select name="skillChar" form="skillChar" class="addSkillsMenu">
+          <option value="Char1">Eddard Stark</option>
+          <option value="Char2">Theon Greyjoy</option>
+          <option value="Char3">John Snow</option>
+          <option value="Char4">The Hound</option>
+        </select>
+
+        Skill:
+        <select name="showSkillsThree" form="showSkills" class="addSkillsMenu">
+          <option value="skill1">Skill1</option>
+          <option value="skill2">Skill2</option>
+          <option value="skill3">Skill3</option>
+          <option value="skill4">Skill4</option>
+        </select>
+
+          <input type="submit" value="Submit">
+        </span>
+      </div>
+      </div>
+      </div>
+
+
+      </div>
+
+    </div>
+
+<hr>
+
+      <div class="leftMargin CRUD">
+
+        <div>
+          <h2>Add Skill</h2>
+          <br>
+            <form>
+              Name*:  <br>
+              <input type="text" name="skill" value="Skill Name">
+              <br>
+              <br>
+              Utility in Battle:  <br>
+              <input type="radio" name="addUtility" value="high"> High<br>
+              <input type="radio" name="addUtility" value="medium"> Medium<br>
+              <input type="radio" name="addUtility" value="low"> Low<br>
+              <input type="radio" name="addUtility" value="na"> N/A<br>
+              <br>
+              Acquisition Cost:  <br>
+              <input type="radio" name="addCost" value="high"> High<br>
+              <input type="radio" name="addCost" value="medium"> Medium<br>
+              <input type="radio" name="addCost" value="low"> Low<br>
+              <input type="radio" name="addCost" value="na"> N/A<br>
+              <br>
+              Rarity:  <br>
+              <input type="radio" name="addRarity" value="high"> High<br>
+              <input type="radio" name="addRarity" value="medium"> Medium<br>
+              <input type="radio" name="addRarity" value="low"> Low<br>
+              <input type="radio" name="addRarity" value="na"> N/A<br>
+              <br>
+              Value:  <br>
+              <input type="radio" name="addValue" value="high"> High<br>
+              <input type="radio" name="addValue" value="medium"> Medium<br>
+              <input type="radio" name="addValue" value="low"> Low<br>
+              <input type="radio" name="addValue" value="na"> N/A<br>
+              <br>
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+          <br>
+          <br>
+          <div>
+            <h2>Edit Skills</h2>
+            <br>
+              <form>
+                Skill:<br>
+                <input type="text" name="skill" value="Skill Name">
+                <br>
+                <br>
+                I'd like to change...<br>
+                <input type="radio" name="change" value="name">Name<br>
+                <input type="radio" name="change" value="utility">Battle Utility<br>
+                <input type="radio" name="change" value="cost">Acquisition Cost<br>
+                <input type="radio" name="change" value="rarity">Rarity<br>
+                <input type="radio" name="change" value="value">Value<br>
+                <br>
+                ...to <br>
+                <input type="text" name="newValue" value="New Value">
+                <br>
+                or
+                <br>
+
+                <input type="radio" name="nullSkills" value="NULL">Delete Existing Data<br>
+
+                <br>
+                <input type="submit" value="Submit">
+                  </form>
+            </div>
+          <br>
+          <br>
+
+          <div>
+            <h2> Delete Skill </h2>
+            <br>
+            <br>
+            Skill: <br>
+            <input type="text" name="skill" value="Skill Name">
+            <br>
+            <br>
+            <input type="submit" value="Submit">
+          </div>
+          <br>
+          <br>
+      </div>
+
+
+  <div class="primary">
+    <a href="./">
+      <h3> Home </h3>
+    </a>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="footer primary">
+
+    <h2>Game of Thrones Database</h2>
+    <p>CS340 at Oregon State University</p>
+
+  </div>
+
+
+
+</html>
