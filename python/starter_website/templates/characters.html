@@ -153,7 +153,7 @@
     <div>
       <h2>Add Character</h2>
       <br>
-        <form>
+        <form  id="addChar" action="/add_character" method = "POST">
           First Name:  <br>
           <input type="text" name="fname" value="First Name">
           <br>
@@ -163,14 +163,14 @@
           <br>
           <br>
           Nobility: <br>
-          <input type="radio" name="addNobility" value="highborn"> Highborn <br>
-          <input type="radio" name="addNobility" value="lowborn"> Lowborn <br>
-          <input type="radio" name="addNobility" value="other"> Other <br>
+          <input type="radio" name="nobility" value="highborn"> Highborn <br>
+          <input type="radio" name="nobility" value="lowborn"> Lowborn <br>
+          <input type="radio" name="nobility" value="other"> Other <br>
           <br>
           Gender:  <br>
-          <input type="radio" name="addGender" value="fname"> Male <br>
-          <input type="radio" name="addGender" value="lname"> Female <br>
-          <input type="radio" name="addGender" value="lname"> Other <br>
+          <input type="radio" name="gender" value="fname"> Male <br>
+          <input type="radio" name="gender" value="lname"> Female <br>
+          <input type="radio" name="gender" value="lname"> Other <br>
           <br>
           <br>
           Age:  <br>

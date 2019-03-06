@@ -59,8 +59,31 @@ def homIndexe():
     return render_template('index.html')
 
 
-@webapp.route('/add_new_people', methods=['POST','GET'])
-def add_new_people():
+@webapp.route('/add_character', methods=['POST','GET'])
+def add_character():
+    db_connection = connect_to_database()
+
+        request.method == 'POST':
+        print("Adding Character!");
+        fname = request.form['fname']
+        lname = request.form['lname']
+        nobility = request.form['nobility']
+        gender = request.form['gender']
+        age = request.form['age']
+        house = request.form['house']
+        religion = request.form['religion']
+
+
+        query = 'INSERT INTO got_characters (fname, lname, nobility, gender, age, house, religion) VALUES (%s,%s,%s,%s,%s,%s,%s)'
+        data = (fname, lname, nobility, gender, age, house, religion)
+        execute_query(db_connection, query, data)
+        return ('Character added!');
+
+
+
+
+@webapp.route('/add_character_backup', methods=['POST','GET'])
+def add_character_backup():
     db_connection = connect_to_database()
     if request.method == 'GET':
         query = 'SELECT planet_id, name from bsg_planets'
@@ -68,6 +91,8 @@ def add_new_people():
         print(result)
 
         return render_template('people_add_new.html', planets = result)
+
+
     elif request.method == 'POST':
         print("Add new people!");
         fname = request.form['fname']
