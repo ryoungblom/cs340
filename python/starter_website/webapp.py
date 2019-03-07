@@ -15,7 +15,7 @@ def hello():
 def browse_char():
     print("Fetching and rendering people web page")
     db_connection = connect_to_database()
-    query = "SELECT fname, lname, nobility, gender, age, house, religion from got_characters;"
+    query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion' FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id;"
     result = execute_query(db_connection, query).fetchall();
     print(result)
 
@@ -35,7 +35,7 @@ def browse_char():
 def browse_skills():
     print("Fetching and rendering skills web page")
     db_connection = connect_to_database()
-    query = "SELECT name, battle_utility, acquisition_cost, rarity, value from got_skills;"
+    query = "SELECT name, battle_utility, acquisition_cost, rarity, value FROM got_skills;"
     result = execute_query(db_connection, query).fetchall();
     print(result)
     return render_template('skills.html', rows=result)
@@ -45,7 +45,7 @@ def browse_skills():
 def browse_houses():
     print("Fetching and rendering houses web page")
     db_connection = connect_to_database()
-    query = "SELECT name, members, motto, sigil, leader from got_houses;"
+    query = "SELECT H.name, H.members, H.motto, H.sigil, CONCAT(C.fname, ' ', C.lname) AS 'Leader' FROM got_houses H LEFT JOIN got_characters C ON H.leader = C.id;"
     result = execute_query(db_connection, query).fetchall();
     print(result)
     return render_template('houses.html', rows=result)
@@ -55,7 +55,7 @@ def browse_houses():
 def browse_religions():
     print("Fetching and rendering religions web page")
     db_connection = connect_to_database()
-    query = "SELECT name, worshipers, theism, age, symbol from got_religions;"
+    query = "SELECT name, worshipers, theism, age, symbol FROM got_religions;"
     result = execute_query(db_connection, query).fetchall();
     print(result)
     return render_template('religions.html', rows=result)
@@ -91,7 +91,56 @@ def add_character():
     execute_query(db_connection, query, data)
     return redirect ('/characters');
 
+@webapp.route('/add_house', methods=['POST','GET'])
+def add_house():
+    db_connection = connect_to_database()
+    request.method == 'POST';
+    print("Adding House!");
+    name = request.form['name']
+    members = request.form['members']
+    motto = request.form['motto']
+    sigil = request.form['sigil']
+    leader = request.form['leader']
 
+    query = 'INSERT INTO got_houses (name, members, motto, sigil, leader) VALUES (%s, %s, %s, %s, %s)'
+    data = (name, members, motto, sigil, leader)
+
+    execute_query(db_connection, query, data)
+    return redirect('/houses');
+
+@webapp.route('/add_skill', methods=['POST','GET'])
+def add_skill():
+    db_connection = connect_to_database()
+    request.method == 'POST';
+    print("Adding Skill!");
+    name = request.form['name']
+    utility = request.form['addUtility']
+    cost = request.form['addCost']
+    rarity = request.form['addRarity']
+    value = request.form['addValue']
+
+    query = 'INSERT INTO got_skills (name, utility, cost, rarity, value) VALUES (%s, %s, %s, %s, %s)'
+    data = (name, utility, cost, rarity, value)
+
+    execute_query(db_connection, query, data)
+    return redirect('/skills');
+
+@webapp.route('/add_religion', methods=['POST','GET'])
+def add_religion():
+    db_connection = connect_to_database()
+    request.method = 'POST';
+    print("Adding Religion!");
+    name = request.form['addName']
+    worshippers = request.form['addWorshippers']
+    theism = request.form['addTheism']
+    age = request.form['addAge']
+    symbol = request.form['addSymbol']
+
+    query = 'INSERT INTO got_religions (name, worshippers, theism, age, symbol) VALUES (%s, %s, %s, %s, %s)'
+    data = (name, worshippers, theism, age, symbol)
+
+    execute_query(db_connection, query, data)
+    return redirect('/religions');
 
 
 @webapp.route('/add_character_backup', methods=['POST','GET'])
