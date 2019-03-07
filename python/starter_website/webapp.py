@@ -18,7 +18,17 @@ def browse_char():
     query = "SELECT fname, lname, nobility, gender, age, house, religion from got_characters;"
     result = execute_query(db_connection, query).fetchall();
     print(result)
-    return render_template('characters.html', rows=result)
+
+    query = 'SELECT id, name FROM got_houses'
+    hresult = execute_query(db_connection, query).fetchall();
+    print(result)
+
+    query = 'SELECT id, name FROM got_religions'
+    rresult = execute_query(db_connection, query).fetchall();
+    print(rresult)
+
+
+    return render_template('characters.html', rows=result, houses = hresult, religions = rresult)
 
 @webapp.route('/skills')
 #the name of this function is just a cosmetic thing
@@ -77,19 +87,9 @@ def add_character():
     data = (fname, lname, nobility, gender, age, house, religion)
 
 
-    query = 'SELECT id, name FROM got_houses'
-    result = execute_query(db_connection, query).fetchall();
-    print(result)
-
-    query = 'SELECT id, name FROM got_religions'
-    rresult = execute_query(db_connection, query).fetchall();
-    print(rresult)
-
-
-
 
     execute_query(db_connection, query, data)
-    return redirect ('/characters', houses = result, religions = rresult);
+    return redirect ('/characters');
 
 
 
