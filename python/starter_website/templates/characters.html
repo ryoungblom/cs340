@@ -163,14 +163,14 @@
           <br>
           <br>
           Nobility: <br>
-          <input type="radio" name="nobility" value="highborn"> Highborn <br>
-          <input type="radio" name="nobility" value="lowborn"> Lowborn <br>
-          <input type="radio" name="nobility" value="other"> Other <br>
+          <input type="radio" name="nobility" value="Highborn"> Highborn <br>
+          <input type="radio" name="nobility" value="Lowborn"> Lowborn <br>
+          <input type="radio" name="nobility" value="Other"> Other <br>
           <br>
           Gender:  <br>
-          <input type="radio" name="gender" value="fname"> Male <br>
-          <input type="radio" name="gender" value="lname"> Female <br>
-          <input type="radio" name="gender" value="lname"> Other <br>
+          <input type="radio" name="gender" value="Male"> Male <br>
+          <input type="radio" name="gender" value="Female"> Female <br>
+          <input type="radio" name="gender" value="Other"> Other <br>
           <br>
           <br>
           Age:  <br>
@@ -178,11 +178,31 @@
           <br>
           <br>
           House:  <br>
-          <input type="text" name="house" value="House">
+          <select name = "house">
+
+              {% for h in houses %}
+
+              <option value = "{{ h[0] }}"> {{ h[1] }} </option>
+
+              {% endfor %}
+
+            </select>
           <br>
           <br>
           Religion:  <br>
-          <input type="text" name="religion" value="Religion">
+
+
+          <select name = "religion">
+
+              {% for r in religions %}
+
+              <option value = "{{ r[0] }}"> {{ r[1] }} </option>
+
+              {% endfor %}
+
+            </select>
+
+
           <br>
           <br>
           <input type="submit" value="Submit">

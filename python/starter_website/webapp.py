@@ -75,8 +75,21 @@ def add_character():
 
     query = 'INSERT INTO got_characters (fname, lname, nobility, gender, age, house, religion) VALUES (%s,%s,%s,%s,%s,%s,%s)'
     data = (fname, lname, nobility, gender, age, house, religion)
+
+
+    query = 'SELECT id, name FROM got_houses'
+    result = execute_query(db_connection, query).fetchall();
+    print(result)
+
+    query = 'SELECT id, name FROM got_religions'
+    rresult = execute_query(db_connection, query).fetchall();
+    print(rresult)
+
+
+
+
     execute_query(db_connection, query, data)
-    return redirect ('/characters');
+    return redirect ('/characters', houses = result, religions = rresult);
 
 
 
