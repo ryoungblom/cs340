@@ -266,11 +266,17 @@
             <br>
             <select name = "house">
 
-              <option selected="selected"> {{editChar[5]}} </option>
+                {% for h in houses %}
 
-                {% for r in rows %}
+                  {% if h[0] == editChar[5] %}
 
-                <option value = "{{ r[5] }}"> {{ r[5] }} </option>
+                    <option value = "{{ h[0] }}"> {{ h[1] }} </option>
+
+                  {% else %}
+
+                    <option value = "{{ h[0] }}"> {{ h[1] }} </option>
+
+                  {% endif %}
 
                 {% endfor %}
 
@@ -279,11 +285,17 @@
 
             <select name = "religion">
 
-              <option selected="selected"> {{editChar[6]}} </option>
+                {% for r in religion %}
 
-                {% for r in rows %}
+                  {% if r[0] == editChar[6] %}
 
-                <option value = "{{ r[6] }}"> {{ r[6] }} </option>
+                    <option value = "{{ r[0] }}"> {{ r[1] }} </option>
+
+                  {% else %}
+
+                    <option value = "{{ r[0] }}"> {{ r[1] }} </option>
+
+                  {% endif %}
 
                 {% endfor %}
 

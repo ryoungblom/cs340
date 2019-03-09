@@ -157,7 +157,7 @@ def edit_characters():
 
     id = request.form['editCharacter']
 
-    query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id WHERE C.id = %s;"
+    query = "SELECT id, fname, lname, nobility, gender, age, name, religion FROM got_characters WHERE id = %s;"
     data = (id,)
     sresult = execute_query(db_connection, query, data).fetchone();
     print(result)
