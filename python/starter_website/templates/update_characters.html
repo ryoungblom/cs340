@@ -239,9 +239,11 @@
             <br>
             <select name = "nobility">
 
+              <option selected="selected"> {{editChar[2]}} </option>
+
                 {% for r in rows %}
 
-                <option value = "{{ r[3] }}"> {{ r[3] }} </option>
+                <option value = "{{ r[2] }}"> {{ r[2] }} </option>
 
                 {% endfor %}
 
@@ -249,18 +251,22 @@
             <br>
             <select name = "gender">
 
+              <option selected="selected"> {{editChar[3]}} </option>
+
                 {% for r in rows %}
 
-                <option value = "{{ r[4] }}"> {{ r[4] }} </option>
+                <option value = "{{ r[4] }}"> {{ r[3] }} </option>
 
                 {% endfor %}
 
               </select>
 
             <br>
-            <input type="text" name="age" value={{editChar[5]}}>
+            <input type="text" name="age" value={{editChar[4]}}>
             <br>
             <select name = "house">
+
+              <option selected="selected"> {{editChar[5]}} </option>
 
                 {% for r in rows %}
 
@@ -272,6 +278,8 @@
             <br>
 
             <select name = "religion">
+
+              <option selected="selected"> {{editChar[6]}} </option>
 
                 {% for r in rows %}
 
