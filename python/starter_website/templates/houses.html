@@ -161,16 +161,22 @@
       <div>
         <h2>Add House</h2>
         <br>
-          <form>
-            Name*: <br> <input type="text" name="house" value="House Name"><br>
+          <form id="addHouses" action="/add_house" method = "POST">
+            Name*: <br> <input type="text" name="addName" placeholder="House Name"><br>
             <br>
-            Number of Members: <br>  <input type="text" name="members" value="Members"><br>
+            Number of Members: <br>  <input type="text" name="addMembers" placeholder="Members"><br>
             <br>
-            House Motto: <br> <input type="text" name="motto" value="Motto"><br>
+            House Motto: <br> <input type="text" name="addMotto" placeholder="Motto"><br>
             <br>
-            House Sigel: <br> <input type="text" name="sigel" value="Sigel"><br>
+            House Sigil: <br> <input type="text" name="addSigil" placeholder="Sigil"><br>
             <br>
-            House Leader: <br> <input type="text" name="leader" value="Leader"><br>
+            House Leader: <br> 
+		<select name="addLeader">
+ 		   {% for l in leaders %}
+		   <option value= "{{ l[0] }}">{{ l[1] }} {{ l[2] }}</option>
+		   {% endfor %}
+		</select>
+	    <br>
             <br>
             <input type="submit" value="Submit">
           </form>
