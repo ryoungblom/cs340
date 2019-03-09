@@ -143,6 +143,16 @@ def add_religion():
     return redirect('/religions');
 
 
+@webapp.rout ('/delete_character/<int:id>')
+def delete_characters(id):
+    db_connection = connect_to_database()
+    query = "DELETE FROM got_characters WHERE id = %s"
+    data = (id,)
+
+    result = execute_query(db_connection, query, data)
+    return redirect ('/characters');
+
+
 @webapp.route('/add_character_backup', methods=['POST','GET'])
 def add_character_backup():
     db_connection = connect_to_database()

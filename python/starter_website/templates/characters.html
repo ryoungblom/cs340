@@ -64,9 +64,10 @@
         <td> {{ r[1] }}</td>
         <td> {{ r[2] }}</td>
         <td> {{ r[3] }}</td>
-	<td> {{ r[4] }}</td>
-	<td> {{ r[5] }}</td>
-	<td> {{ r[6] }}</td>
+	      <td> {{ r[4] }}</td>
+	      <td> {{ r[5] }}</td>
+	      <td> {{ r[6] }}</td>
+        <td> <button type="button" value="Delete" onclick="window.location('delete_character/{{r[0]}')"> </button> </td>
       </tr>
       {% endfor %}
     </tbody>
