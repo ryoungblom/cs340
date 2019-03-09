@@ -15,7 +15,7 @@ def hello():
 def browse_char():
     print("Fetching and rendering people web page")
     db_connection = connect_to_database()
-    query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion' FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id;"
+    query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id;"
     result = execute_query(db_connection, query).fetchall();
     print(result)
 
@@ -143,7 +143,7 @@ def add_religion():
     return redirect('/religions');
 
 
-@webapp.rout ('/delete_character/<int:id>')
+@webapp.route ('/delete_character/<int:id>')
 def delete_characters(id):
     db_connection = connect_to_database()
     query = "DELETE FROM got_characters WHERE id = %s"
