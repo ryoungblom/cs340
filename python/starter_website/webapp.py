@@ -146,14 +146,16 @@ def delete_characters(id):
     return redirect ('/characters');
 
 
-@webapp.route ('/edit_character/<int:id>')
-def edit_characters(id):
+@webapp.route ('/edit_character')
+def edit_characters():
 
     print("Fetching and rendering people web page")
     db_connection = connect_to_database()
     query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id;"
     result = execute_query(db_connection, query).fetchall();
     print(result)
+
+    id = request.form['editCharacter']
 
     query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id WHERE id = %s;"
     data = (id,)

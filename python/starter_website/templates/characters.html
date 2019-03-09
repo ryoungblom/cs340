@@ -215,6 +215,8 @@
         <h2>Edit Character</h2>
         <br>
 
+
+        <form  id="editChar" action="/edit_character" method = "POST">
         <select name = "editCharacter">
 
             {% for r in rows %}
@@ -225,7 +227,9 @@
 
           </select>
 
-          <button type="button" value="Update" onclick="window.location.href=('edit_character/{{rows[7]}}')">Update</button>
+          <button type="submit" value="Submit">Update</button>
+        </form>
+
 
           <!--
           <form>
