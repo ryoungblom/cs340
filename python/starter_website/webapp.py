@@ -175,7 +175,7 @@ def edit_characters():
 
 
 
-@webapp.route('/update_character/<int:id>', methods=['POST','GET'])
+@webapp.route('/update_character/<int:id>', methods=['POST'])
 def update_character(id):
     db_connection = connect_to_database()
     request.method == 'POST';
@@ -189,8 +189,8 @@ def update_character(id):
     religion = request.form['religion']
 
 
-    query = 'UPDATE got_characters (fname, lname, nobility, gender, age, house, religion) VALUES (%s,%s,%s,%s,%s,%s,%s) WHERE id = s%'
-    data = (fname, lname, nobility, gender, age, house, religion)
+    query = 'UPDATE got_characters SET fname = %s, lname = %s, nobility = %s, gender = %s, age = %s, house = %s, religion = %s WHERE id = s%'
+    data = (fname, lname, nobility, gender, age, house, religion, id)
 
     execute_query(db_connection, query, data)
     return redirect ('/characters');
