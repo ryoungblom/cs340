@@ -17,16 +17,12 @@ def browse_char():
     db_connection = connect_to_database()
     query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id;"
     result = execute_query(db_connection, query).fetchall();
-    print(result)
 
     query = 'SELECT id, name FROM got_houses'
     hresult = execute_query(db_connection, query).fetchall();
-    print(result)
 
     query = 'SELECT id, name FROM got_religions'
     rresult = execute_query(db_connection, query).fetchall();
-    print(rresult)
-
 
     return render_template('characters.html', rows=result, houses = hresult, religions = rresult)
 
@@ -37,7 +33,6 @@ def browse_skills():
     db_connection = connect_to_database()
     query = "SELECT name, battle_utility, acquisition_cost, rarity, value FROM got_skills;"
     result = execute_query(db_connection, query).fetchall();
-    print(result)
     return render_template('skills.html', rows=result)
 
 @webapp.route('/houses')
@@ -47,8 +42,10 @@ def browse_houses():
     db_connection = connect_to_database()
     query = "SELECT H.name, H.members, H.motto, H.sigil, CONCAT(C.fname, ' ', C.lname) AS 'Leader' FROM got_houses H LEFT JOIN got_characters C ON H.leader = C.id;"
     result = execute_query(db_connection, query).fetchall();
-    print(result)
-    return render_template('houses.html', rows=result)
+
+    query = 'SELECT id, fname, lname FROM got_characters;'
+    lresult = execute_query(db_connection, query).fetchall();
+    return render_template('houses.html', rows=result, leaders=lresult)
 
 @webapp.route('/religions')
 #the name of this function is just a cosmetic thing
@@ -57,7 +54,6 @@ def browse_religions():
     db_connection = connect_to_database()
     query = "SELECT name, worshipers, theism, age, symbol, id FROM got_religions;"
     result = execute_query(db_connection, query).fetchall();
-    print(result)
     return render_template('religions.html', rows=result)
 
 @webapp.route('/')
@@ -82,11 +78,8 @@ def add_character():
     house = request.form['house']
     religion = request.form['religion']
 
-
-    query = 'INSERT INTO got_characters (fname, lname, nobility, gender, age, house, religion) VALUES (%s,%s,%s,%s,%s,%s,%s)'
+    query = 'INSERT INTO got_characters (fname, lname, nobility, gender, age, house, religion) VALUES (%s,%s,%s,%s,%s,%s,%s);'
     data = (fname, lname, nobility, gender, age, house, religion)
-
-
 
     execute_query(db_connection, query, data)
     return redirect ('/characters');
@@ -96,34 +89,34 @@ def add_house():
     db_connection = connect_to_database()
     request.method == 'POST';
     print("Adding House!");
-    name = request.form['name']
-    members = request.form['members']
-    motto = request.form['motto']
-    sigil = request.form['sigil']
-    leader = request.form['leader']
+    name = request.form['addName']
+    members = request.form['addMembers']
+    motto = request.form['addMotto']
+    sigil = request.form['addSigil']
+    leader = request.form['addLeader']
 
-    query = 'INSERT INTO got_houses (name, members, motto, sigil, leader) VALUES (%s, %s, %s, %s, %s)'
+    query = 'INSERT INTO got_houses (name, members, motto, sigil, leader) VALUES (%s, %s, %s, %s, %s);'
     data = (name, members, motto, sigil, leader)
 
     execute_query(db_connection, query, data)
-    return redirect('/houses');
+    return redirect ('/houses');
 
 @webapp.route('/add_skill', methods=['POST','GET'])
 def add_skill():
     db_connection = connect_to_database()
     request.method == 'POST';
     print("Adding Skill!");
-    name = request.form['name']
+    name = request.form['addName']
     utility = request.form['addUtility']
     cost = request.form['addCost']
     rarity = request.form['addRarity']
     value = request.form['addValue']
 
-    query = 'INSERT INTO got_skills (name, utility, cost, rarity, value) VALUES (%s, %s, %s, %s, %s)'
+    query = 'INSERT INTO got_skills (name, battle_utility, acquisition_cost, rarity, value) VALUES (%s, %s, %s, %s, %s);'
     data = (name, utility, cost, rarity, value)
 
     execute_query(db_connection, query, data)
-    return redirect('/skills');
+    return redirect ('/skills');
 
 @webapp.route('/add_religion', methods=['POST','GET'])
 def add_religion():
@@ -136,11 +129,11 @@ def add_religion():
     age = request.form['addAge']
     symbol = request.form['addSymbol']
 
-    query = 'INSERT INTO got_religions (name, worshipers, theism, age, symbol) VALUES (%s, %s, %s, %s, %s)'
+    query = 'INSERT INTO got_religions (name, worshipers, theism, age, symbol) VALUES (%s, %s, %s, %s, %s);'
     data = (name, worshipers, theism, age, symbol)
 
     execute_query(db_connection, query, data)
-    return redirect('/religions');
+    return redirect ('/religions');
 
 
 @webapp.route ('/delete_character/<int:id>')
