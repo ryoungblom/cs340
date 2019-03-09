@@ -128,7 +128,7 @@ def add_skill():
 @webapp.route('/add_religion', methods=['POST','GET'])
 def add_religion():
     db_connection = connect_to_database()
-    request.method = 'POST';
+    request.method == 'POST';
     print("Adding Religion!");
     name = request.form['addName']
     worshipers = request.form['addWorshipers']
