@@ -175,8 +175,8 @@ def edit_characters():
 
 
 
-@webapp.route('/update_character', methods=['POST','GET'])
-def update_character():
+@webapp.route('/update_character/<int:id>', methods=['POST','GET'])
+def update_character(id):
     db_connection = connect_to_database()
     request.method == 'POST';
     print("Updating Character!");
