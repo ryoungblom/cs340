@@ -131,13 +131,13 @@ def add_religion():
     request.method = 'POST';
     print("Adding Religion!");
     name = request.form['addName']
-    worshippers = request.form['addWorshippers']
+    worshipers = request.form['addWorshipers']
     theism = request.form['addTheism']
     age = request.form['addAge']
     symbol = request.form['addSymbol']
 
-    query = 'INSERT INTO got_religions (name, worshippers, theism, age, symbol) VALUES (%s, %s, %s, %s, %s)'
-    data = (name, worshippers, theism, age, symbol)
+    query = 'INSERT INTO got_religions (name, worshipers, theism, age, symbol) VALUES (%s, %s, %s, %s, %s)'
+    data = (name, worshipers, theism, age, symbol)
 
     execute_query(db_connection, query, data)
     return redirect('/religions');
