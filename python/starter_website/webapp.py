@@ -157,7 +157,7 @@ def edit_characters():
 
     id = request.form['editCharacter']
 
-    query = "SELECT id, fname, lname, nobility, gender, age, name, religion FROM got_characters WHERE id = %s;"
+    query = "SELECT id, fname, lname, nobility, gender, age, house, religion FROM got_characters WHERE id = %s;"
     data = (id,)
     sresult = execute_query(db_connection, query, data).fetchone();
     print(result)
@@ -189,7 +189,7 @@ def update_character(id):
     religion = request.form['religion']
 
 
-    query = 'UPDATE got_characters SET fname = %s, lname = %s, nobility = %s, gender = %s, age = %s, house = %s, religion = %s WHERE id = s%'
+    query = 'UPDATE got_characters SET fname = %s, lname = %s, nobility = %s, gender = %s, age = %s, house = %s, religion = %s WHERE id = %s'
     data = (fname, lname, nobility, gender, age, house, religion, id)
 
     execute_query(db_connection, query, data)

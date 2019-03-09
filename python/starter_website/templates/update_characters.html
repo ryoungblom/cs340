@@ -215,7 +215,7 @@
         <h2>Edit Character</h2>
         <br>
 
-        <select name = "house">
+        <select name = "editCharacter">
 
             {% for r in rows %}
 
@@ -231,15 +231,15 @@
 
 
 
-          <form  id="updateChar" action="/update_character/{{editChar[7]}}" method = "POST">
+          <form  id="updateChar" action="/update_character/{{editChar[0]}}" method = "POST">
             Character:<br>
-            <input type="text" name="fname" value={{editChar[0]}}>
+            <input type="text" name="fname" value={{editChar[1]}}>
             <br>
-            <input type="text" name="lname" value={{editChar[1]}}>
+            <input type="text" name="lname" value={{editChar[2]}}>
             <br>
             <select name = "nobility">
 
-              <option selected="selected"> {{editChar[2]}} </option>
+              <option selected="selected"> {{editChar[3]}} </option>
 
                 {% for r in rows %}
 
@@ -251,26 +251,26 @@
             <br>
             <select name = "gender">
 
-              <option selected="selected"> {{editChar[3]}} </option>
+              <option selected="selected"> {{editChar[4]}} </option>
 
                 {% for r in rows %}
 
-                <option value = "{{ r[4] }}"> {{ r[3] }} </option>
+                <option value = "{{ r[3] }}"> {{ r[3] }} </option>
 
                 {% endfor %}
 
               </select>
 
             <br>
-            <input type="text" name="age" value={{editChar[4]}}>
+            <input type="text" name="age" value={{editChar[5]}}>
             <br>
             <select name = "house">
 
                 {% for h in houses %}
 
-                  {% if h[0] == editChar[5] %}
+                  {% if h[0] == editChar[6] %}
 
-                    <option value = "{{ h[0] }}"> {{ h[1] }} </option>
+                    <option selected value = "{{ h[0] }}"> {{ h[1] }} </option>
 
                   {% else %}
 
@@ -285,11 +285,11 @@
 
             <select name = "religion">
 
-                {% for r in religion %}
+                {% for r in religions %}
 
-                  {% if r[0] == editChar[6] %}
+                  {% if r[0] == editChar[7] %}
 
-                    <option value = "{{ r[0] }}"> {{ r[1] }} </option>
+                    <option selected value = "{{ r[0] }}"> {{ r[1] }} </option>
 
                   {% else %}
 
