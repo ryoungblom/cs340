@@ -152,6 +152,7 @@ def delete_characters(id):
     result = execute_query(db_connection, query, data)
     return redirect ('/characters');
 
+    
 
 @webapp.route ('/delete_religions/<int:id>')
 def delete_religions(id):

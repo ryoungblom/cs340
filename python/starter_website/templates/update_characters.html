@@ -215,7 +215,7 @@
         <h2>Edit Character</h2>
         <br>
 
-        <select name = "editCharacter">
+        <select name = "house">
 
             {% for r in rows %}
 
@@ -225,40 +225,67 @@
 
           </select>
 
-          <button type="button" value="Update" onclick="window.location.href=('update_character/{{r[7]}}')">Update</button>
+          <button type="button" value="Update" onclick="window.location.href=('edit_character/{{r[7]}}')">Update</button>
 
-          <!--
-          <form>
+
+
+
+
+          <form  id="updateChar" action="/update_character" method = "POST">
             Character:<br>
-            <input type="text" name="fname" placeholder="First Name">
+            <input type="text" name="fname" value={{r[0]}}>
             <br>
-            <input type="text" name="lname" placeholder="Last Name">
+            <input type="text" name="lname" value={{r[1]}}>
             <br>
+            <select name = "nobility">
+
+                {% for r in rows %}
+
+                <option value = "{{ r[3] }}"> {{ r[3] }} </option>
+
+                {% endfor %}
+
+              </select>
             <br>
+            <select name = "gender">
+
+                {% for r in rows %}
+
+                <option value = "{{ r[4] }}"> {{ r[4] }} </option>
+
+                {% endfor %}
+
+              </select>
+
             <br>
-            I'd like to change...<br>
-            <input type="radio" name="change" value="fname"> First Name<br>
-            <input type="radio" name="change" value="lname"> Last Name<br>
-            <input type="radio" name="change" value="nobility"> Nobility<br>
-            <input type="radio" name="change" value="gender"> Gender<br>
-            <input type="radio" name="change" value="skill"> Skill<br>
-            <input type="radio" name="change" value="age"> Age<br>
-            <input type="radio" name="change" value="house"> House<br>
-            <input type="radio" name="change" value="religion"> Religion<br>
+            <input type="text" name="age" value={{r[5]}}>
             <br>
-            ...to <br>
-            <input type="text" name="newValue" placeholder="New Value">
-            <br>
-            or
+            <select name = "house">
+
+                {% for r in rows %}
+
+                <option value = "{{ r[5] }}"> {{ r[5] }} </option>
+
+                {% endfor %}
+
+              </select>
             <br>
 
-            <input type="radio" name="nullChar" value="NULL">Delete Existing Data<br>
+            <select name = "religion">
 
+                {% for r in rows %}
+
+                <option value = "{{ r[6] }}"> {{ r[6] }} </option>
+
+                {% endfor %}
+
+              </select>
             <br>
+
+
             <input type="submit" value="Submit">
               </form>
 
-            -->
 
         </div>
       <br>
