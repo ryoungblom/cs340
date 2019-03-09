@@ -55,7 +55,7 @@ def browse_houses():
 def browse_religions():
     print("Fetching and rendering religions web page")
     db_connection = connect_to_database()
-    query = "SELECT name, worshipers, theism, age, symbol FROM got_religions;"
+    query = "SELECT name, worshipers, theism, age, symbol, id FROM got_religions;"
     result = execute_query(db_connection, query).fetchall();
     print(result)
     return render_template('religions.html', rows=result)
@@ -151,6 +151,16 @@ def delete_characters(id):
 
     result = execute_query(db_connection, query, data)
     return redirect ('/characters');
+
+
+@webapp.route ('/delete_religions/<int:id>')
+def delete_religions(id):
+    db_connection = connect_to_database()
+    query = "DELETE FROM got_religions WHERE id = %s"
+    data = (id,)
+
+    result = execute_query(db_connection, query, data)
+    return redirect ('/religions');
 
 
 @webapp.route('/add_character_backup', methods=['POST','GET'])

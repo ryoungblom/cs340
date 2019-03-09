@@ -44,7 +44,7 @@
       </a>
     </div>
 
-	
+
 
 	<h1 class = "tableCenter"> Religions Table </h1>
 
@@ -65,6 +65,8 @@
               <td> {{ r[2] }}</td>
               <td> {{ r[3] }}</td>
               <td> {{ r[4] }}</td>
+              <td> <button type="button" value="Delete" onclick="window.location.href=('delete_religions/{{r[5]}}')">Delete</button> </td>
+
             </tr>
             {% endfor %}
           </tbody>
