@@ -152,7 +152,55 @@ def delete_characters(id):
     result = execute_query(db_connection, query, data)
     return redirect ('/characters');
 
-    
+
+@webapp.route ('/edit_character/<int:id>')
+def edit_characters(id):
+
+    print("Fetching and rendering people web page")
+    db_connection = connect_to_database()
+    query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id;"
+    result = execute_query(db_connection, query).fetchall();
+    print(result)
+
+    query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id WHERE id = %s;"
+    data = (id,)
+    sresult = execute_query(db_connection, query, data).fetchone();
+    print(result)
+
+    query = 'SELECT id, name FROM got_houses'
+    hresult = execute_query(db_connection, query).fetchall();
+    print(result)
+
+    query = 'SELECT id, name FROM got_religions'
+    rresult = execute_query(db_connection, query).fetchall();
+    print(rresult)
+
+
+    return render_template('update_characters.html', rows=result, editChar = sresult, houses = hresult, religions = rresult);
+
+
+
+@webapp.route('/update_character', methods=['POST','GET'])
+def update_character(id):
+    db_connection = connect_to_database()
+    request.method == 'POST';
+    print("Updating Character!");
+    fname = request.form['fname']
+    lname = request.form['lname']
+    nobility = request.form['nobility']
+    gender = request.form['gender']
+    age = request.form['age']
+    house = request.form['house']
+    religion = request.form['religion']
+
+
+    query = 'UPDATE got_characters (fname, lname, nobility, gender, age, house, religion) VALUES (%s,%s,%s,%s,%s,%s,%s) WHERE id = s%'
+    data = (fname, lname, nobility, gender, age, house, religion)
+
+    execute_query(db_connection, query, data)
+    return redirect ('/characters');
+
+
 
 @webapp.route ('/delete_religions/<int:id>')
 def delete_religions(id):
