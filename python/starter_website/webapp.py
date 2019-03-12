@@ -31,7 +31,7 @@ def browse_char():
 def browse_skills():
     print("Fetching and rendering skills web page")
     db_connection = connect_to_database()
-    query = "SELECT name, battle_utility, acquisition_cost, rarity, value FROM got_skills;"
+    query = "SELECT name, battle_utility, acquisition_cost, rarity, value, id FROM got_skills;"
     result = execute_query(db_connection, query).fetchall();
     return render_template('skills.html', rows=result)
 
@@ -40,7 +40,7 @@ def browse_skills():
 def browse_houses():
     print("Fetching and rendering houses web page")
     db_connection = connect_to_database()
-    query = "SELECT H.name, H.members, H.motto, H.sigil, CONCAT(C.fname, ' ', C.lname) AS 'Leader' FROM got_houses H LEFT JOIN got_characters C ON H.leader = C.id;"
+    query = "SELECT H.name, H.members, H.motto, H.sigil, CONCAT(C.fname, ' ', C.lname) AS 'Leader', H.id FROM got_houses H LEFT JOIN got_characters C ON H.leader = C.id;"
     result = execute_query(db_connection, query).fetchall();
 
     query = 'SELECT id, fname, lname FROM got_characters;'
@@ -149,7 +149,7 @@ def delete_characters(id):
 @webapp.route ('/edit_character', methods=['POST','GET'])
 def edit_characters():
 
-    print("Fetching and rendering people web page")
+    print("Fetching and rendering characters web page")
     db_connection = connect_to_database()
     query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id;"
     result = execute_query(db_connection, query).fetchall();
@@ -195,7 +195,114 @@ def update_character(id):
     execute_query(db_connection, query, data)
     return redirect ('/characters');
 
+@webapp.route ('/edit_house', methods=['POST', 'GET'])
+def edit_houses():
 
+    print("Fetching and rendering houses web page")
+    db_connection = connect_to_database()
+    query = "SELECT H.name, H.members, H.motto, H.sigil, CONCAT(C.fname, ' ', C.lname) AS 'Leader', H.id FROM got_houses H LEFT JOIN got_characters C ON H.leader = C.id;"
+    result = execute_query(db_connection, query).fetchall();
+    print(result)
+
+    id = request.form['editHouse']
+
+    query = "SELECT id, name, members, motto, sigil, leader FROM got_houses WHERE id = %s;"
+    data = (id,)
+    sresult = execute_query(db_connection, query, data).fetchone();
+    print(result)
+
+    query = "SELECT id, fname, lname FROM got_characters;"
+    cresult = execute_query(db_connection, query).fetchall();
+    print(result)
+
+    return render_template('update_houses.html', rows=result, editH = sresult, characters = cresult);
+
+@webapp.route('/update_house/<int:id>', methods=['POST'])
+def update_house(id):
+    db_connection = connect_to_database()
+    request.method == 'POST';
+    print("Updating House!");
+    name = request.form['upName']
+    members = request.form['upMembers']
+    motto = request.form['upMotto']
+    sigil = request.form['upSigil']
+    leader = request.form['upLeader']
+
+    query = "UPDATE got_houses SET name = %s, members = %s, motto = %s, sigil = %s, leader = %s WHERE id = %s;"
+    data = (name, members, motto, sigil, leader, id)
+
+    execute_query(db_connection, query, data)
+    return redirect ('/houses');
+
+@webapp.route('/edit_skill', methods=['POST', 'GET'])
+def edit_skills():
+
+    print("Fetching and rendering skills web page")
+    db_connection = connect_to_database()
+    query = "SELECT name, battle_utility, acquisition_cost, rarity, value, id FROM got_skills;"
+    result = execute_query(db_connection, query).fetchall();
+    print(result)
+
+    id = request.form['editSkill']
+
+    query = "SELECT id, name, battle_utility, acquisition_cost, rarity, value FROM got_skills WHERE id = %s;"
+    data = (id,)
+    sresult = execute_query(db_connection, query, data).fetchone();
+    print(result)
+
+    return render_template('update_skills.html', rows=result, editS = sresult);
+
+@webapp.route('/update_skill/<int:id>', methods=['POST'])
+def update_skill(id):
+    db_connection = connect_to_database()
+    request.method == 'POST';
+    print("Updating Skill!");
+    name = request.form['upName']
+    utility = request.form['upUtility']
+    cost = request.form['upCost']
+    rarity = request.form['upRarity']
+    value = request.form['upValue']
+
+    query = "UPDATE got_skills SET name = %s, battle_utility = %s, acquisition_cost = %s, rarity = %s, value = %s WHERE id = %s;"
+    data = (name, utility, cost, rarity, value, id)
+   
+    execute_query(db_connection, query, data)
+    return redirect ('/skills');
+
+@webapp.route('/edit_religion', methods=['POST', 'GET'])
+def edit_religions():
+
+    print("Fetching and rendering religions web page")
+    db_connection = connect_to_database()
+    query = "SELECT name, worshipers, theism, age, symbol, id FROM got_religions;"
+    result = execute_query(db_connection, query).fetchall();
+    print(result)
+
+    id = request.form['editReligion']
+
+    query = "SELECT id, name, worshipers, theism, age, symbol FROM got_religions WHERE id = %s;"
+    data = (id,)
+    sresult = execute_query(db_connection, query, data).fetchone();
+    print(result)
+
+    return render_template('update_religions.html', rows=result, editR = sresult);
+
+@webapp.route('/update_religion/<int:id>', methods=['POST'])
+def update_religion(id):
+    db_connection = connect_to_database()
+    request.method == 'POST';
+    print("Updating Relgion!");
+    name = request.form['upName']
+    worshipers = request.form['upWorshipers']
+    theism = request.form['upTheism']
+    age = request.form['upAge']
+    symbol = request.form['upSymbol']
+
+    query = "UPDATE got_religions SET name = %s, worshipers = %s, theism = %s, age = %s, symbol = %s WHERE id = %s;"
+    data = (name, worshipers, theism, age, symbol, id)
+
+    execute_query(db_connection, query, data)
+    return redirect ('/religions');
 
 @webapp.route ('/delete_religions/<int:id>')
 def delete_religions(id):
