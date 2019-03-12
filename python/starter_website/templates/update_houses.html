@@ -186,15 +186,38 @@
       <div>
         <h2>Edit Houses</h2>
         <br>
-          <form id="editH" action="/edit_house" method = "POST">
             <select name = "editHouse">
               {% for r in rows %}
 		<option value = "{{ r[5] }}">{{ r[0] }}</option>
 	      {% endfor %}
             </select>
  
-            <button type="submit" value="Submit">Update</button>
-          </form>
+            <button type="button" value="Update" onclick="window.location.href=('edit_house/{{rows[5]}}')">Update</button>
+
+	<form id="updateHouse" action="/update_house/{{editH[0]}}" method="POST">
+	   House: <br>
+	   <input type="text" name="upName" value={{editH[1]}}>
+           <br>
+	   <input type="text" name="upMembers" value={{editH[2]}}>
+           <br>
+	   <input type="text" name="upMotto" value={{editH[3]}}>
+           <br>
+           <input type="text" name="upSigil" value={{editH[4]}}>
+           <br>
+           <select name="upLeader">
+	      {% for c in characters %}
+	         {% if c[0] == editH[5] %}
+	            <option selected value="{{ c[0] }}">{{c[1]}} {{c[2]}}</option>
+		 {% else %}
+		    <option value="{{c[0]}}">{{c[1]}} {{c[2]}}</option>
+		 {% endif %}
+	      {% endfor %}
+	   </select>
+	   <br>
+
+	   <input type="submit" value="Submit">
+	   </form>
+
         </div>
         <br>
         <br>
