@@ -217,15 +217,54 @@
           <div>
             <h2>Edit Skills</h2>
             <br>
-              <form id="editS", action="/edit_skill" method = "POST">
+    
               <select name = "editSkill">
 	         {% for r in rows %}
 		    <option value = "{{ r[5] }}">{{r[0]}}</option>
 		 {% endfor %}
 	      </select>
 
-              <button type="submit" value="Submit">Update</button>
-              </form>
+              <button type="button" value="Update" onclick="window.location.href=('edit_skill/{{rows[5]}}')">Update</button>
+       
+              <form id="updateS" action="/update_skill/{{editS[0]}}" method = "POST">
+	         Skill: <br>
+		 <input type="text" name="upName" value={{editS[1]}}>
+		 <br>
+		 <select name="upUtility">
+                    <option selected="selected"> {{editS[2]}} </option>
+		    <option value = "High">High</option>
+		    <option value = "Medium">Medium</option>
+		    <option value = "Low">Low</option>
+		    <option value = "N/A">N/A</option>
+		 </select>
+  		 <br>
+		 <select name="upCost">
+		    <option selected="selected">  {{editS[3]}} </option>
+	  	    <option value = "High">High</option>
+		    <option value = "Medium">Medium</option>
+		    <option value = "Low">Low</option>
+		    <option value = "N/A">N/A</option>
+		 </select>
+  		 <br>
+		 <select name="upRarity">
+		    <option selected="selected">  {{editS[4]}} </option>
+ 		    <option value = "Rare">Rare</option>
+		    <option value = "Uncommon">Uncommon</option>
+		    <option value = "Common">Common</option>
+		    <option value = "N/A">N/A</option>
+		 </select>
+		 <br>
+		 <select name="upValue">
+		    <option selected="selected">  {{editS[5]}} </option>
+		    <option value = "High">High</option>
+		    <option value = "Medium">Medium</option>
+		    <option value = "Low">Low</option>
+		    <option value = "N/A">N/A</option>
+ 		 </select>
+		 <br>
+
+		 <input type="submit" value="Submit">
+	       </form>
             </div>
           <br>
           <br>

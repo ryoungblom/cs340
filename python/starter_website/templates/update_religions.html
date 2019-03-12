@@ -164,15 +164,30 @@
       <div>
         <h2>Edit Religions</h2>
         <br>
-          <form id="editR" action="/edit_religion" method = "POST">
+
              <select name = "editReligion">
 	        {% for r in rows %}
 	           <option value = "{{ r[5] }}">{{ r[0] }}</option>
 	        {% endfor %}
              </select>
 
-	     <button type="submit" value="Submit">Update</button>          
-          </form>
+	     <button type="button" value="Update" onclick="window.location.href=('edit_religion/{{rows[5]}}')">Update</button>
+          
+	<form id="updateR" action="/update_religion/{{editR[0]}}" method = "POST">
+	   Religion: <br>
+	   <input type="text" name="upName" value = {{editR[1]}}>
+           <br>
+	   <input type="text" name="upWorshipers" value = {{editR[2]}}>
+           <br>
+	   <input type="text" name="upTheism" value = {{editR[3]}}>
+	   <br>
+	   <input type="text" name="upAge" value = {{editR[4]}}>
+   	   <br>
+	   <input type="text" name="upSymbol" value = {{editR[5]}}>
+	   <br>
+	
+	   <input type="submit" value="Submit">
+	</form>
     </div>
 
     <br>
