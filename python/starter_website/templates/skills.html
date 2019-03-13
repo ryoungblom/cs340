@@ -233,12 +233,15 @@
           <div>
             <h2> Delete Skill </h2>
             <br>
-            <br>
             Skill: <br>
-            <input type="text" name="skill" value="Skill Name">
-            <br>
-            <br>
-            <input type="submit" value="Submit">
+               <form id="deleteS" action="/delete_skill/" method="POST">
+	          <select name = "deleteSkill">
+		     {% for r in rows %}
+		        <option value = "{{r[5]}}">{{r[0]}}</option>
+		     {% endfor %}
+	          </select>
+		  <button type="submit" value="Submit">Delete</button>
+	       </form>
           </div>
           <br>
           <br>
