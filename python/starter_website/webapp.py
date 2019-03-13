@@ -304,10 +304,40 @@ def update_religion(id):
     execute_query(db_connection, query, data)
     return redirect ('/religions');
 
-@webapp.route ('/delete_religions/<int:id>')
-def delete_religions(id):
+
+@webapp.route ('/delete_house/', methods=['POST'])
+def delete_house():
     db_connection = connect_to_database()
-    query = "DELETE FROM got_religions WHERE id = %s"
+    request.method == 'POST';
+    id = request.form['deleteHouse']
+
+    query = "DELETE FROM got_houses WHERE id = %s;"
+    data = (id,)
+
+    result = execute_query(db_connection, query, data)
+    return redirect ('/houses');
+
+
+@webapp.route ('/delete_skill/', methods=['POST'])
+def delete_skill():
+    db_connection = connect_to_database()
+    request.method == 'POST';
+    id = request.form['deleteSkill']
+
+    query = "DELETE FROM got_skills WHERE id = %s;"
+    data = (id,)
+  
+    result = execute_query(db_connection, query, data)
+    return redirect ('/skills');
+
+
+@webapp.route ('/delete_religion/', methods=['POST'])
+def delete_religions():
+    db_connection = connect_to_database()
+    request.method == 'POST';
+    id = request.form['deleteReligion']
+
+    query = "DELETE FROM got_religions WHERE id = %s;"
     data = (id,)
 
     result = execute_query(db_connection, query, data)
