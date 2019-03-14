@@ -1,0 +1,44 @@
+++  General
+
++ Matt: Update delete (characters & religions)
+
++ Reuben: Remove delete buttons (characters and religions)
+
++ Confirmation pop ups
+
+/*******************************/
+
+++  Functionality
+
++ Add ability to nullify a Character's house or religion attribute
+  -action: Add NULL to religions dropdown in Characters page
+  -remove 'remove character' section.
+
++ Show Character Affiliations for Religion
+
++ Get all filters working (all)
+  -remove search box
+  
++ Add Loyalties form (houses)
+  -create HTML page to display data
+  
++ Update house loyalties (houses)
+  -get form working
+  
++ Assign skill to character (skills page)
+
++ Remove skill from character (characters page)
+
++ Standardize delete interface
+
+/*******************************/
+
+++  Documentation
+
++ Comments
+
++ Feedback
+
++ Other changes
+
++ Make sure DMQ in app match DMQ files
