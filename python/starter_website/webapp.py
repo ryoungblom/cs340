@@ -119,7 +119,7 @@ def hMember():
     query = 'SELECT id, name FROM got_skills'
     sresult = execute_query(db_connection, query).fetchall();
 
-    return render_template('hmember.html', rows=result, houses = hresult, religions = rresult, skillRows = sresult)
+    return render_template('hmembers.html', rows=result, houses = hresult, religions = rresult, skillRows = sresult)
 
 
 @webapp.route('/skills')
