@@ -146,23 +146,21 @@
           Did we miss something? Assign a skill to a character!
         </span>
         <span>
-        Character:
-        <select name="skillChar" form="skillChar" class="addSkillsMenu">
-          <option value="Char1">Eddard Stark</option>
-          <option value="Char2">Theon Greyjoy</option>
-          <option value="Char3">John Snow</option>
-          <option value="Char4">The Hound</option>
-        </select>
-
-        Skill:
-        <select name="showSkillsThree" form="showSkills" class="addSkillsMenu">
-          <option value="skill1">Skill1</option>
-          <option value="skill2">Skill2</option>
-          <option value="skill3">Skill3</option>
-          <option value="skill4">Skill4</option>
-        </select>
-
-          <input type="submit" value="Submit">
+          <form id="addCS" action = "/add_character_skill" method = "POST">
+           Character:
+           <select name = "addCID">
+             {% for c in characterRows %}
+               <option value = "{{c[0]}}">{{c[1]}} {{c[2]}}</option>
+             {% endfor %}
+           </select>
+           Skill:
+           <select name = "addSID">
+             {% for r in rows %}
+               <option value = "{{r[5]}}">{{r[0]}}</option>
+             {% endfor %}
+           </select>
+           <button type="submit" value="Submit">Submit</button>
+          </form>
         </span>
       </div>
       </div>
@@ -272,12 +270,15 @@
           <div>
             <h2> Delete Skill </h2>
             <br>
-            <br>
             Skill: <br>
-            <input type="text" name="skill" value="Skill Name">
-            <br>
-            <br>
-            <input type="submit" value="Submit">
+              <form id="deleteS" action="/delete_skill/" method="POST">
+		<select name="deleteSkill">
+		  {% for r in rows %}
+		    <option value = "{{r[5]}}">{{r[0]}}</option>
+		  {% endfor %}
+		</select>
+		<button type="submit" value="Submit">Delete</option>
+	      </form>
           </div>
           <br>
           <br>

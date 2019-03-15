@@ -186,6 +186,8 @@
 
               {% endfor %}
 
+              <option value='NULL'>Null</option>
+
             </select>
           <br>
           <br>
@@ -199,6 +201,8 @@
               <option value = "{{ r[0] }}"> {{ r[1] }} </option>
 
               {% endfor %}
+
+              <option value='NULL'>Null</option>
 
             </select>
 
@@ -229,40 +233,6 @@
           <button type="submit" value="Submit">Update</button>
         </form>
 
-
-          <!--
-          <form>
-            Character:<br>
-            <input type="text" name="fname" placeholder="First Name">
-            <br>
-            <input type="text" name="lname" placeholder="Last Name">
-            <br>
-            <br>
-            <br>
-            I'd like to change...<br>
-            <input type="radio" name="change" value="fname"> First Name<br>
-            <input type="radio" name="change" value="lname"> Last Name<br>
-            <input type="radio" name="change" value="nobility"> Nobility<br>
-            <input type="radio" name="change" value="gender"> Gender<br>
-            <input type="radio" name="change" value="skill"> Skill<br>
-            <input type="radio" name="change" value="age"> Age<br>
-            <input type="radio" name="change" value="house"> House<br>
-            <input type="radio" name="change" value="religion"> Religion<br>
-            <br>
-            ...to <br>
-            <input type="text" name="newValue" placeholder="New Value">
-            <br>
-            or
-            <br>
-
-            <input type="radio" name="nullChar" value="NULL">Delete Existing Data<br>
-
-            <br>
-            <input type="submit" value="Submit">
-              </form>
-
-            -->
-
         </div>
       <br>
       <br>
@@ -271,19 +241,22 @@
         <div>
           <h2> Remove Skill </h2>
           <br>
-          Character: <br>
-          <input type="text" name="fname" placeholder="First Name">
-          <br>
-          <input type="text" name="lname" placeholder="Last Name">
-          <br>
-          <br>
-          Skill: <br>
-          <input type="text" name="deleteSkill" placeholder="Skill Name">
-          <br>
-          <br>
-          <input type="submit" value="Submit">
-          <br>
-          <br>
+            <form id="deleteCS" action="/remove_character_skill" method = "POST">
+            Character: <br>
+              <select name="possessingCharacter">
+                {% for r in rows %}
+                  <option value = "{{r[7]}}">{{r[0]}} {{r[1]}}</option>
+                {% endfor %}
+              </select>
+            <br>
+            Skill: <br>
+              <select name="possessedSkill">
+                {% for s in skillRows %}
+                  <option value = "{{s[0]}}">{{s[1]}}</option>
+                {% endfor %}
+              </select>
+            <button type="submit" value="Submit">Submit</button>
+          </form>
         </div>
 
         <br>
@@ -293,12 +266,14 @@
           <h2> Delete Character </h2>
           <br>
           Character: <br>
-          <input type="text" name="fname" placeholder="First Name">
-          <br>
-          <input type="text" name="lname" placeholder="Last Name">
-          <br>
-          <br>
-          <input type="submit" value="Submit">
+            <form id="deleteC" action="/delete_character/" method = "POST">
+              <select name = "deleteCharacter">
+ 	        {% for r in rows %}
+		  <option value = "{{r[7]}}">{{r[0]}} {{r[1]}}</option>
+		{% endfor %}
+	      </select>
+	      <button type="submit" value="Submit">Delete</button>
+	    </form>
         </div>
 
         <div>
