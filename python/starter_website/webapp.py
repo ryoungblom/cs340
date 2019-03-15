@@ -55,12 +55,12 @@ def browse_houses():
     return render_template('houses.html', rows=result, leaders=lresult)
 
 
-    @webapp.route('/nobility/<varchar:cs>', methods=['POST','GET'])
+    @webapp.route('/nobility/highborn', methods=['POST','GET'])
     #the name of this function is just a cosmetic thing
     def browse_caste(cs):
         print("Fetching and rendering houses web page")
         db_connection = connect_to_database()
-        query = "SELECT H.name, H.members, H.motto, H.sigil, CONCAT(C.fname, ' ', C.lname) AS 'Leader', H.id FROM got_houses H LEFT JOIN got_characters C ON H.leader = C.id WHERE nobility=cs;"
+        query = "SELECT H.name, H.members, H.motto, H.sigil, CONCAT(C.fname, ' ', C.lname) AS 'Leader', H.id FROM got_houses H LEFT JOIN got_characters C ON H.leader = C.id WHERE nobility='highborn';"
         data = (cs);
         result = execute_query(db_connection, query).fetchall();
 
