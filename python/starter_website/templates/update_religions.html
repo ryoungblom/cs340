@@ -65,7 +65,6 @@
               <td> {{ r[2] }}</td>
               <td> {{ r[3] }}</td>
               <td> {{ r[4] }}</td>
-              <td> <button type="button" value="Delete" onclick="window.location.href=('delete_religions/{{r[5]}}')">Delete</button> </td>
 
             </tr>
             {% endfor %}
@@ -198,15 +197,14 @@
       <br>
       <br>
       Religion: <br>
-      <select name="houses" form="religionDelete">
-        <option value="Religion1">Religion 1</option>
-        <option value="Religion2">Religion 2</option>
-        <option value="Religion3">Religion 3</option>
-        <option value="Religion4">Religion 4</option>
-      </select>
-      <br>
-      <br>
-      <input type="submit" value="Submit">
+        <form id="deleteR" action="/delete_religion/" method="POST">
+          <select name="deleteReligion">
+	    {% for r in rows %}
+	      <option value = "{{r[5]}}">{{r[0]}}</option>
+	    {% endfor %}
+	  </select>
+	  <button type="submit" value="Submit">Delete</button>
+	</form>
     </div>
 
 

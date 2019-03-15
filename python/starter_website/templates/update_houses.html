@@ -127,23 +127,21 @@
           Did we miss something? Update house loyalties!
         </span>
         <span>
-        House:
-        <select name="houses" form="houseMod">
-          <option value="Tyrell">Tyrell</option>
-          <option value="Stark">Stark</option>
-          <option value="Lannister">Lannister</option>
-          <option value="Greyjoy">Greyjoy</option>
-        </select>
-
-        Is loyal to house:
-        <select name="houses" form="houseMod">
-          <option value="Tyrell">Tyrell</option>
-          <option value="Stark">Stark</option>
-          <option value="Lannister">Lannister</option>
-          <option value="Greyjoy">Greyjoy</option>
-        </select>
-
-          <input type="submit" value="Submit">
+          <form id="addHL" action = "/add_house_loyalty" method = "POST">
+            House:
+            <select name = "addLoyalty1">
+              {% for r in rows %}
+                <option value "{{r[5]}}">{{r[0]}}</option>
+              {% endfor %}
+            </select>
+            is loyal to house: 
+            <select name = "addLoyalty2">
+              {% for r in rows %}
+                <option value "{{r[5]}}">{{r[0]}}</option>
+              {% endfor %}
+            </select>
+            <button type="submit" value="Submit">Submit</button>
+          </form>
         </span>
       </div>
 
@@ -175,6 +173,7 @@
  		   {% for l in leaders %}
 		   <option value= "{{ l[0] }}">{{ l[1] }} {{ l[2] }}</option>
 		   {% endfor %}
+		   <option value=NULL>Null</option>
 		</select>
 	    <br>
             <br>
@@ -212,6 +211,7 @@
 		    <option value="{{c[0]}}">{{c[1]}} {{c[2]}}</option>
 		 {% endif %}
 	      {% endfor %}
+              <option value=NULL>Null</option>
 	   </select>
 	   <br>
 
@@ -226,25 +226,21 @@
           <div>
             <h2> Remove Loyalty Between: </h2>
             <br>
-            House: <br>
-            <select name="deleteLoyalty" form="houseDelete">
-              <option value="Tyrell">Tyrell</option>
-              <option value="Stark">Stark</option>
-              <option value="Lannister">Lannister</option>
-              <option value="Greyjoy">Greyjoy</option>
-            </select>
-            <br>
-            <br>
-            ...And House: <br>
-            <select name="deleteLoyalty" form="houseDelete">
-              <option value="Tyrell">Tyrell</option>
-              <option value="Stark">Stark</option>
-              <option value="Lannister">Lannister</option>
-              <option value="Greyjoy">Greyjoy</option>
-            </select>
-            <br>
-            <br>
-            <input type="submit" value="Submit">
+              <form id="deleteHL" action = "/remove_house_loyalty" method = "POST">
+              House: <br>
+              <select name = "deleteLoyalty1">
+                {% for r in rows %}
+                  <option value = "{{r[5]}}">{{r[0]}}</option>
+                {% endfor %}
+              </select>
+              ...and House: <br>
+              <select name = "deleteLoyalty2">
+                {% for r in rows %}
+                  <option value = "{{r[5]}}">{{r[0]}}</option>
+                {% endfor %}
+              </select>
+              <button type="submit" value="Submit">Submit</option>
+            </form>
           </div>
 
           <br>
@@ -254,15 +250,14 @@
             <h2> Delete House </h2>
             <br>
             House: <br>
-            <select name="houses" form="houseDelete">
-              <option value="Tyrell">Tyrell</option>
-              <option value="Stark">Stark</option>
-              <option value="Lannister">Lannister</option>
-              <option value="Greyjoy">Greyjoy</option>
-            </select>
-            <br>
-            <br>
-            <input type="submit" value="Submit">
+              <form id="deleteH" action="/delete_house/" method="POST">
+	        <select name="deleteHouse">
+		  {% for r in rows %}
+		    <option value = "{{r[5]}}">{{r[0]}}</option>
+		  {% endfor %}
+		</select>
+		<button type="submit" value="Submit">Delete</button>
+	      </form>
           </div>
 
           <div>

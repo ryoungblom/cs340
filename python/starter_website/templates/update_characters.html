@@ -67,7 +67,6 @@
 	      <td> {{ r[4] }}</td>
 	      <td> {{ r[5] }}</td>
 	      <td> {{ r[6] }}</td>
-        <td> <button type="button" value="Delete" onclick="window.location.href=('delete_character/{{r[7]}}')">Delete</button> </td>
       </tr>
       {% endfor %}
     </tbody>
@@ -187,6 +186,8 @@
 
               {% endfor %}
 
+              <option value=NULL>Null</option>
+
             </select>
           <br>
           <br>
@@ -200,6 +201,8 @@
               <option value = "{{ r[0] }}"> {{ r[1] }} </option>
 
               {% endfor %}
+
+              <option value=NULL>Null</option>
 
             </select>
 
@@ -228,9 +231,6 @@
           <button type="button" value="Update" onclick="window.location.href=('edit_character/{{rows[7]}}')">Update</button>
 
 
-
-
-
           <form  id="updateChar" action="/update_character/{{editChar[0]}}" method = "POST">
             Character:<br>
             <input type="text" name="fname" value={{editChar[1]}}>
@@ -240,26 +240,20 @@
             <select name = "nobility">
 
               <option selected="selected"> {{editChar[3]}} </option>
+              <option value="Highborn">Highborn</option>
+  	      <option value="Lowborn">Lowborn</option>
+	      <option value="Other">Other</option>
 
-                {% for r in rows %}
-
-                <option value = "{{ r[2] }}"> {{ r[2] }} </option>
-
-                {% endfor %}
-
-              </select>
+            </select>
             <br>
             <select name = "gender">
 
               <option selected="selected"> {{editChar[4]}} </option>
+              <option value="Male">Male</option>
+	      <option value="Female">Female</option>
+	      <option value="Other">Other</option>
 
-                {% for r in rows %}
-
-                <option value = "{{ r[3] }}"> {{ r[3] }} </option>
-
-                {% endfor %}
-
-              </select>
+            </select>
 
             <br>
             <input type="text" name="age" value={{editChar[5]}}>
@@ -279,6 +273,7 @@
                   {% endif %}
 
                 {% endfor %}
+                <option value=NULL>Null</option>
 
               </select>
             <br>
@@ -298,6 +293,7 @@
                   {% endif %}
 
                 {% endfor %}
+	        <option value=NULL>Null</option>
 
               </select>
             <br>
@@ -315,19 +311,22 @@
         <div>
           <h2> Remove Skill </h2>
           <br>
-          Character: <br>
-          <input type="text" name="fname" placeholder="First Name">
-          <br>
-          <input type="text" name="lname" placeholder="Last Name">
-          <br>
-          <br>
-          Skill: <br>
-          <input type="text" name="deleteSkill" placeholder="Skill Name">
-          <br>
-          <br>
-          <input type="submit" value="Submit">
-          <br>
-          <br>
+            <form id="deleteCS" action="/remove_character_skill" method = "POST">
+            Character: <br>
+              <select name="possessingCharacter">
+                {% for r in rows %}
+                  <option value = "{{r[7]}}">{{r[0]}} {{r[1]}}</option>
+                {% endfor %}
+              </select>
+            <br>
+            Skill: <br>
+              <select name="possessedSkill">
+                {% for s in skillRows %}
+                  <option value = "{{s[0]}}">{{s[1]}}</option>
+                {% endfor %}
+              </select>
+            <button type="submit" value="Submit">Submit</button>
+          </form>
         </div>
 
         <br>
@@ -337,12 +336,13 @@
           <h2> Delete Character </h2>
           <br>
           Character: <br>
-          <input type="text" name="fname" placeholder="First Name">
-          <br>
-          <input type="text" name="lname" placeholder="Last Name">
-          <br>
-          <br>
-          <input type="submit" value="Submit">
+            <form id="deleteC" action="/delete_character/" method="POST">
+	      <select name="deleteCharacter">
+		{% for r in rows %}
+		  <option value="{{r[7]}}">{{r[0]}} {{r[1]}}</option>
+		{% endfor %}
+	      </select>
+	      <button type="submit" value="Submit">Delete</button>
         </div>
 
         <div>
