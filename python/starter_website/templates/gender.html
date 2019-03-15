@@ -81,7 +81,7 @@
 
 
   <div class="explore">
-    <span><h2>Explore Characters</h2></span>
+    <a href "./characters"> <span><h2>Clear Filter</h2></span> </a>
 
     <div class="wrap">
        <!--<div class="search">
@@ -96,11 +96,15 @@
 
     <div class="elements">
 
+
+<!--
+
+
       <div class="explore">
         <span>Show all:
-          <form id="nobility" action="/nobility" method = "POST">
+          <form id="nobility", action="/nobility/highborn" method = "POST">
 
-          <select name="explNob" class="addSkillsMenu">
+          <select name="exploreChar" form="nobility" class="addSkillsMenu">
             <option value="highborn">Highborns</option>
             <option value="lowborn">Lowborns</option>
             <option value="other">Other</option>
@@ -114,9 +118,8 @@
       </div>
 
       <div class="explore">
-        <span>Who is in house:
-          <form id="hMember" action="/hMember" method = "POST">
-        <select name="explH">
+        <span>Who is the leader of house
+        <select name="houses" form="houseMod">
           <option value="Tyrell">Tyrell</option>
           <option value="Stark">Stark</option>
           <option value="Lannister">Lannister</option>
@@ -127,26 +130,26 @@
         <span>
           <input type="submit" value="Show me!">
         </span>
-      </form>
       </div>
 
 
 
       <div class="explore">
         <span>Show all:
-          <form id="gender" action="/gender" method = "POST">
-            <select name="explGen" class="addSkillsMenu">
-              <option value="male">Males</option>
-              <option value="female">Females</option>
-              <option value="other">Other</option>
-            </select>
+          <select name="exploreChar" form="exploreChar" class="addSkillsMenu">
+            <option value="Male">Males</option>
+            <option value="Female">Females</option>
+            <option value="Other">Other</option>
+          </select>
 
-          </span>
+        </span>
         <span>
           <input type="submit" value="Show me!">
         </span>
-      </form>
       </div>
+
+    -->
+
     </div>
     </div>
 

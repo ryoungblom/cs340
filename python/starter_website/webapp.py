@@ -57,10 +57,69 @@ def nobility():
     query = 'SELECT id, name FROM got_skills'
     sresult = execute_query(db_connection, query).fetchall();
 
-    return render_template('characters.html', rows=result, houses = hresult, religions = rresult, skillRows = sresult)
+    return render_template('nobility.html', rows=result, houses = hresult, religions = rresult, skillRows = sresult)
+
+
+@webapp.route('/gender', methods=['POST','GET'])
+#the name of this function is just a cosmetic thing
+def gender():
+    print("Fetching and rendering people web page")
+
+
+    db_connection = connect_to_database()
+
+    request.method == 'POST';
+
+    gen = request.form['explGen'];
+
+    query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id WHERE C.gender = %s;"
+
+    data = (gen,);
+
+    result = execute_query(db_connection, query, data).fetchall();
+
+    query = 'SELECT id, name FROM got_houses'
+    hresult = execute_query(db_connection, query).fetchall();
+
+    query = 'SELECT id, name FROM got_religions'
+    rresult = execute_query(db_connection, query).fetchall();
+
+    query = 'SELECT id, name FROM got_skills'
+    sresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('gender.html', rows=result, houses = hresult, religions = rresult, skillRows = sresult)
 
 
 
+
+@webapp.route('/hMember', methods=['POST','GET'])
+#the name of this function is just a cosmetic thing
+def hMember():
+    print("Fetching and rendering people web page")
+
+
+    db_connection = connect_to_database()
+
+    request.method == 'POST';
+
+    hm = request.form['explH'];
+
+    query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id WHERE C.name = %s;"
+
+    data = (hm,);
+
+    result = execute_query(db_connection, query, data).fetchall();
+
+    query = 'SELECT id, name FROM got_houses'
+    hresult = execute_query(db_connection, query).fetchall();
+
+    query = 'SELECT id, name FROM got_religions'
+    rresult = execute_query(db_connection, query).fetchall();
+
+    query = 'SELECT id, name FROM got_skills'
+    sresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('hmember.html', rows=result, houses = hresult, religions = rresult, skillRows = sresult)
 
 
 @webapp.route('/skills')
