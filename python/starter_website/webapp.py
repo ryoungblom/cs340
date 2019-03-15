@@ -157,7 +157,12 @@ def browse_religions():
     db_connection = connect_to_database()
     query = "SELECT name, worshipers, theism, age, symbol, id FROM got_religions;"
     result = execute_query(db_connection, query).fetchall();
-    return render_template('religions.html', rows=result)
+
+
+    query = 'SELECT id, name FROM got_religions'
+    rresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('religions.html', rows=result, religions=rresult)
 
 @webapp.route('/')
 def home():
