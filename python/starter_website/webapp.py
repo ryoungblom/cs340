@@ -30,12 +30,21 @@ def browse_char():
     return render_template('characters.html', rows=result, houses = hresult, religions = rresult, skillRows = sresult)
 
 
-@webapp.route('/nobility')
+@webapp.route('/nobility', methods=['POST','GET'])
 #the name of this function is just a cosmetic thing
 def nobility():
     print("Fetching and rendering people web page")
+
+
     db_connection = connect_to_database()
-    query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id WHERE C.nobility = 'highborn';"
+
+    request.method == 'POST';
+
+    nbl = request.form['nobility'];
+
+
+
+    query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id WHERE C.nobility = nbl;"
     result = execute_query(db_connection, query).fetchall();
 
     query = 'SELECT id, name FROM got_houses'
