@@ -95,12 +95,13 @@
 
     <div class="explore">
       <span>Show character affiliations for:
-      <select name="showReligion" form="showReligion" class="skillsMenu">
-        <option value="Religion1">Religion1</option>
-        <option value="Religion2">Religion2</option>
-        <option value="Religion3">Religion3</option>
-        <option value="Religion4">Religion4</option>
-      </select>
+        <select name = "religions">
+
+            {% for r in religions %}
+            <option value = "{{ r[0] }}"> {{ r[1] }} </option>
+            {% endfor %}
+
+          </select>
       </span>
 
 
