@@ -55,7 +55,7 @@ def browse_houses():
     return render_template('houses.html', rows=result, leaders=lresult)
 
 
-    @webapp.route('/nobility/<string:cs>', methods=['POST','GET'])
+    @webapp.route('/nobility/<varchar:cs>', methods=['POST','GET'])
     #the name of this function is just a cosmetic thing
     def browse_caste(cs):
         print("Fetching and rendering houses web page")
