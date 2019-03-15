@@ -98,16 +98,19 @@
 
       <div class="explore">
         <span>Show all:
-          <select name="exploreChar" form="exploreChar" class="addSkillsMenu">
-            <option value="Highborn">Highborns</option>
-            <option value="Lowborn">Lowborns</option>
-            <option value="Other">Other</option>
+          <form id="nobility", action="/nobility/{{ rows[3] }}" method = "POST">
+
+          <select name="exploreChar" form="nobility" class="addSkillsMenu">
+            <option value="highborn">Highborns</option>
+            <option value="lowborn">Lowborns</option>
+            <option value="other">Other</option>
           </select>
 
         </span>
         <span>
           <input type="submit" value="Show me!">
         </span>
+      </form>
       </div>
 
       <div class="explore">

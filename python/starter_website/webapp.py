@@ -54,6 +54,21 @@ def browse_houses():
     lresult = execute_query(db_connection, query).fetchall();
     return render_template('houses.html', rows=result, leaders=lresult)
 
+
+    @webapp.route('/nobility/<string:cs>', methods=['POST','GET'])
+    #the name of this function is just a cosmetic thing
+    def browse_caste(cs):
+        print("Fetching and rendering houses web page")
+        db_connection = connect_to_database()
+        query = "SELECT H.name, H.members, H.motto, H.sigil, CONCAT(C.fname, ' ', C.lname) AS 'Leader', H.id FROM got_houses H LEFT JOIN got_characters C ON H.leader = C.id WHERE nobility=cs;"
+        result = execute_query(db_connection, query).fetchall();
+
+        query = 'SELECT id, fname, lname FROM got_characters;'
+        lresult = execute_query(db_connection, query).fetchall();
+        return render_template('houses.html', rows=result, leaders=lresult)
+
+
+
 @webapp.route('/religions')
 #the name of this function is just a cosmetic thing
 def browse_religions():
@@ -293,7 +308,7 @@ def update_skill(id):
 
     query = "UPDATE got_skills SET name = %s, battle_utility = %s, acquisition_cost = %s, rarity = %s, value = %s WHERE id = %s;"
     data = (name, utility, cost, rarity, value, id)
-   
+
     execute_query(db_connection, query, data)
     return redirect ('/skills');
 
@@ -365,7 +380,7 @@ def delete_skill():
 
     query = "DELETE FROM got_skills WHERE id = %s;"
     data = (id,)
-  
+
     result = execute_query(db_connection, query, data)
     return redirect ('/skills');
 
@@ -386,7 +401,7 @@ def delete_religions():
 def add_character_skill():
     db_connection = connect_to_database()
     request.method == 'POST';
-    
+
     cid = request.form['addCID']
     sid = request.form['addSID']
 
@@ -402,7 +417,7 @@ def delete_character_skill():
     request.method == 'POST';
     cid = request.form['possessingCharacter']
     sid = request.form['possessedSkill']
- 
+
     query = "DELETE FROM got_character_skills WHERE character_id = %s AND skill_id = %s;"
     data = (cid, sid)
 
@@ -413,7 +428,7 @@ def delete_character_skill():
 def add_house_loyalty():
     db_connection = connect_to_database()
     request.method == 'POST';
-    
+
     house1 = request.form['addLoyalty1']
     house2 = request.form['addLoyalty2']
 
