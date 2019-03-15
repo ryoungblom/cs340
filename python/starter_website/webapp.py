@@ -42,9 +42,8 @@ def nobility():
 
     nbl = request.form['nobility'];
 
-
-
-    query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id WHERE C.nobility = nbl;"
+    query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id WHERE C.nobility = %s;"
+    data = (nbl);
     result = execute_query(db_connection, query).fetchall();
 
     query = 'SELECT id, name FROM got_houses'
