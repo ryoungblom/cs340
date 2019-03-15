@@ -61,6 +61,7 @@ def browse_houses():
         print("Fetching and rendering houses web page")
         db_connection = connect_to_database()
         query = "SELECT H.name, H.members, H.motto, H.sigil, CONCAT(C.fname, ' ', C.lname) AS 'Leader', H.id FROM got_houses H LEFT JOIN got_characters C ON H.leader = C.id WHERE nobility=cs;"
+        data = (cs);
         result = execute_query(db_connection, query).fetchall();
 
         query = 'SELECT id, fname, lname FROM got_characters;'
