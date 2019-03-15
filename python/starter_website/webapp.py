@@ -40,7 +40,7 @@ def nobility():
 
     request.method == 'POST';
 
-    nbl = request.form['nobility'];
+    nbl = request.form['explNob'];
 
     query = "SELECT C.fname, C.lname, C.nobility, C.gender, C.age, H.name AS 'House', R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_houses H ON C.house = H.id LEFT JOIN got_religions R ON C.religion = R.id WHERE C.nobility = %s;"
     data = (nbl);
