@@ -203,7 +203,7 @@ def relIsms():
 
     query = "SELECT name, worshipers, theism, age, symbol, id FROM got_religions WHERE id = %s;"
     data=(th,);
-    result = execute_query(db_connection, query).fetchall();
+    result = execute_query(db_connection, query, data).fetchall();
 
 
     query = 'SELECT id, name FROM got_religions'
