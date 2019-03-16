@@ -84,7 +84,6 @@
     <span><h2>Explore Characters</h2></span>
 
     <div class="wrap">
-       <a href="./characters"> <span><h2>Cancel Edit</h2></span> </a>
     </div>
 
 
@@ -111,12 +110,16 @@
       <div class="explore">
         <span>Who is in house:
           <form id="hMember" action="/hMember" method = "POST">
-        <select name="explH">
-          <option value="Tyrell">Tyrell</option>
-          <option value="Stark">Stark</option>
-          <option value="Lannister">Lannister</option>
-          <option value="Greyjoy">Greyjoy</option>
-        </select>
+            <select name = "explH">
+
+                {% for h in houses %}
+
+                <option value = "{{ h[0] }}"> {{ h[1] }} </option>
+
+                {% endfor %}
+
+
+              </select>
         ? </span>
 
         <span>
@@ -242,6 +245,7 @@
           <button type="button" value="Update" onclick="window.location.href=('edit_character/{{rows[7]}}')">Update</button>
 
           <br>
+          <br>
 
           <form  id="updateChar" action="/update_character/{{editChar[0]}}" method = "POST">
             Character:<br>
@@ -326,6 +330,11 @@
 
             <input type="submit" value="Submit">
               </form>
+              <br>
+              or
+              <br>
+              <a href="./characters"> <span><h2>Cancel Edit</h2></span> </a>
+              
 
 
         </div>
