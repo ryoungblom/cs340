@@ -162,7 +162,7 @@ def browse_religions():
     query = 'SELECT id, name FROM got_religions'
     rresult = execute_query(db_connection, query).fetchall();
 
-    query = 'SELECT id, theism FROM got_religions'
+    query = 'SELECT theism FROM got_religions'
     tresult = execute_query(db_connection, query).fetchall();
 
     return render_template('religions.html', rows=result, religions=rresult, theisms = tresult)
@@ -201,7 +201,7 @@ def relIsms():
 
     th = request.form['explThe'];
 
-    query = "SELECT name, worshipers, theism, age, symbol, id FROM got_religions WHERE id = %s;"
+    query = "SELECT name, worshipers, theism, age, symbol, id FROM got_religions WHERE theism = %s;"
     data=(th,);
     result = execute_query(db_connection, query, data).fetchall();
 
