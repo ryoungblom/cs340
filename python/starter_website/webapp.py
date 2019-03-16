@@ -162,7 +162,7 @@ def browse_religions():
     query = 'SELECT id, name FROM got_religions'
     rresult = execute_query(db_connection, query).fetchall();
 
-    query = 'SELECT DISTICT theism FROM got_religions'
+    query = 'SELECT DISTINCT theism FROM got_religions'
     tresult = execute_query(db_connection, query).fetchall();
 
     return render_template('religions.html', rows=result, religions=rresult, theisms = tresult)
