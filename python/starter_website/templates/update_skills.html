@@ -193,7 +193,7 @@
 
             </select>
 
-            <button type="submit" value="Submit">Submit</button>
+            <button type="submit" value="Submit" onclick="successEdit()">Submit</button>
 
           </form>
 
@@ -202,6 +202,12 @@
       </div>
 
 
+      <script>
+      function successEdit() {
+      alert("Skill Added!");
+      }
+
+      </script>
 
       </div>
       </div>
@@ -247,10 +253,17 @@
               <input type="radio" name="addValue" value="Low"> Low<br>
               <input type="radio" name="addValue" value="N/A"> N/A<br>
               <br>
-              <input type="submit" value="Submit">
+              <input type="submit" value="Submit" onclick="successAdd()">
             </form>
           </div>
           <br>
+
+          <script>
+      function successAdd() {
+        alert("Skill Added!");
+      }
+
+    </script>
           <br>
           <div>
             <h2>Edit Skills</h2>
@@ -268,6 +281,8 @@
 	         Skill: <br>
 		 <input type="text" name="upName" value={{editS[1]}}>
 		 <br>
+     <br>
+     Utility in Battle:<br>
 		 <select name="upUtility">
                     <option selected="selected"> {{editS[2]}} </option>
 		    <option value = "High">High</option>
@@ -276,6 +291,8 @@
 		    <option value = "N/A">N/A</option>
 		 </select>
   		 <br>
+       <br>
+       Aquisition Cost: <br>
 		 <select name="upCost">
 		    <option selected="selected">  {{editS[3]}} </option>
 	  	    <option value = "High">High</option>
@@ -284,6 +301,8 @@
 		    <option value = "N/A">N/A</option>
 		 </select>
   		 <br>
+       <br>
+       Rarity:<br>
 		 <select name="upRarity">
 		    <option selected="selected">  {{editS[4]}} </option>
  		    <option value = "Rare">Rare</option>
@@ -292,6 +311,9 @@
 		    <option value = "N/A">N/A</option>
 		 </select>
 		 <br>
+     <br>
+     Value:
+     <br>
 		 <select name="upValue">
 		    <option selected="selected">  {{editS[5]}} </option>
 		    <option value = "High">High</option>
@@ -317,10 +339,17 @@
 		    <option value = "{{r[5]}}">{{r[0]}}</option>
 		  {% endfor %}
 		</select>
-		<button type="submit" value="Submit">Delete</option>
+		<button type="submit" value="Submit" onclick="successDelete()">Delete</option>
 	      </form>
           </div>
           <br>
+
+          <script>
+      function successDelete() {
+        alert("Skill Deleted!");
+      }
+
+    </script>
           <br>
       </div>
 

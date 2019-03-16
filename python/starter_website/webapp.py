@@ -551,9 +551,15 @@ def edit_houses():
 
     query = "SELECT id, fname, lname FROM got_characters;"
     cresult = execute_query(db_connection, query).fetchall();
+
+    query = 'SELECT id, fname, lname FROM got_characters;'
+    lresult = execute_query(db_connection, query).fetchall();
+
+    query = 'SELECT id, name FROM got_houses;'
+    hresult = execute_query(db_connection, query).fetchall();
     print(result)
 
-    return render_template('update_houses.html', rows=result, editH = sresult, characters = cresult);
+    return render_template('update_houses.html', rows=result, editH = sresult, characters = cresult, leaders=lresult, houses = hresult);
 
 @webapp.route('/update_house/<int:id>', methods=['POST'])
 def update_house(id):

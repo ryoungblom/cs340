@@ -213,10 +213,17 @@
 
           <br>
           <br>
-          <input type="submit" value="Submit">
+          <input type="submit" value="Submit" onclick="successAdd()">
         </form>
       </div>
       <br>
+
+      <script>
+  function successAdd() {
+    alert("Character Added!");
+  }
+
+</script>
       <br>
       <div>
         <h2>Edit Character</h2>
@@ -329,11 +336,20 @@
                   <option value = "{{s[0]}}">{{s[1]}}</option>
                 {% endfor %}
               </select>
-            <button type="submit" value="Submit">Submit</button>
+            <button type="submit" value="Submit" onclick="successEdit()">Submit</button>
           </form>
         </div>
 
         <br>
+
+        <script>
+    function successEdit() {
+      alert("Character Updated!");
+    }
+
+  </script>
+
+
         <br>
 
         <div>
@@ -346,10 +362,19 @@
 		  <option value="{{r[7]}}">{{r[0]}} {{r[1]}}</option>
 		{% endfor %}
 	      </select>
-	      <button type="submit" value="Submit">Delete</button>
+	      <button type="submit" value="Submit" onclick="successRemove()">Delete</button>
         </div>
 
         <div>
+
+          <script>
+      function successRemove() {
+        alert("Character Deleted!");
+      }
+
+    </script>
+
+
         </div>
       </div>
   </div>

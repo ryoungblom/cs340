@@ -78,32 +78,35 @@
     </div>
 
 
-    <div class="explore">
-      <span><h2>Explore Houses</h2></span>
-
-      <div class="wrap">
-         <a href="./houses"> <span><h2>Cancel Edit</h2></span> </a>
-      </div>
-
-      <div class="elements">
-
+    <div class="explore">
+
+      <span><h2>Explore Houses</h2></span>
+
+
+
+      <div class="wrap">
+        <a href="./houses"> <span><h2>Cancel Edit</h2></span> </a>
+      </div>
+
+
+
+      <div class="elements">
+
+  <form  id="houseMem" action="/houseMembers" method = "POST">
 
         <div class="explore">
 
-          <span>Show members from house
+          <span>Show members from house...
 
-          <select name="houses" form="houseMod">
+            <select name = "houseMem">
 
-            <option value="Tyrell">Tyrell</option>
+                {% for h in houses %}
 
-            <option value="Stark">Stark</option>
+                <option value = "{{ h[0] }}"> {{ h[1] }} </option>
 
-            <option value="Lannister">Lannister</option>
+                {% endfor %}
 
-            <option value="Greyjoy">Greyjoy</option>
-
-          </select>
-
+              </select>
           ! </span>
 
 
@@ -112,28 +115,30 @@
 
             <input type="submit" value="Show me!">
 
+
           </span>
 
+          </form>
         </div>
 
 
 
         <div class="explore">
 
+
+          <form  id="houseMem" action="/loyalties" method = "POST">
+
           <span>What houses are loyal to house
 
-          <select name="houses" form="houseMod">
+            <select name = "houseLoy">
 
-            <option value="Tyrell">Tyrell</option>
+                {% for h in houses %}
 
-            <option value="Stark">Stark</option>
+                <option value = "{{ h[0] }}"> {{ h[1] }} </option>
 
-            <option value="Lannister">Lannister</option>
+                {% endfor %}
 
-            <option value="Greyjoy">Greyjoy</option>
-
-          </select>
-
+              </select>
           ? </span>
 
 
@@ -144,6 +149,7 @@
 
           </span>
 
+        </form>
         </div>
 
 
@@ -158,7 +164,7 @@
 
         <span>
 
-          <form id="addHL" action="/add_house_loyalty" method = "POST">
+          <form id="addHL" action="/addHouseLoyalty" method = "POST">
 
             House:
 
@@ -184,20 +190,31 @@
 
             </select>
 
-            <button type="submit" value="Submit">Submit</button>
+            <button type="submit" value="Submit" onclick="successLoyAdd()">Submit</button>
 
           </form>
 
         </span>
 
-        </div>
+      </div>
 
 
-
-
-      </div>
-
-    </div>
+
+      <script>
+      function successLoyAdd() {
+      alert("Loyalty Added!");
+      }
+
+      </script>
+
+
+
+      </div>
+
+
+
+    </div>
+
 
 <hr>
 
@@ -288,11 +305,18 @@
                   <option value = "{{r[5]}}">{{r[0]}}</option>
                 {% endfor %}
               </select>
-              <button type="submit" value="Submit">Submit</option>
+              <button type="submit" value="Submit" onclick="successLoyRemove()">Submit</option>
             </form>
           </div>
 
           <br>
+
+          <script>
+      function successLoyRemove() {
+        alert("Loyalty Removed!");
+      }
+
+    </script>
           <br>
 
           <div>
@@ -305,7 +329,7 @@
 		    <option value = "{{r[5]}}">{{r[0]}}</option>
 		  {% endfor %}
 		</select>
-		<button type="submit" value="Submit">Delete</button>
+		<button type="submit" value="Submit" onclick= "successDelete()">Delete</button>
 	      </form>
           </div>
 
@@ -314,6 +338,14 @@
 
         </div>
         <br>
+
+        <script>
+    function successDelete() {
+      alert("House Deleted!");
+    }
+
+  </script>
+
         <br>
     </div>
 
