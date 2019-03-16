@@ -162,6 +162,34 @@ def show_skills():
     return render_template('showSkills.html', rows=result, characterRows = cresult, skills=sresult)
 
 
+
+
+@webapp.route('/peopleSkills', methods=['POST','GET'])
+#the name of this function is just a cosmetic thing
+def people_skills():
+    print("Fetching and rendering skills web page")
+    db_connection = connect_to_database()
+
+    request.method == 'POST';
+
+    chs = request.form['charSkills'];
+
+    query = "SELECT S.name, S.battle_utility, S.acquisition_cost, S.rarity, S.value, S.id FROM got_skills S INNER JOIN got_character_skills CS ON CS.skill_id = S.id INNER JOIN got_characters C ON C.id = CS.character_id WHERE C.id = %s;"
+    data = (chs,);
+    result = execute_query(db_connection, query, data).fetchall();
+
+    query = "SELECT id, fname, lname FROM got_characters;"
+    cresult = execute_query(db_connection, query).fetchall();
+
+    query = "SELECT id, name FROM got_skills;"
+    sresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('characterSkills.html', rows=result, characterRows = cresult, skills=sresult)
+
+
+
+
+
 @webapp.route('/houses')
 #the name of this function is just a cosmetic thing
 def browse_houses():

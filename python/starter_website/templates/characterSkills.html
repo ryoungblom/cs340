@@ -51,22 +51,46 @@
 
       <div class="tableCenter">
 
-          <table border='1'>
-          <thead>
-              <th>Name</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-          </thead>
-          <tbody>
-            {% for r in rows %}
-            <tr>
-              <td> {{ r.0 }}</td>
-              <td> {{ r[1] }}</td>
+        <table border='1'>
 
-            </tr>
-            {% endfor %}
-          </tbody>
-      </table>
+        <thead>
+
+            <th>Name</th>
+
+            <th>Battle Utility</th>
+
+            <th>Acquisition Cost</th>
+
+            <th>Rarity</th>
+
+            <th>Value</th>
+
+        </thead>
+
+        <tbody>
+
+          {% for r in rows %}
+
+          <tr>
+
+            <td> {{ r.0 }}</td>
+
+            <td> {{ r[1] }}</td>
+
+            <td> {{ r[2] }}</td>
+
+            <td> {{ r[3] }}</td>
+
+            <td> {{ r[4] }}</td>
+
+          </tr>
+
+          {% endfor %}
+
+        </tbody>
+
+    </table>
+
       </div>
       <br>
 
