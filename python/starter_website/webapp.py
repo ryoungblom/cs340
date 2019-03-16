@@ -203,7 +203,7 @@ def add_char_skills():
     result = execute_query(db_connection, query).fetchall();
 
     query = "INSERT INTO got_character_skills (skill_id, character_id) VALUES (%s, %s);"
-    data = (ascC, ascS);
+    data = (ascS, ascC);
     aresult = execute_query(db_connection, query, data).fetchall();
 
     query = "SELECT id, fname, lname FROM got_characters;"
