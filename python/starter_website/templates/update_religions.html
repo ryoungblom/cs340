@@ -83,55 +83,121 @@
   <span><h2>Explore Religions</h2></span>
 
   <div class="wrap">
-     <div class="search">
-        <input type="text" class="searchTerm" placeholder="What are you looking for?">
-        <button type="submit" class="searchButton">
-          <i class="fa fa-search"></i>
-       </button>
-     </div>
+     <a href="./religions"> <span><h2>Cancel Edit</h2></span> </a>
   </div>
 
   <div class="elements">
 
-    <div class="explore">
-      <span>Show character affiliations for:
-      <select name="showReligion" form="showReligion" class="skillsMenu">
-        <option value="Religion1">Religion1</option>
-        <option value="Religion2">Religion2</option>
-        <option value="Religion3">Religion3</option>
-        <option value="Religion4">Religion4</option>
-      </select>
-      </span>
-
-
-        <input type="submit" value="Show me!">
-    </div>
-
-
-    <div class="explore">
-    <span>
-      Did we miss something? Assign a religion to a character!
-    </span>
-    <span>
-    Character:
-    <select name="skillChar" form="skillChar" class="addSkillsMenu">
-      <option value="Char1">Eddard Stark</option>
-      <option value="Char2">Theon Greyjoy</option>
-      <option value="Char3">John Snow</option>
-      <option value="Char4">The Hound</option>
-    </select>
-
-    Religion:
-    <select name="addReligion" form="addReligion" class="skillsMenu">
-      <option value="Religion1">Religion1</option>
-      <option value="Religion2">Religion2</option>
-      <option value="Religion3">Religion3</option>
-      <option value="Religion4">Religion4</option>
-    </select>
-
-      <input type="submit" value="Submit">
-    </span>
-  </div>
+    <div class="explore">
+
+      <span>Show character affiliations for:
+
+        <form id="followers" action="/followers" method = "POST">
+        <select name = "explRel">
+
+            {% for r in religions %}
+            <option value = "{{ r[0] }}"> {{ r[1] }} </option>
+            {% endfor %}
+
+          </select>
+      </span>
+
+
+
+
+
+        <input type="submit" value="Show me!">
+
+      </form>
+    </div>
+
+
+
+
+
+    <div class="explore">
+
+
+
+      <div class="explore">
+
+        <span>Show all:
+
+          <form id="followers" action="/theisms" method = "POST">
+          <select name = "explThe">
+
+              {% for t in theisms %}
+              <option value = "{{ t[0] }}"> {{ t[0] }} </option>
+              {% endfor %}
+
+            </select>
+
+            religions!
+        </span>
+
+
+
+
+
+          <input type="submit" value="Show me!">
+
+        </form>
+      </div>
+
+
+
+
+      <!--
+    <span>
+
+        Did we miss something? Assign a religion to a character!
+
+    </span>
+
+    <span>
+
+    Character:
+
+    <select name="skillChar" form="skillChar" class="addSkillsMenu">
+
+      <option value="Char1">Eddard Stark</option>
+
+      <option value="Char2">Theon Greyjoy</option>
+
+      <option value="Char3">John Snow</option>
+
+      <option value="Char4">The Hound</option>
+
+    </select>
+
+
+
+    Religion:
+
+    <select name="addReligion" form="addReligion" class="skillsMenu">
+
+      <option value="Religion1">Religion1</option>
+
+      <option value="Religion2">Religion2</option>
+
+      <option value="Religion3">Religion3</option>
+
+      <option value="Religion4">Religion4</option>
+
+    </select>
+
+
+
+      <input type="submit" value="Submit">
+
+    </span>
+
+    -->
+
+  </div>
+
+
+
   </div>
   </div>
 
@@ -171,7 +237,7 @@
              </select>
 
 	     <button type="button" value="Update" onclick="window.location.href=('edit_religion/{{rows[5]}}')">Update</button>
-          
+
 	<form id="updateR" action="/update_religion/{{editR[0]}}" method = "POST">
 	   Religion: <br>
 	   <input type="text" name="upName" value = {{editR[1]}}>
@@ -184,7 +250,7 @@
    	   <br>
 	   <input type="text" name="upSymbol" value = {{editR[5]}}>
 	   <br>
-	
+
 	   <input type="submit" value="Submit">
 	</form>
     </div>

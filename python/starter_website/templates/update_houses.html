@@ -50,7 +50,7 @@
 	<h1 class = "tableCenter"> Houses Table </h1>
 
       <div class="tableCenter">
-       
+
           <table border='1'>
           <thead>
               <th>Name</th>
@@ -82,68 +82,117 @@
       <span><h2>Explore Houses</h2></span>
 
       <div class="wrap">
-         <div class="search">
-            <input type="text" class="searchTerm" placeholder="What are you looking for?">
-            <button type="submit" class="searchButton">
-              <i class="fa fa-search"></i>
-           </button>
-         </div>
+         <a href="./houses"> <span><h2>Cancel Edit</h2></span> </a>
       </div>
 
       <div class="elements">
 
-        <div class="explore">
-          <span>Show members from house
-          <select name="houses" form="houseMod">
-            <option value="Tyrell">Tyrell</option>
-            <option value="Stark">Stark</option>
-            <option value="Lannister">Lannister</option>
-            <option value="Greyjoy">Greyjoy</option>
-          </select>
-          ! </span>
-
-          <span>
-            <input type="submit" value="Show me!">
-          </span>
-        </div>
-
-        <div class="explore">
-          <span>What houses are loyal to house
-          <select name="houses" form="houseMod">
-            <option value="Tyrell">Tyrell</option>
-            <option value="Stark">Stark</option>
-            <option value="Lannister">Lannister</option>
-            <option value="Greyjoy">Greyjoy</option>
-          </select>
-          ? </span>
-
-          <span>
-            <input type="submit" value="Show me!">
-          </span>
-        </div>
-
-        <div class="explore">
-        <span>
-          Did we miss something? Update house loyalties!
-        </span>
-        <span>
-          <form id="addHL" action = "/add_house_loyalty" method = "POST">
-            House:
-            <select name = "addLoyalty1">
-              {% for r in rows %}
-                <option value "{{r[5]}}">{{r[0]}}</option>
-              {% endfor %}
-            </select>
-            is loyal to house: 
-            <select name = "addLoyalty2">
-              {% for r in rows %}
-                <option value "{{r[5]}}">{{r[0]}}</option>
-              {% endfor %}
-            </select>
-            <button type="submit" value="Submit">Submit</button>
-          </form>
-        </span>
-      </div>
+
+        <div class="explore">
+
+          <span>Show members from house
+
+          <select name="houses" form="houseMod">
+
+            <option value="Tyrell">Tyrell</option>
+
+            <option value="Stark">Stark</option>
+
+            <option value="Lannister">Lannister</option>
+
+            <option value="Greyjoy">Greyjoy</option>
+
+          </select>
+
+          ! </span>
+
+
+
+          <span>
+
+            <input type="submit" value="Show me!">
+
+          </span>
+
+        </div>
+
+
+
+        <div class="explore">
+
+          <span>What houses are loyal to house
+
+          <select name="houses" form="houseMod">
+
+            <option value="Tyrell">Tyrell</option>
+
+            <option value="Stark">Stark</option>
+
+            <option value="Lannister">Lannister</option>
+
+            <option value="Greyjoy">Greyjoy</option>
+
+          </select>
+
+          ? </span>
+
+
+
+          <span>
+
+            <input type="submit" value="Show me!">
+
+          </span>
+
+        </div>
+
+
+
+        <div class="explore">
+
+        <span>
+
+          Did we miss something? Add house loyalties!
+
+        </span>
+
+        <span>
+
+          <form id="addHL" action="/add_house_loyalty" method = "POST">
+
+            House:
+
+            <select name = "addLoyalty1">
+
+              {% for r in rows %}
+
+                <option value = "{{r[5]}}">{{r[0]}}</option>
+
+              {% endfor %}
+
+            </select>
+
+            is loyal to house:
+
+            <select name = "addLoyalty2">
+
+              {% for r in rows %}
+
+                <option value = "{{r[5]}}">{{r[0]}}</option>
+
+              {% endfor %}
+
+            </select>
+
+            <button type="submit" value="Submit">Submit</button>
+
+          </form>
+
+        </span>
+
+        </div>
+
+
 
 
       </div>
@@ -168,7 +217,7 @@
             <br>
             House Sigil: <br> <input type="text" name="addSigil" placeholder="Sigil"><br>
             <br>
-            House Leader: <br> 
+            House Leader: <br>
 		<select name="addLeader">
  		   {% for l in leaders %}
 		   <option value= "{{ l[0] }}">{{ l[1] }} {{ l[2] }}</option>
@@ -190,7 +239,7 @@
 		<option value = "{{ r[5] }}">{{ r[0] }}</option>
 	      {% endfor %}
             </select>
- 
+
             <button type="button" value="Update" onclick="window.location.href=('edit_house/{{rows[5]}}')">Update</button>
 
 	<form id="updateHouse" action="/update_house/{{editH[0]}}" method="POST">

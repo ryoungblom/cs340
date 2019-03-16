@@ -46,11 +46,11 @@
 
       </div>
 
-	
+
 	<h1 class="tableCenter"> Skills Table </h1>
 
       <div class="tableCenter">
-       
+
           <table border='1'>
           <thead>
               <th>Name</th>
@@ -83,86 +83,126 @@
       <span><h2>Explore Skills</h2></span>
 
       <div class="wrap">
-         <div class="search">
-            <input type="text" class="searchTerm" placeholder="What are you looking for?">
-            <button type="submit" class="searchButton">
-              <i class="fa fa-search"></i>
-           </button>
-         </div>
+         <a href="./skills"> <span><h2>Cancel Edit</h2></span> </a>
       </div>
 
       <div class="elements">
 
-        <div class="explore">
-          <span>Who's got skills? Select up to 3: </span>
-          <span>
-          <select name="showSkillsOne" form="showSkills" class="skillsMenu">
-            <option value="skill1">Skill1</option>
-            <option value="skill2">Skill2</option>
-            <option value="skill3">Skill3</option>
-            <option value="skill4">Skill4</option>
-          </select>
-
-          <select name="showSkillsTwo" form="showSkills" class="skillsMenu">
-            <option value="skill1">Skill1</option>
-            <option value="skill2">Skill2</option>
-            <option value="skill3">Skill3</option>
-            <option value="skill4">Skill4</option>
-          </select>
-
-          <select name="showSkillsThree" form="showSkills" class="skillsMenu">
-            <option value="skill1">Skill1</option>
-            <option value="skill2">Skill2</option>
-            <option value="skill3">Skill3</option>
-            <option value="skill4">Skill4</option>
-          </select>
-
-            <input type="submit" value="Show me!">
-          </span>
-        </div>
-
-        <div class="explore">
-        <span>
-          Which skills does
-
-        <select name="skillChar" form="skillChar" class="addSkillsMenu">
-          <option value="Char1">Eddard Stark</option>
-          <option value="Char2">Theon Greyjoy</option>
-          <option value="Char3">John Snow</option>
-          <option value="Char4">The Hound</option>
-        </select>
-
-        possess?
-      </span>
-
-
-          <input type="submit" value="Show me!">
-      </div>
-
-
-
-        <div class="explore">
-        <span>
-          Did we miss something? Assign a skill to a character!
-        </span>
-        <span>
-          <form id="addCS" action = "/add_character_skill" method = "POST">
-           Character:
-           <select name = "addCID">
-             {% for c in characterRows %}
-               <option value = "{{c[0]}}">{{c[1]}} {{c[2]}}</option>
-             {% endfor %}
-           </select>
-           Skill:
-           <select name = "addSID">
-             {% for r in rows %}
-               <option value = "{{r[5]}}">{{r[0]}}</option>
-             {% endfor %}
-           </select>
-           <button type="submit" value="Submit">Submit</button>
-          </form>
-        </span>
-      </div>
+
+        <div class="explore">
+
+          <span>Who's got skills? Select one to find out: </span>
+
+          <span>
+
+
+
+           <form  id="showSkill" action="/showSkills" method = "POST">
+            <select name = "showSkills">
+
+                {% for s in skills %}
+
+                <option value = "{{ s[0] }}"> {{ s[1] }} </option>
+
+                {% endfor %}
+
+              </select>
+
+
+            <input type="submit" value="Show me!">
+
+          </form>
+          </span>
+
+        </div>
+
+
+
+        <div class="explore">
+
+        <span>
+
+          Which skills does
+
+
+         <form  id="charSkill" action="/peopleSkills" method = "POST">
+          <select name = "charSkills">
+
+              {% for c in characterRows %}
+
+              <option value = "{{ c[0] }}"> {{ c[1] }}  {{ c[2] }} </option>
+
+              {% endfor %}
+
+            </select>
+
+
+        possess?
+
+      </span>
+
+
+
+
+
+          <input type="submit" value="Show me!">
+
+
+        </form>
+      </div>
+
+
+
+
+
+
+
+        <div class="explore">
+
+        <span>
+
+          Did we miss something? Assign a skill to a character!
+
+        </span>
+
+        <span>
+
+          <form id="addCS" action = "/add_character_skill" method = "POST">
+
+            Character:
+
+            <select name = "addCID">
+
+              {% for c in characterRows %}
+
+                <option value = "{{c[0]}}">{{c[1]}} {{c[2]}}</option>
+
+              {% endfor %}
+
+            </select>
+
+            Skill:
+
+            <select name = "addSID">
+
+              {% for r in rows %}
+
+                <option value = "{{r[5]}}">{{r[0]}}</option>
+
+              {% endfor %}
+
+            </select>
+
+            <button type="submit" value="Submit">Submit</button>
+
+          </form>
+
+        </span>
+
+      </div>
+
+
+
       </div>
       </div>
 
@@ -215,7 +255,7 @@
           <div>
             <h2>Edit Skills</h2>
             <br>
-    
+
               <select name = "editSkill">
 	         {% for r in rows %}
 		    <option value = "{{ r[5] }}">{{r[0]}}</option>
@@ -223,7 +263,7 @@
 	      </select>
 
               <button type="button" value="Update" onclick="window.location.href=('edit_skill/{{rows[5]}}')">Update</button>
-       
+
               <form id="updateS" action="/update_skill/{{editS[0]}}" method = "POST">
 	         Skill: <br>
 		 <input type="text" name="upName" value={{editS[1]}}>
