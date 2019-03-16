@@ -115,13 +115,17 @@
 
       <div class="explore">
         <span>Who is in house:
-          <form id="hMember" action="/hMember" method = "POST">
-        <select name="explH">
-          <option value="Tyrell">Tyrell</option>
-          <option value="Stark">Stark</option>
-          <option value="Lannister">Lannister</option>
-          <option value="Greyjoy">Greyjoy</option>
-        </select>
+          <form id="houseMember" action="/hMember" method = "POST">
+            <select name = "explH">
+
+                {% for h in houses %}
+
+                <option value = "{{ h[0] }}"> {{ h[1] }} </option>
+
+                {% endfor %}
+
+
+              </select>
         ? </span>
 
         <span>

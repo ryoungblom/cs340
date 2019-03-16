@@ -241,6 +241,7 @@
 
           <button type="button" value="Update" onclick="window.location.href=('edit_character/{{rows[7]}}')">Update</button>
 
+          <br>
 
           <form  id="updateChar" action="/update_character/{{editChar[0]}}" method = "POST">
             Character:<br>
@@ -248,6 +249,8 @@
             <br>
             <input type="text" name="lname" value={{editChar[2]}}>
             <br>
+            <br>
+            Nobility:<br>
             <select name = "nobility">
 
               <option selected="selected"> {{editChar[3]}} </option>
@@ -257,6 +260,8 @@
 
             </select>
             <br>
+            <br>
+            Gender: <br>
             <select name = "gender">
 
               <option selected="selected"> {{editChar[4]}} </option>
@@ -267,7 +272,13 @@
             </select>
 
             <br>
+            <br>
+            Age:
+            <br>
             <input type="text" name="age" value={{editChar[5]}}>
+            <br>
+            <br>
+            House:
             <br>
             <select name = "house">
 
@@ -289,6 +300,9 @@
               </select>
             <br>
 
+            <br>
+              Religion:
+              <br>
             <select name = "religion">
 
                 {% for r in religions %}
@@ -308,7 +322,7 @@
 
               </select>
             <br>
-
+            <br>
 
             <input type="submit" value="Submit">
               </form>

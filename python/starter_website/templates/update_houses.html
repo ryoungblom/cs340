@@ -258,17 +258,41 @@
             </select>
 
             <button type="button" value="Update" onclick="window.location.href=('edit_house/{{rows[5]}}')">Update</button>
-
+
+            <br>
+
 	<form id="updateHouse" action="/update_house/{{editH[0]}}" method="POST">
 	   House: <br>
 	   <input type="text" name="upName" value={{editH[1]}}>
+
+             <select name = "upName">
+
+               {% for r in rows %}
+
+        <option value = "{{ r[5] }}">{{ r[0] }}</option>
+
+         {% endfor %}
+
+             </select>
+
+
+
+
            <br>
+           <br>
+           Members: <br>
 	   <input type="text" name="upMembers" value={{editH[2]}}>
            <br>
+           <br>
+           Motto:<br>
 	   <input type="text" name="upMotto" value={{editH[3]}}>
            <br>
+           <br>
+           Sigel: <br>
            <input type="text" name="upSigil" value={{editH[4]}}>
            <br>
+           <br>
+           Leader: <br>
            <select name="upLeader">
 	      {% for c in characters %}
 	         {% if c[0] == editH[5] %}
@@ -280,6 +304,7 @@
               <option value=NULL>Null</option>
 	   </select>
 	   <br>
+     <br>
 
 	   <input type="submit" value="Submit">
 	   </form>

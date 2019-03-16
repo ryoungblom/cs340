@@ -244,7 +244,9 @@
              </select>
 
 	     <button type="button" value="Update" onclick="window.location.href=('edit_religion/{{rows[5]}}')">Update</button>
-
+
+       <br>
+
 	<form id="updateR" action="/update_religion/{{editR[0]}}" method = "POST">
 	   Religion: <br>
 	   <input type="text" name="upName" value = {{editR[1]}}>
@@ -269,7 +271,7 @@
        Symbol: <br>
 	   <input type="text" name="upSymbol" value = {{editR[5]}}>
 	   <br>
-
+    <br>
 	   <input type="submit" value="Submit" onclick = "successEdit()">
 	</form>
     </div>

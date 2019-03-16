@@ -276,7 +276,9 @@
 	      </select>
 
               <button type="button" value="Update" onclick="window.location.href=('edit_skill/{{rows[5]}}')">Update</button>
-
+
+              <br>
+
               <form id="updateS" action="/update_skill/{{editS[0]}}" method = "POST">
 	         Skill: <br>
 		 <input type="text" name="upName" value={{editS[1]}}>
@@ -322,7 +324,7 @@
 		    <option value = "N/A">N/A</option>
  		 </select>
 		 <br>
-
+    <br>
 		 <input type="submit" value="Submit">
 	       </form>
             </div>
