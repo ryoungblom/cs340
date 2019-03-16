@@ -94,6 +94,7 @@
 
         <div class="explore">
           <span>Show members from house
+            <form  id="houseMem" action="/houseMembers" method = "POST">
             <select name = "houseMem">
 
                 {% for h in houses %}
@@ -107,6 +108,7 @@
 
           <span>
             <input type="submit" value="Show me!">
+          </form>
           </span>
         </div>
 
