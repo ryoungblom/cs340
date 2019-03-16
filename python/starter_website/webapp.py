@@ -288,7 +288,7 @@ def loyalties():
     return render_template('loyalties.html', rows=result, leaders=lresult, houses = hresult)
 
 
-@webapp.route('/addLoyalty', methods=['POST','GET'])
+@webapp.route('/addHouseLoyalty', methods=['POST','GET'])
 #the name of this function is just a cosmetic thing
 def loyalties():
     print("Fetching and rendering houses web page")
@@ -311,7 +311,7 @@ def loyalties():
     query = 'SELECT id, name FROM got_houses;'
     hresult = execute_query(db_connection, query).fetchall();
 
-    return render_template('loyalties.html', rows=result, leaders=lresult, houses = hresult)
+    return render_template('houses.html', rows=result, leaders=lresult, houses = hresult)
 
 
 
