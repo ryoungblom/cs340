@@ -164,6 +164,32 @@ def browse_religions():
 
     return render_template('religions.html', rows=result, religions=rresult)
 
+
+
+@webapp.route('/followers', methods=['POST','GET'])
+#the name of this function is just a cosmetic thing
+def relMember():
+    print("Fetching and rendering religions web page")
+    db_connection = connect_to_database()
+
+    request.method == 'POST';
+
+    rf = request.form['explRel'];
+
+
+    query = "SELECT C.fname, C.lname, R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_religions R ON C.religion = R.id WHERE R.name = %s;"
+    data = (rf);
+    
+    result = execute_query(db_connection, query).fetchall();
+
+
+    query = 'SELECT id, name FROM got_religions'
+    rresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('religions.html', rows=result, religions=rresult)
+
+
+
 @webapp.route('/')
 def home():
     return render_template('index.html')

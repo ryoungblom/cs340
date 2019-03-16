@@ -51,11 +51,9 @@
       <div class="tableCenter">
           <table border='1'>
           <thead>
-              <th>Name</th>
-              <th>Worshippers</th>
-              <th>Theism</th>
-              <th>Age</th>
-              <th>Symbol</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Religion</th>
           </thead>
           <tbody>
             {% for r in rows %}
@@ -63,8 +61,6 @@
               <td> {{ r.0 }}</td>
               <td> {{ r[1] }}</td>
               <td> {{ r[2] }}</td>
-              <td> {{ r[3] }}</td>
-              <td> {{ r[4] }}</td>
 
             </tr>
             {% endfor %}
@@ -80,7 +76,7 @@
 
 
 <div class="explore">
-  <span><h2>Explore Religions</h2></span>
+  <a href="./religions"> <span><h2>Clear Filter</h2></span> </a>
 
   <div class="wrap">
      <!--<div class="search">
@@ -94,20 +90,7 @@
   <div class="elements">
 
     <div class="explore">
-      <span>Show character affiliations for:
-        <form id="followers" action="/followers" method = "POST">
-        <select name = "explRel">
 
-            {% for r in religions %}
-            <option value = "{{ r[0] }}"> {{ r[1] }} </option>
-            {% endfor %}
-
-          </select>
-      </span>
-
-
-        <input type="submit" value="Show me!">
-      </form>
     </div>
 
 
@@ -140,6 +123,8 @@
 
   </div>
   </div>
+
+
   </div>
 
 
