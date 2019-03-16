@@ -300,7 +300,7 @@ def add_house_loyalties():
     hLoya = request.form['addLoyalty1'];
     hLoyb = request.form['addLoyalty2'];
 
-    query = "INSERT INTO got_house_loyalties (house_offering, house_receiving) VALUES (%s, %s);;"
+    query = "INSERT INTO got_house_loyalties (house_offering, house_receiving) VALUES (%s, %s);"
     data=(hLoya, hLoyb);
 
     result = execute_query(db_connection, query, data).fetchall();
@@ -311,7 +311,7 @@ def add_house_loyalties():
     query = 'SELECT id, name FROM got_houses;'
     hresult = execute_query(db_connection, query).fetchall();
 
-    return render_template('houses.html', rows=result, leaders=lresult, houses = hresult)
+    return redirect ('/houses');
 
 
 
