@@ -191,6 +191,26 @@ def relMember():
     return render_template('followers.html', rows=result, religions=rresult)
 
 
+@webapp.route('/theisms', methods=['POST','GET'])
+#the name of this function is just a cosmetic thing
+def relIsms():
+    print("Fetching and rendering religions web page")
+    db_connection = connect_to_database()
+
+    request.method == 'POST';
+
+    th = request.form['explThe'];
+
+    query = "SELECT name, worshipers, theism, age, symbol, id FROM got_religions WHERE id = %s;"
+    data=(th,);
+    result = execute_query(db_connection, query).fetchall();
+
+
+    query = 'SELECT id, name FROM got_religions'
+    rresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('theisms.html', rows=result, religions=rresult)
+
 
 @webapp.route('/')
 def home():

@@ -1,0 +1,230 @@
+
+<html>
+  <head>
+
+    <title>Religions</title>
+    <link rel="stylesheet" href="../static/styles/style.css">
+  </head>
+
+
+  <div class="primary">
+
+    <h2>Game of Thrones Database</h2>
+    <p>Religions Database</p>
+
+    <br>
+
+    <div class="buttons">
+
+      <a href="./characters">
+        <i class="fas fa-users fa-icons"></i>
+        <br>
+        Characters
+      </a>
+
+      <br>
+      <a href="./houses">
+        <i class="fab fa-fort-awesome fa-icons"></i>
+        <br>
+        Houses
+      </a>
+
+      <br>
+      <a href="./skills">
+        <i class="fas fa-hat-wizard fa-icons"></i>
+        <br>
+        Skills
+      </a>
+
+      <br>
+      <a href="./religions">
+        <i class="fas fa-church fa-icons"></i>
+        <br>
+        Religions
+      </a>
+    </div>
+
+
+
+	<h1 class = "tableCenter"> Religions Table </h1>
+
+      <div class="tableCenter">
+          <table border='1'>
+          <thead>
+              <th>Name</th>
+              <th>Worshipers</th>
+              <th>Theism</th>
+              <th>Age</th>
+              <th>Symbol</th>
+
+
+          </thead>
+          <tbody>
+            {% for r in rows %}
+            <tr>
+              <td> {{ r.0 }}</td>
+              <td> {{ r[1] }}</td>
+              <td> {{ r[2] }}</td>
+              <td> {{ r[3] }}</td>
+              <td> {{ r[4] }}</td>
+
+
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+      </div>
+
+
+  <br>
+
+</div>
+
+
+
+<div class="explore">
+  <a href="./religions"> <span><h2>Clear Filter</h2></span> </a>
+
+  <div class="wrap">
+     <!--<div class="search">
+        <input type="text" class="searchTerm" placeholder="What are you looking for?">
+        <button type="submit" class="searchButton">
+          <i class="fa fa-search"></i>
+       </button>
+     </div>-->
+  </div>
+
+  <div class="elements">
+
+    <div class="explore">
+
+    </div>
+
+
+    <div class="explore">
+
+      <!--
+    <span>
+        Did we miss something? Assign a religion to a character!
+    </span>
+    <span>
+    Character:
+    <select name="skillChar" form="skillChar" class="addSkillsMenu">
+      <option value="Char1">Eddard Stark</option>
+      <option value="Char2">Theon Greyjoy</option>
+      <option value="Char3">John Snow</option>
+      <option value="Char4">The Hound</option>
+    </select>
+
+    Religion:
+    <select name="addReligion" form="addReligion" class="skillsMenu">
+      <option value="Religion1">Religion1</option>
+      <option value="Religion2">Religion2</option>
+      <option value="Religion3">Religion3</option>
+      <option value="Religion4">Religion4</option>
+    </select>
+
+      <input type="submit" value="Submit">
+    </span>
+    -->
+
+  </div>
+  </div>
+
+
+  </div>
+
+
+<hr>
+  <div class="leftMargin CRUD">
+
+    <div>
+      <h2>Add Religion</h2>
+      <br>
+        <form  id="addReligions" action="/add_religion" method = "POST">
+          Name*: <br> <input type="text" name="addName" placeholder="Religion Name"><br>
+          <br>
+          Number of Worshipers: <br>  <input type="text" name="addWorshipers" placeholder="Worshipers"><br>
+          <br>
+          Theism: <br> <input type="text" name="addTheism" placeholder="Theism"><br>
+          <br>
+          Age: <br> <input type="text" name="addAge" placeholder="Age"><br>
+          <br>
+          Symbol: <br> <input type="text" name="addSymbol" placeholder="Symbol"><br>
+          <br>
+          <input type="submit" value="Submit" onclick="successAdd()">
+        </form>
+      </div>
+
+      <br>
+
+        <script>
+  function successAdd() {
+    alert("Religion Added!");
+  }
+
+</script>
+
+      <br>
+
+      <div>
+        <h2>Edit Religions</h2>
+        <br>
+          <form id="editR" action="/edit_religion" method = "POST">
+             <select name = "editReligion">
+	        {% for r in rows %}
+	           <option value = "{{ r[5] }}">{{ r[0] }}</option>
+	        {% endfor %}
+             </select>
+
+	     <button type="submit" value="Submit">Update</button>
+          </form>
+    </div>
+
+    <br>
+    <br>
+
+    <div>
+      <h2> Delete Religion </h2>
+      <br>
+      Religion: <br>
+         <form id="deleteR" action="/delete_religion/" method = "POST">
+ 	    <select name = "deleteReligion">
+	       {% for r in rows %}
+		  <option value = "{{r[5]}}">{{r[0]}}</option>
+	       {% endfor %}
+	    </select>
+	    <button type="submit" value="Submit" onclick="successDelete()">Delete</button>
+         </form>
+    </div>
+
+
+    <script>
+    function successDelete() {
+    alert("Religion Deleted!");
+    }
+
+    </script>
+
+
+  </div>
+  <div class="primary">
+    <a href="./">
+      <h3> Home </h3>
+    </a>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="footer primary">
+
+    <h2>Game of Thrones Database</h2>
+    <p>CS340 at Oregon State University</p>
+
+  </div>
+
+
+
+
+</html>
