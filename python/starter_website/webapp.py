@@ -188,6 +188,32 @@ def people_skills():
 
 
 
+@webapp.route('/add_character_skill', methods=['POST','GET'])
+#the name of this function is just a cosmetic thing
+def add_char_skills():
+    print("Fetching and rendering skills web page")
+    db_connection = connect_to_database()
+
+    request.method == 'POST';
+
+    ascC = request.form['addCID'];
+    ascS = request.form['addSID'];
+
+    query = "SELECT name, battle_utility, acquisition_cost, rarity, value, id FROM got_skills;"
+    result = execute_query(db_connection, query).fetchall();
+
+    query = "INSERT INTO got_character_skills (skill_id, character_id) VALUES (%s, %s);"
+    data = (ascC, ascS);
+    aresult = execute_query(db_connection, query, data).fetchall();
+
+    query = "SELECT id, fname, lname FROM got_characters;"
+    cresult = execute_query(db_connection, query).fetchall();
+
+    query = "SELECT id, name FROM got_skills;"
+    sresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('skills.html', rows=result, characterRows = cresult, skills=sresult)
+
 
 
 @webapp.route('/houses')
