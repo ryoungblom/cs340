@@ -80,7 +80,7 @@
 
 
     <div class="explore">
-      <span><h2>Explore Skills</h2></span>
+      <a href="./skills"> <span><h2>Clear Filter</h2></span> </a>
 
       <div class="wrap">
          <!--<div class="search">
@@ -94,71 +94,17 @@
       <div class="elements">
 
         <div class="explore">
-          <span>Who's got skills? Select one to find out: </span>
-          <span>
 
-           <form  id="showSkill" action="/showSkills" method = "POST">
-            <select name = "showSkills">
-
-                {% for s in skills %}
-
-                <option value = "{{ s[0] }}"> {{ s[1] }} </option>
-
-                {% endfor %}
-
-              </select>
-
-            <input type="submit" value="Show me!">
-          </form>
-          </span>
         </div>
 
         <div class="explore">
-        <span>
-          Which skills does
-         <form  id="charSkill" action="/charSkills" method = "POST">
-          <select name = "charSkills">
 
-              {% for c in characterRows %}
-
-              <option value = "{{ c[0] }}"> {{ c[1] }} </option>
-
-              {% endfor %}
-
-            </select>
-
-        possess?
-      </span>
-
-
-          <input type="submit" value="Show me!">
-
-        </form>
       </div>
 
 
 
         <div class="explore">
-        <span>
-          Did we miss something? Assign a skill to a character!
-        </span>
-        <span>
-          <form id="addCS" action = "/add_character_skill" method = "POST">
-            Character:
-            <select name = "addCID">
-              {% for c in characterRows %}
-                <option value = "{{c[0]}}">{{c[1]}} {{c[2]}}</option>
-              {% endfor %}
-            </select>
-            Skill:
-            <select name = "addSID">
-              {% for r in rows %}
-                <option value = "{{r[5]}}">{{r[0]}}</option>
-              {% endfor %}
-            </select>
-            <button type="submit" value="Submit">Submit</button>
-          </form>
-        </span>
+
       </div>
       </div>
       </div>

@@ -133,7 +133,34 @@ def browse_skills():
     query = "SELECT id, fname, lname FROM got_characters;"
     cresult = execute_query(db_connection, query).fetchall();
 
-    return render_template('skills.html', rows=result, characterRows = cresult)
+    query = "SELECT name, id FROM got_skills;"
+    sresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('skills.html', rows=result, characterRows = cresult, skills=sresult)
+
+
+@webapp.route('/showSkills')
+#the name of this function is just a cosmetic thing
+def show_skills():
+    print("Fetching and rendering skills web page")
+    db_connection = connect_to_database()
+
+    request.method == 'POST';
+
+    cs = request.form['showSkills'];
+
+    query = "SELECT C.fname, C.lname FROM got_skills S INNER JOIN got_character_skills CS ON CS.skill_id = S.id INNER JOIN got_characters C ON C.id = CS.character_id WHERE S.id = %s;"
+    data = (cs,);
+    result = execute_query(db_connection, query, data).fetchall();
+
+    query = "SELECT id, fname, lname FROM got_characters;"
+    cresult = execute_query(db_connection, query).fetchall();
+
+    query = "SELECT id, name FROM got_skills;"
+    sresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('showSkills.html', rows=result, characterRows = cresult, skills=sresult)
+
 
 @webapp.route('/houses')
 #the name of this function is just a cosmetic thing
