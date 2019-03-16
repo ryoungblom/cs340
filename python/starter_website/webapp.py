@@ -290,7 +290,7 @@ def loyalties():
 
 @webapp.route('/addHouseLoyalty', methods=['POST','GET'])
 #the name of this function is just a cosmetic thing
-def loyalties():
+def add_house_loyalties():
     print("Fetching and rendering houses web page")
 
     db_connection = connect_to_database()
