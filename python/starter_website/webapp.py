@@ -263,6 +263,32 @@ def browse_house_members():
 
 
 
+@webapp.route('/loyalties', methods=['POST','GET'])
+#the name of this function is just a cosmetic thing
+def loyalties():
+    print("Fetching and rendering houses web page")
+
+    db_connection = connect_to_database()
+
+    request.method == 'POST';
+
+    houseL = request.form['houseLoy'];
+
+    query = "SELECT H.name from got_houses H INNER JOIN got_house_loyalties HL ON HL.house_offering = H.id WHERE HL.house_receiving = %s;"
+    data=(houseL,);
+
+    result = execute_query(db_connection, query, data).fetchall();
+
+    query = 'SELECT id, fname, lname FROM got_characters;'
+    lresult = execute_query(db_connection, query).fetchall();
+
+    query = 'SELECT id, name FROM got_houses;'
+    hresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('loyalties.html', rows=result, leaders=lresult, houses = hresult)
+
+
+
 
 @webapp.route('/religions')
 #the name of this function is just a cosmetic thing
