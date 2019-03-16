@@ -84,12 +84,7 @@
     <span><h2>Explore Characters</h2></span>
 
     <div class="wrap">
-       <div class="search">
-          <input type="text" class="searchTerm" placeholder="Who are you looking for?">
-          <button type="submit" class="searchButton">
-            <i class="fa fa-search"></i>
-         </button>
-       </div>
+       <a href="./characters"> <span><h2>Cancel Edit</h2></span> </a>
     </div>
 
 
@@ -98,21 +93,25 @@
 
       <div class="explore">
         <span>Show all:
-          <select name="exploreChar" form="exploreChar" class="addSkillsMenu">
-            <option value="Highborn">Highborns</option>
-            <option value="Lowborn">Lowborns</option>
-            <option value="Other">Other</option>
+          <form id="nobility" action="/nobility" method = "POST">
+
+          <select name="explNob" class="addSkillsMenu">
+            <option value="highborn">Highborns</option>
+            <option value="lowborn">Lowborns</option>
+            <option value="other">Other</option>
           </select>
 
         </span>
         <span>
           <input type="submit" value="Show me!">
         </span>
+      </form>
       </div>
 
       <div class="explore">
-        <span>Who is the leader of house
-        <select name="houses" form="houseMod">
+        <span>Who is in house:
+          <form id="hMember" action="/hMember" method = "POST">
+        <select name="explH">
           <option value="Tyrell">Tyrell</option>
           <option value="Stark">Stark</option>
           <option value="Lannister">Lannister</option>
@@ -123,23 +122,28 @@
         <span>
           <input type="submit" value="Show me!">
         </span>
+      </form>
       </div>
 
 
 
       <div class="explore">
         <span>Show all:
-          <select name="exploreChar" form="exploreChar" class="addSkillsMenu">
-            <option value="Male">Males</option>
-            <option value="Female">Females</option>
-            <option value="Other">Other</option>
-          </select>
+          <form id="gender" action="/gender" method = "POST">
+            <select name="explGen" class="addSkillsMenu">
+              <option value="male">Males</option>
+              <option value="female">Females</option>
+              <option value="other">Other</option>
+            </select>
 
-        </span>
+          </span>
         <span>
           <input type="submit" value="Show me!">
         </span>
+      </form>
       </div>
+
+
     </div>
     </div>
 
