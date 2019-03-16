@@ -186,7 +186,7 @@ def relMember():
     query = 'SELECT id, name FROM got_religions'
     rresult = execute_query(db_connection, query).fetchall();
 
-    return render_template('religions.html', rows=result, religions=rresult)
+    return render_template('followers.html', rows=result, religions=rresult)
 
 
 
