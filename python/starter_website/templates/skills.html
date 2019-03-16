@@ -116,12 +116,12 @@
         <div class="explore">
         <span>
           Which skills does
-         <form  id="charSkill" action="/charSkills" method = "POST">
+         <form  id="charSkill" action="/peopleSkills" method = "POST">
           <select name = "charSkills">
 
               {% for c in characterRows %}
 
-              <option value = "{{ c[0] }}"> {{ c[1] }} </option>
+              <option value = "{{ c[0] }}"> {{ c[1] }}  {{ c[2] }} </option>
 
               {% endfor %}
 
