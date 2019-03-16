@@ -180,7 +180,7 @@ def relMember():
     query = "SELECT C.fname, C.lname, R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_religions R ON C.religion = R.id WHERE R.name = %s;"
     data = (rf,);
 
-    result = execute_query(db_connection, query).fetchall();
+    result = execute_query(db_connection, query, data).fetchall();
 
 
     query = 'SELECT id, name FROM got_religions'
