@@ -162,7 +162,10 @@ def browse_religions():
     query = 'SELECT id, name FROM got_religions'
     rresult = execute_query(db_connection, query).fetchall();
 
-    return render_template('religions.html', rows=result, religions=rresult)
+    query = 'SELECT id, theism FROM got_religions'
+    tresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('religions.html', rows=result, religions=rresult, theisms = tresult)
 
 
 
@@ -176,8 +179,7 @@ def relMember():
 
     rf = request.form['explRel'];
 
-
-    query = "SELECT C.fname, C.lname, R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_religions R ON C.religion = R.id WHERE R.name = %s;"
+    query = "SELECT C.fname, C.lname, R.name AS 'Religion', C.id FROM got_characters C LEFT JOIN got_religions R ON C.religion = R.id WHERE R.id = %s;"
     data = (rf,);
 
     result = execute_query(db_connection, query, data).fetchall();

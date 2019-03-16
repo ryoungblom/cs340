@@ -113,6 +113,35 @@
 
     <div class="explore">
 
+
+      <div class="explore">
+
+        <span>Show all:
+
+          <form id="followers" action="/followers" method = "POST">
+          <select name = "explThe">
+
+              {% for t in theisms %}
+              <option value = "{{ t[0] }}"> {{ t[1] }} </option>
+              {% endfor %}
+
+            </select>
+
+            religions!
+        </span>
+
+
+
+
+
+          <input type="submit" value="Show me!">
+
+        </form>
+      </div>
+
+
+
+
       <!--
     <span>
         Did we miss something? Assign a religion to a character!
