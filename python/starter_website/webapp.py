@@ -216,6 +216,8 @@ def add_char_skills():
 
 
 
+
+
 @webapp.route('/houses')
 #the name of this function is just a cosmetic thing
 def browse_houses():
@@ -226,7 +228,38 @@ def browse_houses():
 
     query = 'SELECT id, fname, lname FROM got_characters;'
     lresult = execute_query(db_connection, query).fetchall();
-    return render_template('houses.html', rows=result, leaders=lresult)
+
+    query = 'SELECT id, name FROM got_houses;'
+    hresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('houses.html', rows=result, leaders=lresult, houses = hresult)
+
+
+
+
+@webapp.route('/houseMembers', methods=['POST','GET'])
+#the name of this function is just a cosmetic thing
+def browse_house_members():
+    print("Fetching and rendering houses web page")
+
+    db_connection = connect_to_database()
+
+    request.method == 'POST';
+
+    houseM = request.form['houseMem'];
+
+    query = "SELECT fname, lname FROM got_characters WHERE house = %s;"
+    data=(houseM,);
+
+    result = execute_query(db_connection, query, data).fetchall();
+
+    query = 'SELECT id, fname, lname FROM got_characters;'
+    lresult = execute_query(db_connection, query).fetchall();
+
+    query = 'SELECT id, name FROM got_houses;'
+    hresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('houseMembers.html', rows=result, leaders=lresult, houses = hresult)
 
 
 
@@ -549,7 +582,13 @@ def edit_religions():
     sresult = execute_query(db_connection, query, data).fetchone();
     print(result)
 
-    return render_template('update_religions.html', rows=result, editR = sresult);
+    query = 'SELECT id, name FROM got_religions'
+    rresult = execute_query(db_connection, query).fetchall();
+
+    query = 'SELECT DISTINCT theism FROM got_religions'
+    tresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('update_religions.html', rows=result, editR = sresult, religions=rresult, theisms = tresult);
 
 @webapp.route('/update_religion/<int:id>', methods=['POST'])
 def update_religion(id):

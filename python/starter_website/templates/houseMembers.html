@@ -53,20 +53,16 @@
 
           <table border='1'>
           <thead>
-              <th>Name</th>
-              <th>Members</th>
-              <th>Motto</th>
-              <th>Sigil</th>
-              <th>Leader</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+
           </thead>
           <tbody>
             {% for r in rows %}
             <tr>
               <td> {{ r.0 }}</td>
               <td> {{ r[1] }}</td>
-              <td> {{ r[2] }}</td>
-              <td> {{ r[3] }}</td>
-              <td> {{ r[4] }}</td>
+
             </tr>
             {% endfor %}
           </tbody>
@@ -79,7 +75,7 @@
 
 
     <div class="explore">
-      <span><h2>Explore Houses</h2></span>
+      <a href="./houses"> <span><h2>Clear Filter</h2></span> </a>
 
       <div class="wrap">
          <!--<div class="search">
@@ -93,62 +89,15 @@
       <div class="elements">
 
         <div class="explore">
-          <span>Show members from house
-            <select name = "houseMem">
 
-                {% for h in houses %}
-
-                <option value = "{{ h[0] }}"> {{ h[1] }} </option>
-
-                {% endfor %}
-
-              </select>
-          ! </span>
-
-          <span>
-            <input type="submit" value="Show me!">
-          </span>
         </div>
 
         <div class="explore">
-          <span>What houses are loyal to house
-            <select name = "houseMem">
 
-                {% for h in houses %}
-
-                <option value = "{{ h[0] }}"> {{ h[1] }} </option>
-
-                {% endfor %}
-
-              </select>
-          ? </span>
-
-          <span>
-            <input type="submit" value="Show me!">
-          </span>
         </div>
 
         <div class="explore">
-        <span>
-          Did we miss something? Add house loyalties!
-        </span>
-        <span>
-          <form id="addHL" action="/add_house_loyalty" method = "POST">
-            House:
-            <select name = "addLoyalty1">
-              {% for r in rows %}
-                <option value = "{{r[5]}}">{{r[0]}}</option>
-              {% endfor %}
-            </select>
-            is loyal to house:
-            <select name = "addLoyalty2">
-              {% for r in rows %}
-                <option value = "{{r[5]}}">{{r[0]}}</option>
-              {% endfor %}
-            </select>
-            <button type="submit" value="Submit">Submit</button>
-          </form>
-        </span>
+
       </div>
 
 
