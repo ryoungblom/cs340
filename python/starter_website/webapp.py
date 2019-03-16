@@ -288,6 +288,32 @@ def loyalties():
     return render_template('loyalties.html', rows=result, leaders=lresult, houses = hresult)
 
 
+@webapp.route('/addLoyalty', methods=['POST','GET'])
+#the name of this function is just a cosmetic thing
+def loyalties():
+    print("Fetching and rendering houses web page")
+
+    db_connection = connect_to_database()
+
+    request.method == 'POST';
+
+    hLoya = request.form['addLoyalty1'];
+    hLoyb = request.form['addLoyalty2'];
+
+    query = "INSERT INTO got_house_loyalties (house_offering, house_receiving) VALUES (%s, %s);;"
+    data=(hLoya, hLoyb);
+
+    result = execute_query(db_connection, query, data).fetchall();
+
+    query = 'SELECT id, fname, lname FROM got_characters;'
+    lresult = execute_query(db_connection, query).fetchall();
+
+    query = 'SELECT id, name FROM got_houses;'
+    hresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('loyalties.html', rows=result, leaders=lresult, houses = hresult)
+
+
 
 
 @webapp.route('/religions')
