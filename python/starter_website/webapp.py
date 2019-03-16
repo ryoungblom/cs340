@@ -133,13 +133,13 @@ def browse_skills():
     query = "SELECT id, fname, lname FROM got_characters;"
     cresult = execute_query(db_connection, query).fetchall();
 
-    query = "SELECT name, id FROM got_skills;"
+    query = "SELECT id, name FROM got_skills;"
     sresult = execute_query(db_connection, query).fetchall();
 
     return render_template('skills.html', rows=result, characterRows = cresult, skills=sresult)
 
 
-@webapp.route('/showSkills')
+@webapp.route('/showSkills', methods=['POST','GET'])
 #the name of this function is just a cosmetic thing
 def show_skills():
     print("Fetching and rendering skills web page")
