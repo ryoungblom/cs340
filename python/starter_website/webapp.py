@@ -508,7 +508,13 @@ def edit_skills():
     sresult = execute_query(db_connection, query, data).fetchone();
     print(result)
 
-    return render_template('update_skills.html', rows=result, editS = sresult);
+    query = "SELECT id, fname, lname FROM got_characters;"
+    cresult = execute_query(db_connection, query).fetchall();
+
+    query = "SELECT id, name FROM got_skills;"
+    skresult = execute_query(db_connection, query).fetchall();
+
+    return render_template('update_skills.html', rows=result, editS = sresult, characterRows = cresult, skills=skresult);
 
 @webapp.route('/update_skill/<int:id>', methods=['POST'])
 def update_skill(id):
