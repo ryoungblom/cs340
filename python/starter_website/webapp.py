@@ -498,8 +498,11 @@ def edit_characters():
     rresult = execute_query(db_connection, query).fetchall();
     print(rresult)
 
+    query = 'SELECT id, name FROM got_skills'
+    skresult = execute_query(db_connection, query).fetchall();
 
-    return render_template('update_characters.html', rows=result, editChar = sresult, houses = hresult, religions = rresult);
+
+    return render_template('update_characters.html', rows=result, editChar = sresult, houses = hresult, religions = rresult, skillRows = skresult );
 
 
 
