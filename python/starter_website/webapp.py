@@ -686,10 +686,16 @@ def delete_house():
     request.method == 'POST';
     id = request.form['deleteHouse']
 
+
+    query = "DELETE FROM got_house_loyalties WHERE house_offering = %s OR house_receiving = %s;"
+    data = (id,)
+    dresult = execute_query(db_connection, query, data)
+
     query = "DELETE FROM got_houses WHERE id = %s;"
     data = (id,)
-
     result = execute_query(db_connection, query, data)
+
+
     return redirect ('/houses');
 
 
