@@ -705,6 +705,10 @@ def delete_skill():
     request.method == 'POST';
     id = request.form['deleteSkill']
 
+    query = "DELETE FROM got_character_skills WHERE skill_id = %s;"
+    data = (id, )
+    sresult = execute_query(db_connection, query, data)
+
     query = "DELETE FROM got_skills WHERE id = %s;"
     data = (id,)
 
