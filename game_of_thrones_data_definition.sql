@@ -144,11 +144,11 @@ ALTER TABLE `got_houses`
 
 -- Add foreign keys to Character Skills table
 ALTER TABLE `got_character_skills`
- ADD CONSTRAINT `got_character_skills_ibfk_1` FOREIGN KEY (`skill_id`) REFERENCES `got_skills`(`id`),
- ADD CONSTRAINT `got_character_skills_ibfk_2` FOREIGN KEY (`character_id`) REFERENCES `got_characters`(`id`);
+ ADD CONSTRAINT `got_character_skills_ibfk_1` FOREIGN KEY (`skill_id`) REFERENCES `got_skills`(`id`) ON DELETE CASCADE,
+ ADD CONSTRAINT `got_character_skills_ibfk_2` FOREIGN KEY (`character_id`) REFERENCES `got_characters`(`id`) ON DELETE CASCADE;
 
 -- Add foreign keys to House Loyalties table
 ALTER TABLE `got_house_loyalties`
- ADD CONSTRAINT `got_house_loyalties_ibfk_1` FOREIGN KEY (`house_receiving`) REFERENCES `got_houses`(`id`),
- ADD CONSTRAINT `got_house_loyalties_ibfk_2` FOREIGN KEY (`house_offering`) REFERENCES `got_houses`(`id`);
+ ADD CONSTRAINT `got_house_loyalties_ibfk_1` FOREIGN KEY (`house_receiving`) REFERENCES `got_houses`(`id`) ON DELETE CASCADE,
+ ADD CONSTRAINT `got_house_loyalties_ibfk_2` FOREIGN KEY (`house_offering`) REFERENCES `got_houses`(`id`) ON DELETE CASCADE;
 
