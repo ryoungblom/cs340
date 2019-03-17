@@ -688,7 +688,7 @@ def delete_house():
 
 
     query = "DELETE FROM got_house_loyalties WHERE house_offering = %s OR house_receiving = %s;"
-    data = (id,)
+    data = (id, id)
     dresult = execute_query(db_connection, query, data)
 
     query = "DELETE FROM got_houses WHERE id = %s;"
