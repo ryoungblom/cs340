@@ -686,11 +686,6 @@ def delete_house():
     request.method == 'POST';
     id = request.form['deleteHouse']
 
-
-    query = "DELETE FROM got_house_loyalties WHERE house_offering = %s OR house_receiving = %s;"
-    data = (id, id)
-    dresult = execute_query(db_connection, query, data)
-
     query = "DELETE FROM got_houses WHERE id = %s;"
     data = (id,)
     result = execute_query(db_connection, query, data)
@@ -704,10 +699,6 @@ def delete_skill():
     db_connection = connect_to_database()
     request.method == 'POST';
     id = request.form['deleteSkill']
-
-    query = "DELETE FROM got_character_skills WHERE skill_id = %s;"
-    data = (id, )
-    sresult = execute_query(db_connection, query, data)
 
     query = "DELETE FROM got_skills WHERE id = %s;"
     data = (id,)
